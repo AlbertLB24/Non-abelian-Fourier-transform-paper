@@ -1,0 +1,92 @@
+\section{The p-adic group of type \texorpdfstring{$E_6$}{PDFstring}}
+
+In this section, we let $G=E_6(F)_{\scn}$ be the simple $p$-adic of type $E_6$ of simply connected type. Its affine Dynkin diagram is \begin{center}
+    \begin{tikzpicture}[scale=1, baseline=-3pt, circ/.style={draw, circle, inner sep=2pt, minimum size=2.5mm}]
+        \node[circ, label=above:$\alpha_1$] (1) at (0,0) {}; 
+        \node[circ, label=above:$\alpha_3$] (2) at (1.5,0) {}; 
+        \node[circ, label=above:$\alpha_4$] (3) at (3,0) {}; 
+        \node[circ, label=above:$\alpha_5$] (4) at (4.5,0) {};
+        \node[circ, label=above:$\alpha_6$] (5) at (6,0) {};
+        \node[circ, label=right:$\alpha_2$] (6) at (3,-1.5) {}; 
+        \node[circ, label=right:$-\alpha_0$] (7) at (3,-3) {}; 
+        \draw (1)--(2) (2)--(3) (3)--(4) (4)--(5) (3)--(6) (6)--(7);
+    \end{tikzpicture}
+\end{center}
+and its fundamental group is $\Omega\cong\ZZ/3\ZZ$. The group $G$ has $7$ conjugacy classes of open maximal open compact subgroups, one for each $J_i=S_{\aff}\setminus\{\calpha_i\},\ i=0,1,\ldots,6$. Nevertheless, the classes parametrized by $J_0,J_1,J_6$ and $J_2,J_3,J_5$ are conjugate under the action of $\Omega$, respectively, and in particular they have the same reductive type. By Proposition \ref{prop_also_twist}, it is therefore enough to verify the conjecture for the conjugacy classes of maximal open compact subgroups corresponding to $J_0$, $J_2$ and $J_4$. 
+
+Next, we classify the elliptic pairs in $G^\vee=E_6(\CC)_{\ad}$. This classification is well known in the literature for $E_6(\CC)_{\scn}$, but for $E_6(\CC)_{\ad}$ is slightly more involved. For most unipotent elements $u\in G^\vee$, the reductive part $\Gamma_u$ of its centralizer is connected. When this is the case, there exists a precise description of the elliptic pairs in $\Gamma_u$.
+
+\begin{proposition}\cite{AubertCiubotaruRomano2024}*{Proposition 8.7}
+    Suppose that $\Gamma_u$ is connected. Then there is a bijection
+    $$\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\textrm{ell}}\leftrightarrow W(\Gamma_u)\backslash\{(s,w)\ |\ s\in T\text{ is regular, } w\in W(\Gamma_u)\text{ is elliptic, }s\in T^w\},$$
+    where the map is obtained by conjugating an elliptic pair $(s,h)$ so that $s$ lies in a fixed torus $T$ of $\Gamma_u$ and $h$ is the lift of some $w\in W(\Gamma_u)$ such that $s\in T^w$.
+\end{proposition}
+
+With this in mind we can give a precise description of the elliptic pairs inside $G^\vee=E_6(\CC)_{\ad}$. We use the same notation as in Table \ref{tbl:F4_pairs}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        Unipotent & $\Gamma_u^0$ & $A_u$ & $|\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}|$ & $\mathcal{F}_{u}$ & $\Gamma_{\mathcal{F}_u}$ \\\hline
+        $E_6$ & $1$ & $1$ & $1$ & $\phi_{1,36}$ & $1$ \\\hline
+        $E_6(a_1)$ & $1$ & $1$ & $1$ & $\phi_{6,25}$ & $1$ \\\hline
+        $E_6(a_3)$ & $1$ & $S_2$ & $4$ & $\phi_{30,15}$ & $C_2$ \\\hline
+        $D_4$ & $\PGL_3$ & $1$ & $2$ & $\phi_{24,12}$ & $1$ \\\hline
+        $D_4(a_1)$ & $(\CC^\times)^2$ & $S_3$ & $12$ & $\phi_{80,7}$ & $S_3$ \\\hline
+        $A_2$ & $(\SL_3\times\SL_3)/\mu_3$ & $1$ & $2$ & $\phi_{30,3}$ & $C_2$\\\hline
+    \end{tabular}
+    \caption{Elliptic pairs for $E_6(\CC)_{\scn}$}
+    \label{tbl:E6_pairs}
+\end{table}
+
+Let us briefly describe the elliptic pairs above explicitly. When $\Gamma_u^0=\{1\}$ the description is straightforward. Next, consider the semisimple matrices 
+$$s_3=\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & \zeta_3 & 0 \\
+    0 & 0 & \zeta_3^2 
+\end{pmatrix}\quad\text{and}\quad w_3=\begin{pmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+    1 & 0 & 0
+\end{pmatrix}\quad\text{in }\SL_3(\CC).$$
+
+We also let $s_{3,3}=(s_3,s_3)$ and $w_{3,3}=(w_3,w_3)$ be matrices in $\SL_3\times\SL_3$. 
+
+When $u$ has type $D_4$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_3,w_3),(s_3,w_3^2)\}$, while if $u$ has type $A_2$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_{3,3},w_{3,3}),(s_{3,3},w_{3,3}^2)\}$. The remaining case when $u$ has type $D_4(a_1)$ is the most interesting. Then $\Gamma_u=(\CC^\times)^2\rtimes S_3$, where the $2$-cycle $(12)$ in $S_3$ acts by $(a,b)\mapsto(b,\frac{1}{ab})$ and the $3$-cycle $(123)$ acts by $(a,b)\mapsto(\frac{1}{b},\frac{1}{a})$. A lengthy computation then shows that $\Gamma_u$ has $12$ elliptic pairs up to conjugacy. To describe them, let 
+$$1=((1,1),e),\ z=((\zeta_3,\zeta_3),e),\ g_3=((1,1),(123))\in\Gamma_u.$$
+Then the $12$ elliptic pairs up to conjugacy are
+$\{(z^k,g_3),(g_3,z^k),(g_3,z^kg_3),(g_3,z^kg_3^{-1})\ |\ k=0,1,2\}.$
+The flip $(s,h)\mapsto(h,s)$ in the space of elliptic pairs preserves the pairs $(g_3,g_3^{\pm1})$, while it flips $(z^k,g_3)\leftrightarrow(g_3,z^k)$ and $(g_3,zg_3^{\pm1})\leftrightarrow(g_3,z^2g_3^{\pm1})$. For future computations, we also note that $(z^2,g_3)\sim(z,g_3^{-1})$ and that 
+$$A_u=S_3,\quad A_{uz}=C_3=\langle g_3\rangle\quad\text{and}\quad A_{ug_3}=C_3\times C_3=\langle g_3,z\rangle$$
+
+Thus, $R_{\un,\text{ell}}(G)$ is a $22$-dimensional vector space, and the proof of \textcolor{red}{Theorem for $E_6$ simply connected} relies again on an explicit computation of the parahoric restriction maps
+$$\res_{\un}^{K_i}:R_{\un,\text{ell}}\longrightarrow R_{\un}(\overline{K}_i),\ i=0,2,4.$$
+Finally, let us describe the unipotent blocks and the Langlands parameters. There are $8$ unipotent blocks, $6$ of which are supercuspidal, one for each pair $(K_0,\sigma)$, where $K_0\cong E_6(\mathcal{O}_F)$ is a hyperspecial parahoric subgroup (there are three conjugacy classes in $G$) and $\sigma\in\{E_6[\theta],E_6[\theta^2]\}$ is a cuspidal unipotent representation of $E_6(\FF_q)$. The Hecke algebras $\cH(E_6(F),K_0,\sigma)\cong\CC$ so the block contains a unique Langlands parameter, which can be read from Lusztig's arithmetic-geometric tables (when $G$ is adjoint), combined with Solleveld's results (\cite{Solleveld2020}*{Lemma 7.3}).
+
+Again, the principal block contains all representations $\pi(us,\phi)$ such that $H(\mathcal{B}^u_s)^\phi\neq 0$ and the corresponding Hecke algebra $\cH(E_6(F),\mathcal{I},\mathbf{1})$ is the affine Hecke algebra of type $E_6$ of equal parameters. The parahoric restrictions are computed using the methods described in Section \ref{sec:parahoric_restriction}.
+
+Finally, there is one intermediate Hecke algebra $\cH(E_6(F),D_4(\mathcal{O}_F),\sigma)$, where $\sigma$ is the unique cuspidal unipotent representation of $D_4(\FF_q)$. The only Langlands parameter we encounter corresponding to this Hecke algebra is $[A_1A_5,-]$, where $u$ has type $E_6(a_3)$, $s$ is the unique non-trivial semisimple element commuting with $u$ (of order $2$), and $\phi$ is non-trivial.
+
+We conclude this section with an explicit expression of the virtual characters $\Pi(u,s,h)$.
+
+\begin{align*}
+    \Pi(E_6,1,1)&=[E_6,1];\\
+    \Pi(E_6(a_1),1,1)&=[E_6(a_1),1];\\
+    \Pi(E_6(a_3),1,1)&=[E_6(a_3),+]+[E_6(a_3),-];\\
+    \Pi(E_6(a_3),1,g_2)&=[E_6(a_3),+]-[E_6(a_3),-];\\
+    \Pi(E_6(a_3),g_2,1)&=[A_1A_5,+]+[A_1A_5,-];\\
+    \Pi(E_6(a_3),g_2,g_2)&=[A_1A_5,+]-[A_1A_5,-];\\
+    \Pi(D_4,s_3,w_3)&=[D_4(71),1]+\theta[D_4(71),\theta]+\theta^2[D_4(71),\theta^2];\\
+    \Pi(D_4,s_3,w_3^{-1})&=[D_4(71),1]+\theta^2[D_4(71),\theta]+\theta[D_4(71),\theta^2];\\
+    \Pi(D_4(a_1),1,g_3)&=[D_4(a_1),1]+[D_4(a_1),\varepsilon]-[D_4(a_1),r];\\
+    \Pi(D_4(a_1),z,g_3)&=[D_4(53),\mathbf{1}]+\theta[D_4(53),\theta]+\theta^2[D_4(53),\theta^2];\\
+    \Pi(D_4(a_1),z^2,g_3)&=\Pi(D_4(a_1),z,g_3^{-1})=[D_4(53),\mathbf{1}]+\theta^2[D_4(53),\theta]+\theta[D_4(53),\theta^2];\\
+    \Pi(D_4(a_1),g_3,z^kg_3^l)&=\sum_{1\leq i,j\leq 3}\theta^{il+jk}[3A_2,\theta^i\boxtimes\theta^j];\\
+    \Pi(A_2,s_{3,3},w_{3,3})&=\Pi(A_2,s_{3,3},w_{3,3}^2)=[D_4(3311),\mathbf{1}]+[D_4(3311),\epsilon];\\
+\end{align*}
+
+    %[3A_2,\mathbf{1}\boxtimes\mathbf{1}]+\theta^l[3A_2,\theta\boxtimes\mathbf{1}]+\theta^{2l}[3A_2,\theta^2\boxtimes\mathbf{1}]+[3A_2,\mathbf{1}\boxtimes\theta]+[3A_2,\theta\boxtimes\theta]+\\
+    %&+[3A_2,\theta^2\boxtimes\theta]+[3A_2,\mathbf{1}\boxtimes\theta^2]+[3A_2,\theta\boxtimes\theta^2]+[3A_2,\theta^2\boxtimes\theta^2];\\
+    %\Pi(D_4(a_1),g_3,z)&=[3A_2,\mathbf{1}]+\theta[3A_2,\theta]+\theta^2[3A_2,\theta];\\
+    %\Pi(D_4(a_1),g_3,z^2)&=[3A_2,\mathbf{1}]+\theta^2[3A_2,\theta]+\theta[3A_2,\theta];\\
