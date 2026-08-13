@@ -1,6 +1,6 @@
-\section{The p-adic group of type \texorpdfstring{$F_4$}{PDFstring}}
+\section{The p-adic group of type \texorpdfstring{$F_4$}{PDFstring}}\label{sec:F4}
 
-In this section, we verify Conjecture \ref{conj:main} for the split, simply connected $p$-adic group $G=F_4(F)$. Since the fundamental group $\Omega$ is trivial, $G$ is also adjoint. This is an important property that simple groups of type $F_4$ share with simple groups of type $G_2$ that simplify many calculations. Its dual group is $G^\vee=F_4(\CC)$, and we let $\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$ be the simple roots of $G^\vee$, with Dynkin diagram 
+We now verify Conjecture \ref{conj:main} for the split, simply connected $p$-adic group $G=F_4(F)$. Since the fundamental group $\Omega$ is trivial, $G$ is also adjoint. Its dual group is $G^\vee=F_4(\CC)$, and we let $\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$ be the simple roots of $G^\vee$, with Dynkin diagram 
 
 \begin{center}
     \begin{tikzpicture}[scale=1, baseline=-3pt, circ/.style={draw, circle, inner sep=2pt, minimum size=2.5mm}]
@@ -40,7 +40,7 @@ The group $G$ has five maximal open compact subgroups $\{K_0,K_4,K_3,K_2,K_1\}$ 
     \[
         \begin{tikzcd}
             R_{\un,\mathrm{ell}}(G) \arrow[r, "\FT^\vee_{\mathrm{ell}}"] \arrow[d, "\res_{\un}^{\mathrm{cpt}}"] & R_{\un,\mathrm{ell}}(G) \arrow[d, "\res_{\un}^{\mathrm{cpt}}"] \\
-            \bigoplus_{i=0}^5 R_{\un}(\overline{K}_i) \arrow[r, "(\FT^{K_i})_i"] & \bigoplus_{i=0}^5 R_{\un}(\overline{K}_i),
+            \bigoplus_{i=0}^4 R_{\un}(\overline{K}_i) \arrow[r, "(\FT^{K_i})_i"] & \bigoplus_{i=0}^4 R_{\un}(\overline{K}_i),
         \end{tikzcd}
     \]
     commutes.
@@ -65,38 +65,66 @@ Firstly, we compute the basis $\{\Pi(u,s,h)\ |\ u\in G^\vee\text{ unipotent, } (
     \label{tbl:F4_pairs}
 \end{table}
 
-In particular, $R_{\un,\text{ell}}(G)$ is a $31$-dimensional vector space, where $21$ of these dimensions come from the distinguished unipotent class $F_4(a_3)$. The proof of Theorem \ref{thm:F4} relies on an explicit computation of the restriction map 
+For example, when $u$ has type $F_4(a_3)$, $\Gamma_u\cong S_4$ and there are $21$ virtual characters $\Pi(u,s,h)$ (below $\tau=g_2\cdot g_2'$ and $\gamma$ is conjugate to $g_2'$ in $S_4$ but not in $Z_{S_4}(g_2')=D_8$):%, while the other $10$ basis elements are easily computable
+\begin{align*}
+    \Pi(F_4(a_3), 1, 1)&= [F_4(a_3),4] + 3[F_4(a_3),31] + 3[F_4(a_3),211] + [F_4(a_3),1^4] + 2[F_4(a_3),22]; \\
+    \Pi(F_4(a_3), 1, g_2) &= [F_4(a_3),4] + [F_4(a_3),31] - [F_4(a_3),211] - [F_4(a_3),1^4]; \\
+    \Pi(F_4(a_3), 1, g_2') &= [F_4(a_3),4] - [F_4(a_3),31] - [F_4(a_3),211] + [F_4(a_3),1^4] + 2[F_4(a_3),22]; \\
+    \Pi(F_4(a_3), 1, g_3) &= [F_4(a_3),4] + [F_4(a_3),1^4] - [F_4(a_3),22]; \\
+    \Pi(F_4(a_3), 1, g_4) &= [F_4(a_3),4] - [F_4(a_3),31] + [F_4(a_3),211] - [F_4(a_3),1^4]; 
+\end{align*}
+\begin{align*}
+    \Pi(F_4(a_3), g_2, 1) &= [C(42)A_1,++] + [C(42)A_1,+-] + [C(42)A_1,-+] + [C(42)A_1,--]; \\
+    \Pi(F_4(a_3), g_2, g_2) &= [C(42)A_1,++] - [C(42)A_1,+-] + [C(42)A_1,-+] - [C(42)A_1,--]; \\
+    \Pi(F_4(a_3), g_2, \tau) &= [C(42)A_1,++] + [C(42)A_1,+-] - [C(42)A_1,-+] - [C(42)A_1,--]; \\
+    \Pi(F_4(a_3), g_2, g_2') &= [C(42)A_1,++] - [C(42)A_1,+-] - [C(42)A_1,-+] + [C(42)A_1,--]; 
+\end{align*}
+\begin{align*}
+    \Pi(F_4(a_3), g_2',1) &= [B_4(531),\mathbf{1}] + 2[B_4(531),r] + [B_4(531),\varepsilon'] + [B_4(531),\varepsilon''] + [B_4(531),\varepsilon]; \\
+    \Pi(F_4(a_3), g_2', g_2') &= [B_4(531),\mathbf{1}] - [B_4(531),\varepsilon'] + [B_4(531),\varepsilon''] - [B_4(531),\varepsilon]; \\
+    \Pi(F_4(a_3), g_2', g_2'') &= [B_4(531),\mathbf{1}] - 2[B_4(531),r] + [B_4(531),\varepsilon'] + [B_4(531),\varepsilon''] + [B_4(531),\varepsilon]; \\
+    \Pi(F_4(a_3), g_2', g_4) &= [B_4(531),\mathbf{1}] - [B_4(531),\varepsilon'] - [B_4(531),\varepsilon''] + [B_4(531),\varepsilon]; \\
+    \Pi(F_4(a_3), g_2', \gamma) &= [B_4(531),\mathbf{1}] + [B_4(531),\varepsilon'] - [B_4(531),\varepsilon''] - [B_4(531),\varepsilon];
+\end{align*}
+\begin{align*}
+    \Pi(F_4(a_3), g_3, 1) &= [2A_2,\mathbf{1}] + [2A_2,\theta] + [2A_2,\theta^2]; \\
+    \Pi(F_4(a_3), g_3, g_3) &= [2A_2,\mathbf{1}] + \theta^2[2A_2,\theta] + \theta[2A_2,\theta^2]; \\
+    \Pi(F_4(a_3), g_3, g_3^{-1}) &= [2A_2,\mathbf{1}] + \theta[2A_2,\theta] + \theta^2[2A_2,\theta^2];
+\end{align*}
+\begin{align*}
+    \Pi(F_4(a_3), g_4, 1) &= [A_3A_1,1] + [A_3A_1,i] + [A_3A_1,-1] + [A_3A_1,-i]; \\
+    \Pi(F_4(a_3), g_4, g_4) &= [A_3A_1,1] - i[A_3A_1,i] - [A_3A_1,-1] - i[A_3A_1,-i]; \\
+    \Pi(F_4(a_3), g_4, g_2') &= [A_3A_1,1] - [A_3A_1,i] + [A_3A_1,-1] - [A_3A_1,-i]; \\
+    \Pi(F_4(a_3), g_4, g_4^{-1}) &= [A_3A_1,1] + i[A_3A_1,i] - [A_3A_1,-1] - i[A_3A_1,-i];
+\end{align*}
+
+These virtual characters span a $21$-dimensional space inside the $31$-dimensional space $R_{\un,\text{ell}}(G)$. All remaining $10$ basis elements are easily computable. The proof of Theorem \ref{thm:F4} relies on an explicit computation of the restriction map 
 $$\res^{\mathrm{cpt}}_{\un}:R_{\un,\mathrm{ell}}(G)\longrightarrow\bigoplus_{i=0}^5 R_{\un}(\overline{K}_i).$$
 Most of this work was completed by Reeder in \cite{Reeder2000}. Nevertheless, his tables contain a few mistakes (systematically arising from the two representations $\pi(F_4(a_3),1,31)$ and $\pi(F_4(a_3),1,211)$) and do not include the representations whose unipotent label $u$ has type $B_3$ (for this is not a distinguished unipotent element of $F_4(\CC)$). We tabulate these results at the end of the section, fixing the mistakes and adding the new restrictions.
-
-\iffalse To display this information for all unipotent classes simultaneously, we use the notation for the Langlands parameters as in \cite{Reeder2000}, which we now explain for convenience. 
-
-\textbf{Notation:} Given a representation $\pi(x,\phi)$, let $x=us$ be the Jordan decomposition. Then $u\in Z_{G^\vee}(s)^0$ is a unipotent element of the connected pseudo-Levi subgroup $Z_{G^\vee}(s)^0$, and $\phi$ is an irreducible representation of the component group $A_{su}$. The representation $\pi(x,\phi)$ will be labelled by the type of unipotent element $u$ is inside $Z_{G^\vee}(s)^0$, together with the representation $\phi$. For example, if $u$ has type $F_4(a_3)$ and $s$ is a two-cycle, then $Z_{G^\vee}(s)$ has type $C_3\times A_1$, $u$ is labelled by $C_3(42)\times A_1$ (subregular in the first group and regular in the second) and $\widehat{A_{su}}=C_2\times C_2$. Thus, each representation has a name of the form $[u\in Z_{G^\vee}(s)^0,\phi]$ where $\phi$ is an irreducible representation of $A_{su}$.\fi
 
 Let us briefly discuss how the parahoric restrictions are computed. The unipotent representations of $F_4(F)$ fall into $9$ unipotent blocks, together with their associated Hecke algebras. There are $7$ supercuspidal blocks, one for each cuspidal unipotent representation of $F_4(\FF_q)$. The corresponding Hecke algebras $\cH(F_4(F),F_4(\mathcal{O}_F),\sigma)$ are all isomorphic to $\CC$ so these blocks contain a unique unipotent representation. This information can be read from Lusztig's arithmetic-geometric correspondence tables in \cite{Lusztig1995}*{pg. 577}. The Langlands parameters of these representations are $$[F_4(a_3),1^4],\ [C_3(42),--],\ [B_4(531),\varepsilon],\ [2A_2,\theta],\ [2A_2,\theta^2],\ [A_1A_3,i]\text{ and }[A_1A_3,-i],$$
 where we are using Notation \ref{notation:Langlandsparam} for the Langlands parameters. The parahoric restrictions of these representations are straightforward to compute, for they are irreducible for the hyperspecial parahoric $K_0$ and vanish for the other ones.
 
 The principal block contains all Iwahori-spherical representations, that is, all representations $\pi(us,\phi)$ such that $H(\mathcal{B}_s^u)^{\phi}\neq 0$. The corresponding Hecke algebra $\cH(F_4(F),I,\mathbf{1})$ is the affine Hecke algebra of type $F_4$ with equal parameters. We compute the parahoric restrictions, using Springer theory, the Green tables of $F_4(\FF_q)$ and the methods described in subsection \ref{subsec:Iwahori_spherical}.
 
-%The parahoric restrictions to the maximal hyperspecial $K_0$ are computed using Springer theory and the Green functions of $F_4(\FF_q)$, which are explicitly known thanks to the work of Beynon-Spaltenstein in \textcolor{red}{Cite BeynonSpaltenstein1984}. The results are tabulated at the end of the section. To compute the parahoric restrictions to the other maximal parahoric subgroups, we use \eqref{eqn:mackey_generalcase}, which relies on the computation of the groups $W_{J,t}$ and the characters $\chi_t^J$. In many instances, the characters are trivial (for example, if $W_{J,t}$ is a reflection subgroup of $W_J$); when this is the case, we use Lemma \ref{lem:mackey_restriction}. The restriction can then be easily obtained from Alvis' tables \textcolor{red}{Insert the reference here}.
-
 Finally, there is an intermediate block whose Hecke algebra $\cH(F_4(F),B_2,\sigma)$ is the affine Hecke algebra of type $C_2$ with unequal parameters that we introduced in Example \ref{ex:F4_B2_algebra}. All Langlands parameters of the representations of interest in this block are \textit{elliptic}, so it suffices to compute the square integrable representations of $\cH(F_4(F),B_2,\sigma)$ to determine the desired parahoric restrictions. This can be achieved using the theory of weight diagrams briefly discussed in Section \ref{sec:weight_diagram} (see also \cite{Ciubotaru2020}*{\S 9}). The Langlands parameters of these representations are $$[B_4,-],\ [C_3A_1,-],\ [C_3(42)A_1,-+],\ [B_4(531),r] \text{ and } [A_1A_3,-1].$$ 
-We explicitly discuss the $[A_1A_3,-1]$ case in Example \ref{ex:A1A3}, and we tabulate the rest of the parahoric restrictions at the end of the section.
+We explicitly discuss the $[A_1A_3,-1]$ case in Example \ref{ex:A1A3}, and we tabulate the rest of the parahoric restrictions in Section \ref{sec:tables}. The proof of Theorem \ref{thm:F4} follows immediately from Tables \ref{tbl:F4_K1}, \ref{tbl:F4_K2}, \ref{tbl:F4_K3} and \ref{tbl:F4_K4}.
 
-Before displaying the tables, let us discuss a few examples in detail to illustrate the main ideas involved in the calculations. We will focus on the representations whose unipotent part has type $F_4(a_3)$, since they are the most interesting. 
+Let us finish this section by discussing a few examples in detail to illustrate the main ideas involved in the calculations. 
 
 \subsection{Examples of parahoric restrictions}
-The first example is the computation of a parahoric restrictions with respect to the maximal hyperspecial parahoric $K_0$ using Springer Theory and Alvis' tables.
+The first example is the computation of a parahoric restrictions with respect to the maximal hyperspecial parahoric $K_0$ using Springer Theory and Alvis' tables (\cite{Alvis2005}).
 
 \begin{example}
     Consider the representation $[B_4(531),\mathbf{1}]$, with $u$ of type $F_4(a_3)$ and $s\in\Gamma_u$ a product of two $2$-cycles. The centralizer $Z_{G^\vee}(s)$ has type $B_4$ and $u\in Z_{G^\vee}(s)$ is subregular. Thus, the Springer fibre $\cB^u_s$ is $2$ dimensional, and by reading the Green functions we obtain
     $$H^*(\cB^u_s)^\mathbf{1}=[2,2]+[3,1]+[4,\cdot]\quad\text{as $W_s$-modules}.$$
-    Since all characters are trivial when $J=J_0$, Alvis' tables yield
+    Since all characters $\chi_{s^w}^{J}$ are trivial when $J=J_0$, Alvis' tables yield
     $$\Ind_{W_s}^W[2,2]+[3,1]+[4,\cdot]=\phi_{9,2}+\phi_{9,6}''+\phi_{8,3}''+\phi_{4,1}+\phi_{2,4}''+\phi_{1,0}.$$
     To obtain the parahoric restriction of the representation $[B_4(531),\mathbf{1}]$ with respect to $K_0$, we twist by $\varepsilon$ and by the outer automorphism of $W$ swapping long and short roots, so
     $$[B_4(531),\mathbf{1}]\xrightarrow{\res^{K_0}_{\un}}\phi_{9,10}+\phi_{9,6}''+\phi_{8,9}''+\phi_{4,13}+\phi_{2,16}''+\phi_{1,24}.$$
 \end{example}
-Once the parahoric restrictions for the maximal hyperspecial have been calculated, we can turn our attention towards computing the rest. The first step is to determine when the characters $\chi_t^J$ are trivial. The order of the semisimple elements $s$ in the Langlands parameters are clear, while one can show that $Z_{J_1},Z_{J_2},Z_{J_3}$ and $Z_{J_4}$ have order $2,2,3$ and $2$, respectively. Whenever the orders of $s$ and $J_1$ are relatively prime the characters are trivial, and we can use Lemma \ref{lem:mackey_restriction} and Alvis' tables to compute the restriction directly. Let us discuss another interesting example.
+
+Once the parahoric restrictions for the maximal hyperspecial have been calculated, we can turn our attention towards computing the rest. The first step is to determine when the characters $\chi_t^J$ are trivial, which happens often and it can be easily determined from \cite{Reeder2000}*{Lemma 8.3}. Whenever this is the case, we can use Lemma \ref{lem:mackey_restriction} and Alvis' tables to compute the restriction directly. Let us discuss another interesting example.
 
 \begin{example}
     Consider the parahoric restriction of the Iwahori-spherical representation $[A_1A_3,\mathbf{1}]$, where $u$ is of type $F_4(a_3)$ and $s\in\Gamma_u$ is a $4$-cycle, with respect to the parahoric subgroup $K_2$. Note that $W_{J_2}=\langle s_0,s_4,s_3,s_1\rangle\cong W(A_3)\times W(A_1)$. The semisimple part $s$ can be chosen to be $s=\calpha_3(-1)\calpha_4(i)$ so that $W_s=\langle s_4,s_2,s_1,s^0\rangle\cong W(A_1)\times W(A_3)$. In addition, $u$ is a regular unipotent element in $Z_{G^\vee}(s)$, so $H^*(\mathcal{B}_s^u)^{\mathbf{1}}=\mathbf{1}$ as a $W_s$-module. Next,
@@ -167,7 +195,7 @@ Finally, let us discuss the parahoric restrictions of the non-Iwahori-spherical 
             0 & 1
         \end{pmatrix}.
     \end{equation*}
-    The parahoric restrictions are now obtained by restricting to reflection subgroups. Restriction to the reflection subgroup $\langle s_1,s_2\rangle\cong W(B_2)$ gives the parahoric restriction to $K_0$, restriction to $\langle s_1,\tilde{s}_0\rangle\cong W(B_2)$ gives the parahoric restriction to $K_1$ and restriction to $\langle s_2,\tilde{s}_0\rangle\cong W(A_1\times A_1)$ gives the parahoric restriction to $K_4$. In each case, there is a bijection between representations of the Weyl group and unipotent representations of $\overline{K}_i$ in the series generated by $\sigma$, which we use implicitly. Throughout, we use Lusztig's notation for the unipotent representations. We obtain
+    The parahoric restrictions are now obtained by restricting to reflection subgroups. Restriction to the reflection subgroup $\langle s_1,s_2\rangle\cong W(B_2)$ gives the parahoric restriction to $K_0$, restriction to $\langle s_1,\tilde{s}_0\rangle\cong W(B_2)$ gives the parahoric restriction to $K_1$ and restriction to $\langle s_2,\tilde{s}_0\rangle\cong W(A_1\times A_1)$ gives the parahoric restriction to $K_4$. In each case, there is a bijection between representations of the Weyl group and unipotent representations of $\overline{K}_i$ in the series generated by $\sigma$, which we use implicitly. We refer the reader to \cite{Carter1985}*{\S10.11 and \S13.9} Throughout, we use Lusztig's notation for the unipotent representations. We obtain
     \begin{itemize}
         \item Firstly, $V^\sigma|_{\langle s_1,s_2\rangle}=[11,\emptyset]+[\emptyset,11]$, so $[A_1A_3,-1]\xrightarrow{\res^{K_0}_{\un}}B_2[\varepsilon']+B_2[\varepsilon].$
         \item Secondly, $V^\sigma|_{\langle s_1,\tilde{s}_0\rangle}=[1,1]$, so $[A_1A_3,-1]\xrightarrow{\res^{K_1}_{\un}}\begin{psmallmatrix}

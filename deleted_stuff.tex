@@ -1,0 +1,129 @@
+%%%%%%%%%%%%% From parahoric_restriction.tex:
+
+
+%% PROOF OF THE ACTION OF THE FUNDAMENTAL GROUP ON LANGLANDS PARAMETERS FOR IWAHORI-SPHERICAL
+
+Since the $p$-adic group $G$ is simply connected, maximal parahoric subgroups of $G$ are in bijection with the maximal proper subsets of $S_{\aff}$. In addition, the extended affine Dynkin diagram $S_{\aff}$ has a natural $\Omega$-action, where $\Omega$ is the fundamental group of the adjoint group $G_{\ad}$. Any non-trivial $\omega\in\Omega$ induces an inner automorphism of $G_{\ad}$ but an outer automorphism of $G$, which we also denote by $\omega$. Fix some maximal subset $J\subsetneq S_{\aff}$ and let $J'=\omega(J)$. While the parahoric restrictions with respect to $K_J$ and $K_{J'}=\omega(K_J)$ are not always isomorphic as $\overline{K}_J$- and $\overline{K}_{J'}=\omega(\overline{K}_J)$-modules, one can be deduced from the other. The main idea is that the corresponding maximal parahoric subgroups $K_J$ and $K_{J'}$ are conjugate in $G_{\ad}$ since $\omega$ is an inner automorphism. One can then relate parahoric restrictions of representations of $G_{\ad}$ with representations of $G$.
+
+More concretely, let $x=su$ be the Jordan decomposition of $x\in G^\vee$. Let $\tilde{u}$ be the unique unipotent lift of $u$ in the simply connected cover $G_{\scn}^\vee$ of $G^\vee$ and fix any lift $\tilde{s}$ of $s$ in $G_{\scn}^\vee$. Then $\tilde{x}=\tilde{s}\tilde{u}$ is a lift of $x$ in $G_{\scn}^\vee$. Since $\tilde{u}$ is the unique unipotent lift of $u$, the canonical map $Z_{G_{\scn}^\vee}(\tilde{u})\rightarrow Z_{G^\vee}(u)$ is surjective. While the map $Z_{G_{\scn}^\vee}(\tilde{s})\rightarrow M^\vee:=Z_{G^\vee}(s)^0$ is well-defined and surjective, the group $Z_{G^\vee}(s)$ may be disconnected, with component group isomorphic to $R$. Consider now the composition
+$$Z_{G_{\scn}^\vee}(\tilde{x})=Z_{Z_{G_{\scn}^\vee}(\tilde{s})}(\tilde{u})\twoheadrightarrow Z_{M^\vee}(u)\hookrightarrow Z_{Z_{G^\vee}(s)}(u)=Z_{G^\vee}(x).$$
+The first map is surjective (follows from the above observation) while the second map is clearly injective.
+Since $Z_{G^\vee}(s)/M^\vee\cong R$, we have that $Z_{G^\vee}(x)/Z_{M^\vee}(u)\cong R(u)$ by definition. Recall that $A_{\tilde{x}}$ and $A_x$ are the component groups of $Z_{G_{\scn}^\vee}(\tilde{x})$ and $Z_{G^\vee}(x)$, respectively, and let $A_x^0$ be the component group of $Z_{M^\vee}(u)$. It then follows that $A_x\cong A_x^0\rtimes R(u)$, and we have the short exact sequence 
+\begin{equation}
+    1\rightarrow Z/(Z\cap Z_{G_{\scn}^\vee}(\tilde{x})^0)\rightarrow A_{\tilde{x}}\rightarrow A_x^0\rightarrow 1,
+\end{equation}
+which implies that there is a bijection $\phi\leftrightarrow\tilde{\phi}$ between irreducible representations of $A_x^0$ and irreducible representations of $A_{\tilde{x}}$ trivial on the centre $Z$. Following an analogous construction, the pair $(\tilde{x},\tilde{\phi})$ gives rise to an irreducible $\widetilde{W}$-module $H^*(\mathcal{B}^{\tilde{x}})^{\tilde{\phi}}$ satisfying that 
+$$H^*(\mathcal{B}^{\tilde{x}})^{\tilde{\phi}}|_{W_{\aff}\rtimes R(u)}\cong H^*(\mathcal{B}^x)^\phi,$$
+where $R(u)$ is naturally seen as a subgroup of $\Omega$.
+Each character $\chi$ of $R(u)$ then can be inflated to a character of $A_x\cong A_x^0\rtimes R(u)$ giving a final decomposition into irreducible $W_{\aff}$-modules
+$$H^*(\mathcal{B}^{\tilde{x}})^{\tilde{\phi}}|_{W_{\aff}}\cong\bigoplus_{\chi\in\widehat{R(u)}} H^*(\mathcal{B}^x)^{\phi\otimes\chi}.$$
+
+Let us now consider the two extreme cases of the above discussion. On one hand, if $R(u)=\{1\}$, then $Z_{G_{\scn}^\vee}(\tilde{x})\rightarrow Z_{G^\vee}(x)$ is surjective and $A_x=A_x^0$. Thus, it follows that 
+\begin{equation}\label{eqn:isom_cover}
+    H^*(\mathcal{B}^{\tilde{x}})^{\tilde{\phi}}|_{W_{\aff}}\cong H^*(\mathcal{B}^x)^\phi
+\end{equation}
+as $W_{\aff}$-modules. Since $H^*(\mathcal{B}^x)^\phi$ is obtained as the restriction of an irreducible $\widetilde{W}$-module and $\omega\in\widetilde{W}$ it then follows that for any $J\subsetneq S_{\aff}$,
+\begin{equation}\label{eqn:twist_Ru_trivial}
+    H^*(\mathcal{B}^x)^\phi|_{\widetilde{W}_J}\cong (H^*(\mathcal{B}^x)^\phi|_{\widetilde{W}_{\omega(J)}})^\omega
+\end{equation}
+as $\widetilde{W}_J$-modules.
+
+On the other hand, if $R(u)=\Omega$, then 
+$$H^*(\mathcal{B}^{\tilde{x}})^{\tilde{\phi}}|_{W_{\aff}}\cong\bigoplus_{\chi\in\widehat\Omega} H^*(\mathcal{B}^x)^{\phi\otimes\chi}$$
+as irreducible $W_{\aff}$-modules and standard Clifford theory states that the action of $\Omega$ permutes these components transitively. In particular, this means that for any $J\subsetneq S_{\aff}$ and $\omega\in\Omega\subset\widetilde{W}$ there is some character $\tau\in\widehat{\Omega}$ such that for all characters $\chi\in\widehat{\Omega}$, 
+\begin{equation}\label{eqn:twist_Ru_nontrivial}
+    H^*(\mathcal{B}^x)^{\phi\otimes\chi}|_{\widetilde{W}_J}\cong (H^*(\mathcal{B}^x)^{\phi\otimes\chi\tau}|_{\widetilde{W}_{\omega(J)}})^\omega.
+\end{equation}
+
+We have thus shown
+
+\begin{proposition}\label{prop:twist_fund_group}
+    Let $V_{(x,\phi)}$ be an Iwahori-spherical representation of $G$, of simply connected type. Fix some $J\subsetneq S_{\aff}$ and $\omega\in\Omega$, which induces an isomorphism of reductive quotients $\omega:\overline{K}_J\cong\overline{K}_{\omega(J)}$. Then $V_{(x,\phi)}^{U_J}$ is isomorphic to $V_{(x,\phi\otimes\tau)}^{U_{\omega(J)}}$ as $\overline{K}_J$-modules via $\omega$ for some character $\tau$ of $R(u)$ lifted to $A_x$ and is independent of $\phi$. In particular, if $R(u)=\{1\}$, then $V_{(x,\phi)}^{U_J}$ and $V_{(x,\phi)}^{U_{\omega(J)}}$ are isomorphic as $\overline{K}_J$-modules.
+\end{proposition}
+
+If $G$ is a group of exceptional type, then the above result covers all possible cases, for $\Omega$ is either trivial or has orders $2$ or $3$. We encourage the reader to check Table \ref{tbl:E6_hyperspecialWJ0}, where this result can be clearly observed.
+
+\newpage
+
+
+
+
+
+
+%% EXTRA DETAILS ON THE SPRINGER CORRESPONDENCE NOT NEEDED FOR THE PAPER
+
+The Springer correspondence explicitly describes the action of the Weyl group on the top cohomology group.
+
+\begin{theorem}
+    Let $G^\vee$ be a complex algebraic reductive group with Weyl group $W$. For each pair $(u,\phi)$, where $u\in G^\vee$ is a unipotent element and $\phi$ is an irreducible character of $A_u$, the $\phi$-isotropic subspace of the top cohomology group $H^{\mathrm{top}}(\mathcal{B}^u)^\phi$ is either zero or an irreducible $W$-representation. Moreover, each irreducible character of $W$ arises this way for exactly one pair $(u,\phi)$ up to $G^\vee$ conjugation. In other words, there is an injection
+    $$\Irr(W)\xhookrightarrow{\quad\quad}\{\textrm{pairs }(u,\phi)\}/G^\vee.$$
+    Moreover, for any unipotent $u\in G^\vee$, the pair $(u,\mathbf{1})$ lies in the image of the map above.
+\end{theorem}
+When $G^\vee$ is a classical group, one can give a precise description of the injection in terms of combinatorial data. When $G^\vee$ is of exceptional type, one only has a finite amount of information and the injection above can be found in the literature (for example, in \cite{Carter1985}*{\S 13.3}). Remarkably, the odd cohomology groups of these varieties vanish.
+
+\begin{theorem}[\cite{KazhdanLusztig1987}]\label{thm:odd_vanish}
+    The odd-degree cohomology of $\mathcal{B}^x$ vanishes, so $H^*(\mathcal{B}^x)=\sum_{i=1}^{\dim\mathcal{B}^x}H^{2i}(\mathcal{B}^x)$.
+\end{theorem}
+
+\begin{example}
+    If $G^\vee=\GL_n(\CC)$, by the Jordan decomposition theorem, unipotent conjugacy classes are parametrized by partitions of $n$ and $A_u=\{1\}$ for any unipotent element $u$. Moreover, $W\cong S_n$, and its irreducible representations are also labelled by partitions of $n$. If $\lambda$ is a partition of $n$, then the Springer correspondence maps $V_\lambda$ to $(u_\lambda,\mathbf{1})$, where $V_\lambda$ is the Specht module of $S_n$ and $u_\lambda$ is a unipotent element of $\GL_n(\CC)$ corresponding to $\lambda$. In particular, the Springer correspondence for $\GL_n(\CC)$ is a bijection. On the other hand, if $G^\vee=\SL_n(\CC)$, conjugacy classes of unipotent elements are still parametrized by partitions of $n$. This time, however, $A_u$ may be non-trivial for some unipotent classes. The Springer correspondence is therefore not a bijection, whose the image consists of all pairs $\{(u,\mathbf{1}), u\in\SL_n(\CC)\textrm{ unipotent}\}$.
+
+    When $G^\vee$ has type $A_n$, one can describe the entire cohomology complex $H^*(\mathcal{B}^u)^\mathbf{1}$ explicitly. Suppose that $u=u_\lambda$ for a partition $\lambda=(\lambda_1,\ldots,\lambda_r)$ of $n$. If $S_\lambda=S_{\lambda_1}\times\cdots\times S_{\lambda_r}\leq S_n$, then Lusztig and Spaltenstein showed
+    $$H^*(\mathcal{B}^{u_\lambda})\cong\Ind_{S_\lambda}^{S_n}\mathbf{1}$$
+    as graded $S_n$-modules.
+\end{example}
+
+\begin{example}
+    The complex reductive group $G^\vee=G_2(\CC)$ has Weyl group $W\cong D_6$ and $5$ unipotent classes labelled and partially ordered by 
+    $$1<A_1<\tilde{A}_1<G_2(a_1)<G_2.$$
+    The component groups are all trivial except for the subregular unipotent class, whose component group is isomorphic to $S_3$, with irreducible representations $\mathbf{1},\varepsilon$ and $r$ (the unique $2$-dimensional).
+    The characters of $W$ are labelled in the literature by the symbols $\phi_{1,0}$ (trivial), $\phi_{1,6}$ (sign), $\phi_{1,3}',\phi_{1,3}''$ (the other two characters), $\phi_{2,1}$ (faithful) and $\phi_{2,2}$ (lifted from $S_3$). Then the Springer correspondence gives the pairing 
+    $$\phi_{1,0}\leftrightarrow(G_2,\mathbf{1}),\quad\phi_{2,1}\leftrightarrow(G_2(a_1),\mathbf{1}),\quad\phi_{1,3}'\leftrightarrow(G_2(a_1),r),\quad\phi_{2,2}\leftrightarrow(\tilde{A}_1,\mathbf{1}),\quad\phi_{1,3}''\leftrightarrow(A_1,\mathbf{1}),\quad\phi_{1,6}\leftrightarrow(1,\mathbf{1}),$$
+    while the pair $(G_2(a_1),\varepsilon)$ is not in the image of the correspondence. This is explained by the fact that $(G_2(a_1),\varepsilon)$ is a \textit{cuspidal local system} on $G_2(\CC)$.
+\end{example}
+
+In general, to determine the action of $W$ on the full cohomology complex $H^*(\mathcal{B}^u)$, one needs to look at the Green functions associated to the finite group of Lie type of the same type as $G$. These functions are known thanks to the work of Beynon and Spaltenstein in \cite{BeynonSpaltenstein1984} and can be easily computed with GAP.
+
+In addition, according to Kato, the $A_x\times W$-module structure on $H^*(\mathcal{B}^x)$ can be extended to a $A_x\times\widetilde{W}$-action as follows. The extended Weyl group decomposes as a semidirect product $\widetilde{W}=W\ltimes X$, where $X$ is the character lattice of $T^\vee$. Then there is a natural evaluation pairing $s:X\rightarrow \CC^\times$ given by $\mu\mapsto\langle s,\mu\rangle$. The character lattice $X$ then acts on $H^*(\mathcal{B}^x)$ by scalars $\langle s,\cdot\rangle$, and this extends the action as desired. Analogously, the $A_x\times W_s$-action of $H^*(\mathcal{B}^u_s)$ can be extended to a $A_x\times\widetilde{W}_s$-action. The main result we need is due to Lusztig.
+
+\begin{theorem}%\label{thm:Kato_module}\cite{Lusztig1995b}
+    Let $V_{x,\phi}$ be an Iwahori-spherical irreducible representation of $G$. After letting $q\rightarrow 1$ and then taking semisimplification, the simple $\mathcal{H}(G,I,\mathbf{1})$-module $V^\mathbf{1}_{x,\phi}$ becomes the $\widetilde{W}$-module $\varepsilon\otimes H^*(\mathcal{B}^x)^\phi$. 
+\end{theorem}
+
+\begin{remark}%\label{rem:Weylgroups}
+    An important remark is due at this point. The above theorem relates the structure of $V^\mathbf{1}_{(x,\phi),q=1}$ as a $\widetilde{W}$-module with the structure of $H^*(\mathcal{B}^x)^\phi$ as a $\widetilde{W}$-module too. However, the former object is naturally $p$-adic, while the latter is complex analytic. The Weyl groups of $G$ and $G^\vee$ are canonically isomorphic, but not equal if the group is not simply laced, since the isomorphism swaps short with long roots. It is a standard abuse of notation to denote both Weyl groups with the same symbol, but one needs to be careful during explicit calculations inside which Weyl group one is working. We are ultimately interested in the $p$-adic side, but most computations involving cohomology groups and the Springer correspondence take place in the complex side. In particular, the reflection $s_0$ inside $W$ will be a \textbf{short} reflection, corresponding to the highest short root. At the very end, we then trace the representations back to the $p$-adic side by swapping long and short roots. 
+\end{remark}
+
+To conclude this section, we note that the element $x\in G^\vee$ parametrizing $V_{x,\phi}$ is not necessarily unipotent, so the Springer correspondence does not directly apply to $H^*(\mathcal{B}^x)^\phi$. However, the Jordan decomposition $x=us$ allows us to relate $H^*(\mathcal{B}^x)^\phi$ to $H^*(\mathcal{B}_s^u)^\phi$, a $\widetilde{W}_s$-module that can be described by Springer theory. The result is due to Kato.
+
+\begin{proposition}\label{prop:ind_cohomo}\cite{Kato1983}
+    The natural restriction map $H^*(\mathcal{B}^x)^\phi\rightarrow H^*(\mathcal{B}_s^u)^\phi$ is $\widetilde{W}_s$-equivariant, and induces an isomorphism of $\widetilde{W}$-modules
+    $$H^*(\mathcal{B}^x)^\phi\cong\Ind_{\widetilde{W}_s}^{\widetilde{W}} H^*(\mathcal{B}_s^u)^\phi.$$
+\end{proposition}
+
+By \eqref{eqn:multiplicity_Iwahori}, Theorem \ref{thm:Kato_module} and Proposition \ref{prop:ind_cohomo}, the parahoric restriction of $V_{x,\phi}$ can be determined by computing
+\begin{equation*}
+    \left(\Ind_{\widetilde{W}_s}^{\widetilde{W}}H^*(\mathcal{B}^u_s)^\phi\right)|_{\widetilde{W}_J},
+\end{equation*}
+where $\widetilde{W}_J$ is the subgroup of $\widetilde{W}$ generated by all simple reflections of the roots in $J$. Working inside $\widetilde{W}$ is delicate due to the action of the character lattice, so we work inside $W=\widetilde{W}_{J_0}$ (this mirrors the strategy in \cite{Reeder2000}). Even though $W$ contains an isomorphic copy of $\widetilde{W}_J$, one needs to carefully track this isomorphism since it can twist the original representation by some character. 
+
+More concretely, consider the image $W_J$ of the group $\widetilde{W}_J$ under the natural projection map $\widetilde{W}\twoheadrightarrow W$. This restricts to an isomorphism $\widetilde{W}_J\overset{\sim}{\rightarrow} W_J$ with inverse map $\psi_J:W_J\rightarrow \widetilde{W}_J$, satisfying $\Psi_J(s_\alpha)=s_\alpha$ if $\alpha\in J, \alpha\neq-\alpha_0$ and $\psi_J(s_0)=\tilde{s}_0=t_{\alpha_0}s_0$ if $\tilde{s}_0\in J$. Let $\psi_J^*$ be the pullback of representations of $\widetilde{W}_J$ to $W_J$.
+
+Given a semisimple element $t\in G^\vee$, let $W_{J,t}=W_t\cap W_J$ and define the character
+\begin{equation}
+    \chi_t^J:=\chi_t\circ\psi_J:W_{J,t}\longrightarrow\CC^\times.
+\end{equation}
+Then by Mackey theory we obtain the isomorphism
+\begin{equation}%\label{eqn:mackey_generalcase}
+    \psi_J^*\left[\left(\Ind_{\widetilde{W}_s}^{\widetilde{W}}H^*(\mathcal{B}^u_s)^\phi\right)|_{\widetilde{W}_J}\right]\cong\bigoplus_{w\in W_s\backslash W/W_J}\Ind_{W_{J,s^w}}^{W_J}\chi_{s^w}^J\otimes\left[H^*(\mathcal{B}^u_s)^\phi\right]^w.
+\end{equation}
+Springer theory tells us the structure of the cohomology groups, so it remains to understand the groups $W_{J,t}$ and the characters $\chi_t^J$. The groups $W_{J,t}$ have been studied in the literature, and they can be decomposed into 
+$$W_{J,t}=W_{J,t}^0\rtimes R_{J,t},$$
+where $W_{J,t}^0$ is a ``large" reflection subgroup of $W$ generated by the reflections in $J$ that fix $t$, and $R_{J,t}$ is a ``small'' group that normalizes $W_{J,t}^0$. The character $\chi_t^J$ is trivial on $W_{J,t}^0$ and is determined by its restriction to $R_{J,t}$. As a result, the characters $\chi_t^J$ are trivial in any cases. For example, if $W_{J,t}=W_{J,t}^0$ is a reflection subgroup of $W$, then $\chi_t^J$ is trivial. In addition, one can associate to $J$ a subgroup $Z_J$ of the center of the simply connected cover of a pseudo-Levi subgroup $G^\vee_J$ generated by the torus and the roots $J$, and if the order of $t$ is relatively prime to the order of $Z_J$, then $\chi_t^J$ is trivial as well (\cite{Reeder2000}*{Lemma 8.3}). We refer to \cite{Reeder2000}*{\S 8} for a detailed discussion on the structure of these characters, where explicit formulas to compute them are provided. All nontrivial characters in this paper have been calculated using that formula. If all characters $\chi_{s^w}^{J}$ appearing in \eqref{eqn:mackey_generalcase} are trivial, then computations are greatly simplified, as the next result shows.
+\begin{lemma}\label{lem:mackey_restriction}
+    With the same notation as in \eqref{eqn:mackey_generalcase}, if the characters $\chi_{s^w}^{J}$ are trivial for all $w\in W_s\backslash W/W_J$, then
+    $$\psi_J^*\left[\left(\Ind_{\widetilde{W}_s}^{\widetilde{W}}H^*(\mathcal{B}^u_s)^\phi\right)|_{\widetilde{W}_J}\right]\cong\left(\Ind_{W_s}^W H^*(\mathcal{B}^u_s)^\phi\right)|_{W_J}$$
+\end{lemma}
+\begin{proof}
+    This is an immediate consequence of Mackey's formula applied to the right hand side of \eqref{eqn:mackey_generalcase}.
+\end{proof}
