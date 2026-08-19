@@ -1,18 +1,14 @@
 \section{Unipotent representations for finite groups of Lie type}\label{sec:finite_groups}
-Despite the fact that the statement of Conjecture \ref{conj:main} is at heart a result about the representation theory of a $p$-adic group $G$, in this first section we briefly recall important representation theoretic properties of finite groups of Lie type leading to the Lusztig's construction of the nonabelian fourier transform described in the introduction. Suppose $\mathbb{G}$ is a connected reductive group over $\overline{\FF}_p$ with Frobenius map $\Fr:\mathbb{G}\rightarrow\mathbb{G}$. The group $\GFr$ is a finite group inheriting many structural properties of $\mathbb{G}$. An easy application of the Lang--Steinberg theorem \cite{Carter1985}*{\S1.17} gives the existence of $\Fr$-stable Borel subgroups of $\mathbb{G}$, and each $\Fr$-stable Borel contains an $\Fr$-stable maximal torus of $\mathbb{G}$. While all $\Fr$-stable Borel subgroups of $\mathbb{G}$ are conjugate under $\GFr$, this is not the case for $\Fr$-stable maximal tori. The $\GFr$-conjugacy classes of $\Fr$-stable maximal tori are classified by the $\Fr$-conjugacy classes of the Weyl group $W:=N_{\mathbb{G}}(\mathbb{T})/\mathbb{T}$, where $\mathbb{T}$ is any $\Fr$-stable maximal tori of $\mathbb{G}$. 
 
-The Frobenius map $\Fr$ induces an action $\sigma$ on the Dynkin diagram by $\Fr(\mathcal{X}_\alpha)=\mathcal{X}_{\sigma(\alpha)}$, where the simple roots are chosen appropriately. When this action $\sigma$ is trivial, we say that $\GFr$ is split, in which case the $\GFr$-conjugacy classes of $\Fr$-maximal tori are classified by the $W$-conjugacy classes. All finite groups of Lie type considered in this paper are split, so we assume hereafter that $\Fr$ induces the trivial automorphism of the Dynkin diagram. In this case, conjugacy classes of the Weyl groups parametrize classes of $\Fr$-stable tori. Given $w\in W$, we denote by $\mathbb{T}_w\subseteq\mathbb{G}$ an $\Fr$-maximal torus in $\GFr$-conjugacy class parametrized by $w$. For example, the class of $\mathbb{T}_e$ contains all $\Fr$-stable maximal tori contained in $\Fr$-stable Borel subgroups. Deligne and Lusztig's groundbreaking work associates, to each $\Fr$-maximal torus $\mathbb{T}$ and character $\theta:\TFr\rightarrow\CC^\times$ a virtual character $R_{T,\theta}$ of the group $\GFr$ with striking properties. This construction is widely known as \textit{Deligne--Lusztig induction}. The original paper of Deligne and Lusztig \cite{DeligneLusztig1976} or Carter's book \cite{Carter1985}*{\S7} are great references that discuss in detail many of these properties.
+In this first section, we recall the necessary structural and representation theoretic properties of finite groups of Lie type leading to Lusztig's construction of the nonabelian Fourier transform described in the introduction. To this aim, suppose that $\mathbb{G}$ is a connected reductive group over $\overline{\FF}_p$ with Frobenius map $\Fr:\mathbb{G}\rightarrow\mathbb{G}$. The group $\GFr$ is a finite group of Lie type and we are interested in studying the set of irreducible unipotent representations of $\GFr$ denoted by $\Irr_{\un}(\GFr)$. We say that $\GFr$ is \textit{split} if the induced Frobenius action on the set of simple roots of $\GG$ is trivial. We shall assume throughout that $\GFr$ is a split group. We recall that Deligne--Lusztig induction associates, to each pair $(\TT,\theta)$ where $\TT$ is a $\Fr$-stable maximal tori of $\GG$ and $\theta$ is a character of $\TT^{\Fr}$, a virtual character $R_{\TT,\theta}$. Then we define 
+$$\Irr_{\un}(\GFr)=\{\rho\in\Irr(\GFr)\ |\ \langle\rho,R_{\TT,\mathbf{1}}\rangle\neq0\text{ for some $\Fr$-stable torus $\TT$ of $\GG$}\}.$$
+If the $\Fr$-maximal torus $\TT$ is maximally split and therefore contained in some $\Fr$-stable Borel subgroup $\BB$, then $R_{T_e,\mathbf{1}}=\Ind_{\BB^{\Fr}}^{\GG^{\Fr}}\mathbf{1}$, so the set of unipotent characters contain the principal series representations of $\GFr$. \textcolor{red}{By results of Lusztig, the classification of $\Irr_{\un}(\GFr)$ is reduced to the case when $\GG$ is adjoint simple.}
 
-Using the virtual characters $R_{\mathbb{T},\theta}$, Deligne and Lusztig defined a representation $\rho\in\Irr(\GFr)$ to be \textit{unipotent} if $\langle R_{\mathbb{T},1},\rho\rangle\neq 0$ for some $\Fr$-stable maximal torus $\mathbb{F}$ of $\mathbb{G}$. In particular, this implies that $\rho$ arises as a representation of $\GFr$ from an $\ell$-adic cohomology space of some Deligne--Lusztig variety. We remark that $R_{T_e,1}=\Ind_{\mathbb{B}^\mathrm{\Fr}}^{\GFr}1$, so unipotent representations naturally extend principal series representations. In addition, unipotent representations naturally factor through the centre of $\GFr$, so one normally assumes without loss of generality that $\mathbb{G}$ is of adjoint type. We denote the set of unipotent characters by $\Irr_{\un}(\GFr)$.
-
-The irreducible characters $\phi$ of $W$ are known to parametrize principal series representations $\chi_\phi$ of $\GFr$. Lusztig considered in addition the virtual character 
-$$R_\phi:=\frac{1}{|W|}\sum_{w\in W}\phi(w)R_{\mathbb{T}_w,1}$$
-which he called an \textit{almost character} of $\GFr$. These characters arise as traces of character sheaves of $\mathbb{G}$ and thus have nice geometric stability properties. These characters are a natural orthonormal basis of $R_{\un}(\GFr)$, the complexification of the Grothendieck space spanned by the unipotent characters of $\mathbb{G}$. The above construction gives a canonical map
-\begin{equation*}
-    \{\text{principal series reps}\}\longrightarrow\{\text{almost characters}\},\quad\quad\chi_\phi\longmapsto R_\phi.
-\end{equation*} 
-Lusztig realized that it was possible to naturally extend the above map for all unipotent representations obtaining an involution on $\FT^{\mathbb{G}}$. To achieve this, first we group unipotent representations into families by stating that two representations $\rho_1,\rho_2$ are in the same family if 
-$$\langle\rho_1,R_\phi\rangle\neq0\quad\text{and}\quad\langle\rho_2,R_\phi\rangle\neq0\quad\text{for some }\phi\in\Irr(W),$$
+Let $W=N_{\GG}(\TT)/\TT$ be the Weyl group associated to $\GG$. \textcolor{red}{When the group $\GFr$ is split,} irreducible representations $\phi$ of $W$ are known to to parametrize principal series representations $\chi_\phi$ of $\GFr$, and we shall make use of this bijection throughout. \textcolor{red}{maybe mention here that other representation series are also in bijection with weyl groups of smaller types?}. In addition, for each $\phi\in\widehat{W}$, define the \textit{almost character} 
+$$R_\phi:=\frac{1}{|W|}\sum_{w\in W}\phi(w)R_{\mathbb{T}_w,1},$$
+arising as traces of certain character sheaves on the group $\GG$.
+One can then partition $\Irr_{\un}(\GFr)$ into families by defining two representations $\rho_1,\rho_2$ to be related if 
+$$\langle\rho_1,R_\phi\rangle\neq0\quad\text{and}\quad\langle\rho_2,R_\phi\rangle\neq0\quad\text{for some }\phi\in\widehat{W},$$
 and then extending by transitivity. To each family $\mathcal{U}\subset\Irr_{\un}(\GFr)$, Lusztig associated a finite group $\Gamma_\mathcal{U}$, scalars $\Delta(x,\sigma)\in\{\pm1\}, (x,\sigma)\in\mathcal{M}(\Gamma_\mathcal{U})$ defined in \cite{Lusztig1984} and a bijection
 \begin{align*}
     \mathcal{U}&\longleftrightarrow\mathcal{M}(\Gamma_\mathcal{U}):=\{(x,\sigma)\ |\ x\in\Gamma_\mathcal{U},\sigma\in\Irr(Z_{\Gamma_{\mathcal{U}}}(x))\}/\Gamma_\mathcal{U}\\
@@ -27,7 +23,7 @@ and the above bijection satisfies the property that
         0 & \text{ if }\chi_\phi\not\in\mathcal{U}.
     \end{cases}
 \end{equation}
-We recall that if $W$ is an irreducible Weyl group, then $\Delta(x,\rho)=1$ except for the families containing $\phi_{512,11}$ in $E_7$, $\phi_{4096,11}$ or $\phi_{4096,26}$ in $E_8$. For any family $\mathcal{U}$, $\rho_{(e,1)}=\chi_\phi$ is a principal series representation corresponding to some representation $\phi$ of $W$. Such representations of $W$ are called \textit{special}, and they are the only ones satisfying the property that $\langle\chi,R_\phi\rangle\geq0$ for all unipotent characters $\chi$ (see \cite{Carter1985}*{\S12.3}). We define the \textit{unipotent almost characters} of $\GFr$ to be the set of orthonormal class functions
+We recall that if $W$ is an irreducible Weyl group, then $\Delta(x,\rho)=1$ except for the families containing $\phi_{512,11}$ in $E_7$, $\phi_{4096,11}$ in $E_8$ or $\phi_{4096,26}$ in $E_8$. For any family $\mathcal{U}$, $\rho_{(e,1)}=\chi_\phi$ is a principal series representation corresponding to some representation $\phi$ of $W$. Such representations of $W$ are called \textit{special}, and they are the only ones satisfying the property that $\langle\chi,R_\phi\rangle\geq0$ for all unipotent characters $\chi$ (see \cite{Carter1985}*{\S12.3}). We define the \textit{unipotent almost characters} of $\GFr$ to be the set of orthonormal class functions
 $$R_{(x,\sigma)}:=\sum_{(y,\tau)}\Delta(y,\tau)\{(y,\tau),(x,\sigma)\}\rho_{(y,\tau)},\quad(x,\sigma)\in\mathcal{M}(\Gamma_\mathcal{U}).$$
 In particular, if $\chi_\phi=\rho_{(x,\rho)}$, then $R_\phi=R_{(x,\rho)}$. Lusztig also defined the map 
 \begin{align*}
@@ -36,7 +32,102 @@ In particular, if $\chi_\phi=\rho_{(x,\rho)}$, then $R_\phi=R_{(x,\rho)}$. Luszt
 \end{align*}
 The \textit{unipotent nonabelian Fourier transform} of $\GFr$ on the space $R_{\un}(\GFr)=\oplus_{\mathcal{U}\subseteq\Irr_{\un}(\GFr)}\CC[\mathcal{U}]$ is the map
 $$\FT^{\GFr}:=\bigoplus_{\mathcal{U}\subset\Irr_{\un}(\GFr)}\FT_{\Gamma_\mathcal{U}},$$
-satisfying many properties. Most importantly, it is a self-Hermitian involution with respect to the standard inner product of characters satisfying $\FT^{\GFr}(\chi_\phi)=R_\phi$; that is, it takes unipotent representations to the almost characters arising as traces of character sheaves on $\mathbb{G}$.
+and it satisfies many interesting properties. Most importantly, it is a self-Hermitian involution with respect to the standard inner product of characters and, in addition, $\FT^{\GFr}(\chi_\phi)=R_\phi$. More generally, it takes unipotent representations to the almost characters arising as traces of character sheaves on $\mathbb{G}$. Let us discuss some important examples that will be used in our tables in Section \ref{sec:tables}.
+
+\begin{example}
+    When $\GG=\PGL_n(\overline{\FF_p})$ and $\Fr$ is the standard $q$-th power Frobenius, then $\GFr=\PGL_n(\FF_q)$ and $W\cong S_n$. In this case, one can show that $R_{\phi}=\chi_{\phi}$ for all $\phi\in\widehat{S_n}$ so, in particular, all families have a unique element and unipotent representations coincide with the principal series. Thus, unipotent representations of $\GFr$ are naturally by partitions of $n$, and we shall use this notation in the tables from Section \ref{sec:tables}.
+\end{example}
+
+\begin{example}
+    Suppose $\GFr=\mathrm{SO}_{2n+1}(\FF_q)$ or $\GFr=\mathrm{PGSp}_{2n}(\FF_q)$ (split, types $B_n$ or $C_n$), and with Weyl group $W\cong S_n\rtimes C_2^n$. Its representations are parametrized by double partitions of $n$, and we shall use this notation to label principal series representations. In turn, double partitions of $n$ are in bijection with symbols 
+    \begin{equation*}
+        \begin{pmatrix}
+            \lambda_1,\ \ \lambda_2,\ \ \lambda_3, \ldots,\ \  \lambda_{k+s}\\
+            \mu_1,\ \ \mu_2,\ \ \ldots,\mu_k\ \ 
+        \end{pmatrix}
+    \end{equation*}
+    with $0\leq\lambda_1<\lambda_2<\cdots<\lambda_{k+s}$, $0\leq\mu_1<\mu_2<\cdots<\mu_k$, with $\lambda_1\mu_1\neq0$, rank $n$ \textcolor{red}{(should define rank or refer to a definition)} and defect $s=1$. To account for the remaining unipotent representations of $\GFr$, we allow for symbols with positive odd defect $s$. Remarkably, Lusztig showed that two unipotent representations lie in the same family if and only if the unordered set $\{\lambda_1,\ldots,\lambda_{k+s},\mu_1,\dots,\mu_k\}$ coincide. See \cite{Carter1985}*{\S11.4 and \S13.8} for a complete overview of the theory.
+
+    For example, there are $10$ double partitions of $n=3$ (see Table \ref{tbl:F4_K4_1}) and the two symbols $\theta_1=\begin{psmallmatrix}
+            0 \ 1\ 2\ 3\\
+            \ \ \ 1\ \ \
+        \end{psmallmatrix}$ and $\theta_2=\begin{psmallmatrix}
+            0 \ 1\ 3\\
+            \ \ - \ \
+        \end{psmallmatrix}$ are the only two rank-$3$ symbols with higher defect (see Table \ref{tbl:F4_K4_2}).
+        The $12$ unipotent representations are partitioned in $4$ trivial families and $2$ families of size $4$ containing the symbols
+        \begin{align*}
+            \left\{[1,11]=\begin{psmallmatrix}
+                0 \ 1\ 3\\
+                \ 1\ 2\
+            \end{psmallmatrix},\ [\cdot,12]=\begin{psmallmatrix}
+                0 \ 1\ 2\\
+                \ 1\ 3\
+            \end{psmallmatrix},\ [1^3,\cdot]=\begin{psmallmatrix}
+                1 \ 2\ 3\\
+                \ 0\ 1\
+            \end{psmallmatrix},\ \theta_1=\begin{psmallmatrix}
+                0 \ 1\ 2\ 3\\
+                \ \ \ 1\ \ \
+            \end{psmallmatrix}\right\}&
+            \quad\text{and}\quad\\
+            \left\{[2,1]=\begin{psmallmatrix}
+                0 \ 3\\
+                \ 1\
+            \end{psmallmatrix},\ [\cdot,3]=\begin{psmallmatrix}
+                0 \ 1\\
+                \ 3\
+            \end{psmallmatrix},\ [12,\cdot]=\begin{psmallmatrix}
+                1 \ 3\\
+                \ 0\
+            \end{psmallmatrix},\ \theta_2=\begin{psmallmatrix}
+                0 \ 1\ 3\\
+                \ \ - \ \
+            \end{psmallmatrix}\right\}&
+        \end{align*}
+        When $n=4$, there are $20$ double partitions (see Table \ref{tbl:F4_K1_1}) and $5$ rank-$4$ symbols with higher defect, namely $\theta_1=\begin{psmallmatrix}
+            0 \ 1\ 2\ 3\ 4\\
+            \ \ \ 1\ 2 \ \ \
+        \end{psmallmatrix}$, $\theta_2=\begin{psmallmatrix}
+            0 \ 1\ 2\ 3\\
+            \ \ \ 2 \ \ \
+        \end{psmallmatrix}$, $\theta_3=\begin{psmallmatrix}
+            0 \ 1\ 2\ 4\\
+            \ \ \ 1 \ \ \
+        \end{psmallmatrix}$, $\theta_4=\begin{psmallmatrix}
+            0 \ 2\ 3\\
+            \ \ - \ \
+        \end{psmallmatrix}$ and $\theta_5=\begin{psmallmatrix}
+            0 \ 1\ 4\\
+            \ \ - \ \
+        \end{psmallmatrix}$ (see Table \ref{tbl:F4_K1_2}). These unipotent representations all lie in a family of size $4$ whose associated group is $\Gamma\cong C_2$. As an example, the Fourier transform for these families is 
+        $$\begin{pmatrix}
+            1/2 & 1/2 & 1/2 & 1/2 \\
+            1/2 & 1/2 & -1/2 & -1/2 \\
+            1/2 & -1/2 & 1/2 & -1/2 \\
+            1/2 & -1/2 & -1/2 & 1/2 
+        \end{pmatrix}.$$
+\end{example}
+
+\begin{example}
+    Consider the split finite group of Lie type $\GFr=F_4(\FF_q)$. The Weyl group $W$ is a Coxeter group of order $1152$ and $25$ irreducible representations labelled as $\phi_{d,k}$, where $d$ is the dimension and $k$ is its $b$-invariant. The outer automorphism of $W$ swapping long and short roots acts on $\widehat{W}$ while preserving these invariants, so for some pairs $d,k$ one has two inequivalent representations labelled by $\phi_{d,k}'$ and $\phi_{d,k}''$. In addition to the principal series representations, $\Irr_{\un}(\GFr)$ contains $7$ cuspidal representations labelled by $F_4^I[1],F_4^{II}[1],F_4[-1],F_4[\theta],F_4[\theta^2],F_4[i]$ and $F_4[-i]$. Finally, it contains $5$ more unipotent representations arising as irreducible components of the parabolic induction of the unique unipotent cuspidal representation of a Levi of type $B_2$, labelled as $B_{2,\mathbf{1}}$, $B_{2,\varepsilon}$, $B_{2,\varepsilon'}$, $B_{2,\varepsilon''}$ and $B_{2,r}$.
+
+    The set $\Irr_{\un}(\GFr)$ is then partitioned in $11$ families: there are $8$ families consisting of a single representation, $2$ families $\{\phi_{4,1},\phi_{2,4}',\phi_{2,4}'',B_2,\mathbf{1}\}$, $\{\phi_{4,13},\phi_{2,16}',\phi_{2,16}'',B_{2,\varepsilon}\}$ whose associated group is $\Gamma\cong C_2$ and labels $(1,1),(1,\varepsilon),(g_2,1),(g_2,\varepsilon)$, and one large family of size $21$ whose associated group is $\Gamma\cong S_4$. See Table \ref{tbl:F4family} for the representations and their labels in $\mathcal{M}(S_4)$.
+    \begin{table}[h!]
+        \centering
+        \begin{adjustbox}{max width=\linewidth}
+            \begin{tabular}{ccccccccccccccccccccc}
+                $\phi_{12,4}$ & $\phi_{9,6}''$ & $\phi_{9,6}'$ & $\phi_{1,12}''$ & $\phi_{1,12}'$ & $\phi_{4,7}''$ & $\phi_{4,7}'$ & $\phi_{4,8}$ & $\phi_{6,6}'$ & $\phi_{6,6}''$ & $\phi_{16,5}$ & $B_{2,r}$ & $B_{2,\varepsilon'}$ & $B_{2,\varepsilon''}$ & $F_4[\theta]$ & $F_4[\theta^2]$ & $F_4[i]$ & $F_4[-i]$ & $F_4^I[1]$ & $F_4^{II}[1]$ & $F_4[-1]$ \\\hline 
+                $(1,1)$ & $(g_2',1)$ & $(1,\lambda^1)$ & $(g_2',\varepsilon')$ & $(1,\lambda^2)$ & $(g_4,1)$ & $(g_2,\varepsilon'')$ & $(g_2',\varepsilon'')$ & $(g_3,1)$ & $(1,\sigma)$ & $(g_2,1)$ & $(g_2',r)$ & $(g_4,-1)$ & $(g_2,\varepsilon')$ & $(g_3,\theta)$ & $(g_3,\theta^2)$ & $(g_4,i)$ & $(g_4,-i)$ & $(g_2',\varepsilon)$ & $(1,\lambda^3)$ & $(g_2,\varepsilon)$\\                                
+            \end{tabular}
+        \end{adjustbox}
+        \caption{Largest $F_4(\FF_q)$-family of unipotent representations and their labels}
+        \label{tbl:F4family}
+    \end{table}
+\end{example}
+
+
+\newpage
 
 When $\GFr$ is split (as it is the case throughout this document) it is convenient to express Lusztig's nonabelian Fourier transform in term of stable combinations of unipotent representations. This makes the verification of Conjecture \ref{conj:main} cleaner and more straightforward. Let $\mathcal{U}$ be a family of unipotent representations and for each $x\in\Gamma_\mathcal{U}$, define the virtual combinations of unipotent characters
 \begin{equation}\label{eqn:virtual1}
@@ -56,4 +147,4 @@ Dually, when $\Gamma_\mathcal{U}$ is abelian, define the virtual combinations
     the latter when $\Gamma_\mathcal{U}$ is abelian, where $\Delta(x,y)=1$ unless $\mathcal{U}$ is one of the families described in \eqref{eqn:inner_product}, in which case $\Delta(1,g_2)=\Delta(g_2,1)=-1$ and $1$ otherwise.
 \end{lemma}
 
-\newpage
+
