@@ -1,0 +1,482 @@
+######## ISOTROPY OF INDUCTION OF [1,21]-REP #########
+
+W:=CoxeterGroup("E",6);;
+C:=ComplexReflectionGroup(3,1,1);;
+G:=DirectProduct(W,C);;
+s1:=Reflections(W)[1];;
+s2:=Reflections(W)[2];;
+s3:=Reflections(W)[3];;
+s4:=Reflections(W)[4];;
+s5:=Reflections(W)[5];;
+s6:=Reflections(W)[6];;
+s0:=Reflections(W)[36];;
+x:=(73,74,75);;
+
+
+omega:=();;
+
+for w in Elements(W) do
+if 2^w=5 and 5^w=3 and 3^w=2 and 4^w=4 then
+omega:=w;
+fi;
+od;
+
+H:=Subgroup(G,[s2,s3,s4,s5,omega*x]);;
+W_M:=ReflectionSubgroup(W,[2,3,4,5]);;
+rcosets:=RightCosets(W,W_M);;
+z:=List(rcosets, c -> Elements(c)[1]);;
+
+s1_perm:=List([1..270], i -> First([1..270], j -> z[i]*s1 in H*z[j]));;
+s2_perm:=List([1..270], i -> First([1..270], j -> z[i]*s2 in H*z[j]));;
+s3_perm:=List([1..270], i -> First([1..270], j -> z[i]*s3 in H*z[j]));;
+s4_perm:=List([1..270], i -> First([1..270], j -> z[i]*s4 in H*z[j]));;
+s5_perm:=List([1..270], i -> First([1..270], j -> z[i]*s5 in H*z[j]));;
+s6_perm:=List([1..270], i -> First([1..270], j -> z[i]*s6 in H*z[j]));;
+s0_perm:=List([1..270], i -> First([1..270], j -> z[i]*s0 in H*z[j]));;
+
+x_perm:=List([1..270], i -> First([1..270], j -> z[i]*x in H*z[j]));;
+
+
+Rs2:=[[0,0,-1,0,0,0,0,0],[0,0,0,-1,0,0,0,0],[-1,0,0,0,0,0,0,0],[0,-1,0,0,0,0,0,0],[0,0,0,0,-1,1,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,0,0,-1,1],[0,0,0,0,0,0,0,1]];
+Rs3:=[[0,0,1,0,0,0,0,0],[0,0,0,1,0,0,0,0],[1,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,-1,1,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,0,0,-1,1],[0,0,0,0,0,0,0,1]];
+Rs4:=[[-1,1,0,0,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,0,1,-1]];
+Rs5:=[[1,0,0,0,0,0,0,0],[1,-1,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,1,-1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,1],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0]];
+
+
+Rs:=[0,Rs2,Rs3,Rs4,Rs5,0];;
+
+Romega:=1/2*[[-1,0,-1,0,0,1,0,-1],[0,-1,-1,1,-1,1,-1,0],[1,0,1,0,0,1,0,-1],[1,-1,0,1,1,0,1,-1],[-1,1,0,1,1,0,-1,1],[-1,0,1,0,0,1,0,1],[0,1,-1,1,-1,1,1,0],[1,0,-1,0,0,1,0,1]];
+
+s1_reps:=List([1..270], i -> z[i]*s1*z[s1_perm[i]]^-1);;
+s2_reps:=List([1..270], i -> z[i]*s2*z[s2_perm[i]]^-1);;
+s3_reps:=List([1..270], i -> z[i]*s3*z[s3_perm[i]]^-1);;
+s4_reps:=List([1..270], i -> z[i]*s4*z[s4_perm[i]]^-1);;
+s5_reps:=List([1..270], i -> z[i]*s5*z[s5_perm[i]]^-1);;
+s6_reps:=List([1..270], i -> z[i]*s6*z[s6_perm[i]]^-1);;
+s0_reps:=List([1..270], i -> z[i]*s0*z[s0_perm[i]]^-1);;
+x_reps:=List([1..270], i -> z[i]*x*z[x_perm[i]]^-1);;
+
+
+s1_words:=List([1..270], i-> CoxeterWord(W_M,s1_reps[i]));;
+s2_words:=List([1..270], i-> CoxeterWord(W_M,s2_reps[i]));;
+s3_words:=List([1..270], i-> CoxeterWord(W_M,s3_reps[i]));;
+s4_words:=List([1..270], i-> CoxeterWord(W_M,s4_reps[i]));;
+s5_words:=List([1..270], i-> CoxeterWord(W_M,s5_reps[i]));;
+s6_words:=List([1..270], i-> CoxeterWord(W_M,s6_reps[i]));;
+s0_words:=List([1..270], i-> CoxeterWord(W_M,s0_reps[i]));;
+
+
+s1_matrices:=[];
+s2_matrices:=[];
+s3_matrices:=[];
+s4_matrices:=[];
+s5_matrices:=[];
+s6_matrices:=[];
+s0_matrices:=[];
+
+
+for i in [1..270] do
+matrix:=IdentityMat(8);
+for j in s1_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s1_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s2_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s2_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s3_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s3_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s4_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s4_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s5_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s5_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s6_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s6_matrices, matrix);
+matrix:=IdentityMat(8);
+for j in s0_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s0_matrices, matrix);
+od;
+
+
+s1_act:=NullMat(2160);;
+s2_act:=NullMat(2160);;
+s3_act:=NullMat(2160);;
+s4_act:=NullMat(2160);;
+s5_act:=NullMat(2160);;
+s6_act:=NullMat(2160);;
+s0_act:=NullMat(2160);;
+x_act:=NullMat(2160);;
+
+
+for i in [1..270] do
+s1_act{[8*i-7..8*i]}{[8*s1_perm[i]-7..8*s1_perm[i]]}:=s1_matrices[i];
+s2_act{[8*i-7..8*i]}{[8*s2_perm[i]-7..8*s2_perm[i]]}:=s2_matrices[i];
+s3_act{[8*i-7..8*i]}{[8*s3_perm[i]-7..8*s3_perm[i]]}:=s3_matrices[i];
+s4_act{[8*i-7..8*i]}{[8*s4_perm[i]-7..8*s4_perm[i]]}:=s4_matrices[i];
+s5_act{[8*i-7..8*i]}{[8*s5_perm[i]-7..8*s5_perm[i]]}:=s5_matrices[i];
+s6_act{[8*i-7..8*i]}{[8*s6_perm[i]-7..8*s6_perm[i]]}:=s6_matrices[i];
+s0_act{[8*i-7..8*i]}{[8*s0_perm[i]-7..8*s0_perm[i]]}:=s0_matrices[i];
+od;
+
+act:=[s1_act,s2_act,s3_act,s4_act,s5_act,s6_act,s0_act];;
+
+
+
+#_________________________________________________________________
+##### Next we compute the action of Ta0
+
+s:=[1,1,0,2,0,1];;
+
+eval:=[];
+
+for i in [1..270] do
+w:=z[i];
+walpha1:=W.roots[1^w];
+walpha2:=W.roots[2^w];
+walpha3:=W.roots[3^w];
+walpha4:=W.roots[4^w];
+walpha5:=W.roots[5^w];
+walpha6:=W.roots[6^w];
+ws:=List([1..6], i-> walpha1[i]+walpha2[i]+2*walpha4[i]+walpha6[i]);
+Add(eval,E(3)^ws[2]);
+od;
+
+Ta0:=NullMat(2160);;
+for i in [1..270] do
+Ta0{[8*i-7..8*i]}{[8*i-7..8*i]}:=eval[i]*IdentityMat(8);
+od;
+
+act[7]:=s0_act*Ta0;;
+
+
+
+#_________________________________________________________________
+###### Determine the action of x, most challenging
+x_reps_in_WM:=List(x_reps, w -> w*omega^-1*x^-1);;
+x_words:=List(x_reps_in_WM, w -> CoxeterWord(W_M, w));;
+
+x_matrices:=[];
+for i in [1..270] do
+matrix:=IdentityMat(8);
+for j in x_words[i] do
+matrix:=matrix*Rs[j];
+od;
+matrix:=matrix*Romega; #The very mysterious line!! How did I come up with that?????
+Add(x_matrices, matrix);
+od;
+
+x_act:=NullMat(2160);;
+for i in [1..270] do
+x_act{[8*i-7..8*i]}{[8*x_perm[i]-7..8*x_perm[i]]}:=x_matrices[i];
+od;
+
+E_plus := NullspaceMat(x_act - IdentityMat(2160));;
+E_theta := NullspaceMat(x_act - E(3)*IdentityMat(2160));;
+E_theta2 := NullspaceMat(x_act - E(3)^2*IdentityMat(2160));;
+P:=Concatenation(E_plus, E_theta, E_theta2);;
+
+act_block:=List(act, A -> P*A*P^-1);;
+act_plus:=List(act_block, B -> B{[1..720]}{[1..720]});;
+act_theta:=List(act_block, B -> B{[721..1440]}{[721..1440]});;
+act_theta2:=List(act_block, B -> B{[1441..2160]}{[1441..2160]});;
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W=<1,2,3,4,5,6>
+
+classesW:=ConjugacyClasses(W);;
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));;
+
+
+matricesW_plus:=[];;
+matricesW_theta:=[];;
+matricesW_theta2:=[];;
+
+for k in [1..25] do
+matrix_plus:=IdentityMat(720);
+matrix_theta:=IdentityMat(720);
+matrix_theta2:=IdentityMat(720);
+for j in wordsW[k] do
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
+od;
+Add(matricesW_plus, matrix_plus);
+Add(matricesW_theta, matrix_theta);
+Add(matricesW_theta2, matrix_theta2);
+od;
+
+chiW_plus:=List([1..25], i -> Trace(matricesW_plus[i])*signW[i]);
+chiW_theta:=List([1..25], i -> Trace(matricesW_theta[i])*signW[i]);
+chiW_theta2:=List([1..25], i -> Trace(matricesW_theta2[i])*signW[i]);
+
+for k in [1..25] do
+rep:=Irr(CharTable(W))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..25] do
+total_plus:=total_plus+rep[j]*chiW_plus[j]*sizesW[j];
+total_theta:=total_theta+rep[j]*chiW_theta[j]*sizesW[j];
+total_theta2:=total_theta2+rep[j]*chiW_theta2[j]*sizesW[j];
+od;
+Print(total_plus/51840, "   ", total_theta/51840, "   ", total_theta2/51840);
+Print("   ", CharTable(W).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
+#_________________________________________________________________
+#_________________________________________________________________
+######### Computation of parahoric restriction with K2 ########
+
+WJ2:=ReflectionSubgroup(W,[1,3,4,5,6,36]);;
+classesWJ2:=ConjugacyClasses(WJ2);;
+sizesWJ2:=List(classesWJ2, c-> Size(c));;
+wordsWJ2:=List(classesWJ2, c-> CoxeterWord(WJ2,Elements(c)[1]));;
+signWJ2:=List(wordsWJ2, s-> (-1)^Length(s));
+
+matrices2_plus:=[];;
+matrices2_theta:=[];;
+matrices2_theta2:=[];;
+
+for i in [1..22] do
+matrix_plus:=IdentityMat(720);
+matrix_theta:=IdentityMat(720);
+matrix_theta2:=IdentityMat(720);
+for j in wordsWJ2[i] do
+if j = 36 then
+matrix_plus:=matrix_plus*act_plus[7];
+matrix_theta:=matrix_theta*act_theta[7];
+matrix_theta2:=matrix_theta2*act_theta[7];
+fi;
+if j <> 36 then
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta[j];
+fi;
+od;
+Add(matrices2_plus, matrix_plus);
+Add(matrices2_theta, matrix_theta);
+Add(matrices2_theta2, matrix_theta2);
+od;
+
+chi2_plus:=List([1..22], i -> Trace(matrices2_plus[i])*signWJ2[i]);
+chi2_theta:=List([1..22], i -> Trace(matrices2_theta[i])*signWJ2[i]);
+chi2_theta2:=List([1..22], i -> Trace(matrices2_theta2[i])*signWJ2[i]);
+
+for k in [1..22] do
+rep:=Irr(CharTable(WJ2))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..22] do
+total_plus:=total_plus+sizesWJ2[j]*rep[j]*chi2_plus[j];
+total_theta:=total_theta+sizesWJ2[j]*rep[j]*chi2_theta[j];
+total_theta2:=total_theta2+sizesWJ2[j]*rep[j]*chi2_theta2[j];
+od;
+Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
+Print("   ", CharTable(WJ2).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
+
+#__________________________________________________________________
+#__________________________________________________________________
+######### Computation of parahoric restriction with K3 ########
+
+WJ3:=ReflectionSubgroup(W,[1,2,4,5,6,36]);;
+classesWJ3:=ConjugacyClasses(WJ3);;
+sizesWJ3:=List(classesWJ3, c-> Size(c));;
+wordsWJ3:=List(classesWJ3, c-> CoxeterWord(WJ3,Elements(c)[1]));;
+signWJ3:=List(wordsWJ3, s-> (-1)^Length(s));
+
+matrices3_plus:=[];;
+matrices3_theta:=[];;
+matrices3_theta2:=[];;
+
+for i in [1..22] do
+matrix_plus:=IdentityMat(720);
+matrix_theta:=IdentityMat(720);
+matrix_theta2:=IdentityMat(720);
+for j in wordsWJ3[i] do
+if j = 29 then
+matrix_plus:=matrix_plus*act_plus[6]*act_plus[5]*act_plus[4]*act_plus[2]*act_plus[7]*act_plus[2]*act_plus[4]*act_plus[5]*act_plus[6];
+matrix_theta:=matrix_theta*act_theta[6]*act_theta[5]*act_theta[4]*act_theta[2]*act_theta[7]*act_theta[2]*act_theta[4]*act_theta[5]*act_theta[6];
+matrix_theta2:=matrix_theta2*act_theta2[6]*act_theta2[5]*act_theta2[4]*act_theta2[2]*act_theta2[7]*act_theta2[2]*act_theta2[4]*act_theta2[5]*act_theta2[6];
+fi;
+if j <> 29 then
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
+fi;
+od;
+Add(matrices3_plus, matrix_plus);
+Add(matrices3_theta, matrix_theta);
+Add(matrices3_theta2, matrix_theta2);
+od;
+
+chi3_plus:=List([1..22], i -> Trace(matrices3_plus[i])*signWJ3[i]);
+chi3_theta:=List([1..22], i -> Trace(matrices3_theta[i])*signWJ3[i]);
+chi3_theta2:=List([1..22], i -> Trace(matrices3_theta2[i])*signWJ3[i]);
+
+for k in [1..22] do
+rep:=Irr(CharTable(WJ3))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..22] do
+total_plus:=total_plus+sizesWJ3[j]*rep[j]*chi3_plus[j];
+total_theta:=total_theta+sizesWJ3[j]*rep[j]*chi3_theta[j];
+total_theta2:=total_theta2+sizesWJ3[j]*rep[j]*chi3_theta2[j];
+od;
+Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
+Print("   ", CharTable(WJ3).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
+#__________________________________________________________________
+#__________________________________________________________________
+######### Computation of parahoric restriction with K5 ########
+
+WJ5:=ReflectionSubgroup(W,[1,2,3,4,6,36]);;
+classesWJ5:=ConjugacyClasses(WJ5);;
+sizesWJ5:=List(classesWJ5, c-> Size(c));;
+wordsWJ5:=List(classesWJ5, c-> CoxeterWord(WJ5,Elements(c)[1]));;
+signWJ5:=List(wordsWJ5, s-> (-1)^Length(s));
+
+matrices5_plus:=[];;
+matrices5_theta:=[];;
+matrices5_theta2:=[];;
+
+for i in [1..22] do
+matrix_plus:=IdentityMat(720);
+matrix_theta:=IdentityMat(720);
+matrix_theta2:=IdentityMat(720);
+for j in wordsWJ5[i] do
+if j = 31 then
+matrix_plus:=matrix_plus*act_plus[1]*act_plus[3]*act_plus[4]*act_plus[2]*act_plus[7]*act_plus[2]*act_plus[4]*act_plus[3]*act_plus[1];
+matrix_theta:=matrix_theta*act_theta[1]*act_theta[3]*act_theta[4]*act_theta[2]*act_theta[7]*act_theta[2]*act_theta[4]*act_theta[3]*act_theta[1];
+matrix_theta2:=matrix_theta2*act_theta2[1]*act_theta2[3]*act_theta2[4]*act_theta2[2]*act_theta2[7]*act_theta2[2]*act_theta2[4]*act_theta2[3]*act_theta2[1];
+fi;
+if j <> 31 then
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
+fi;
+od;
+Add(matrices5_plus, matrix_plus);
+Add(matrices5_theta, matrix_theta);
+Add(matrices5_theta2, matrix_theta2);
+od;
+
+chi5_plus:=List([1..22], i -> Trace(matrices5_plus[i])*signWJ5[i]);
+chi5_theta:=List([1..22], i -> Trace(matrices5_theta[i])*signWJ5[i]);
+chi5_theta2:=List([1..22], i -> Trace(matrices5_theta2[i])*signWJ5[i]);
+
+for k in [1..22] do
+rep:=Irr(CharTable(WJ5))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..22] do
+total_plus:=total_plus+sizesWJ5[j]*rep[j]*chi5_plus[j];
+total_theta:=total_theta+sizesWJ5[j]*rep[j]*chi5_theta[j];
+total_theta2:=total_theta2+sizesWJ5[j]*rep[j]*chi5_theta2[j];
+od;
+Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
+Print("   ", CharTable(WJ5).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
+
+
+
+
+
+
+#__________________________________________________________________
+#__________________________________________________________________
+######### Computation of parahoric restriction with K4 ########
+
+WJ4:=ReflectionSubgroup(W,[1,2,3,5,6,36]);;
+classesWJ4:=ConjugacyClasses(WJ4);;
+sizesWJ4:=List(classesWJ4, c-> Size(c));;
+wordsWJ4:=List(classesWJ4, c-> CoxeterWord(WJ4,Elements(c)[1]));;
+signWJ4:=List(wordsWJ4, s-> (-1)^Length(s));
+
+matrices4_plus:=[];;
+matrices4_theta:=[];;
+matrices4_theta2:=[];;
+
+for i in [1..27] do
+matrix_plus:=IdentityMat(720);
+matrix_theta:=IdentityMat(720);
+matrix_theta2:=IdentityMat(720);
+for j in wordsWJ4[i] do
+if j = 35 then
+matrix_plus:=matrix_plus*Ds_plus[2]*Ds_plus[7]*Ds_plus[2];
+matrix_theta:=matrix_theta*Ds_theta[2]*Ds_theta[7]*Ds_theta[2];
+matrix_theta2:=matrix_theta2*Ds_theta2[2]*Ds_theta2[7]*Ds_theta2[2];
+fi;
+if j <> 35 then
+matrix_plus:=matrix_plus*Ds_plus[j];
+matrix_theta:=matrix_theta*Ds_theta[j];
+matrix_theta2:=matrix_theta2*Ds_theta2[j];
+fi;
+od;
+Add(matrices4_plus, matrix_plus);
+Add(matrices4_theta, matrix_theta);
+Add(matrices4_theta2, matrix_theta2);
+od;
+
+chi4_plus:=List([1..27], i -> Trace(matrices4_plus[i])*signWJ4[i]);
+chi4_theta:=List([1..27], i -> Trace(matrices4_theta[i])*signWJ4[i]);
+chi4_theta2:=List([1..27], i -> Trace(matrices4_theta2[i])*signWJ4[i]);
+
+for k in [1..27] do
+rep:=Irr(CharTable(WJ4))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..27] do
+total_plus:=total_plus+sizesWJ4[j]*rep[j]*chi4_plus[j];
+total_theta:=total_theta+sizesWJ4[j]*rep[j]*chi4_theta[j];
+total_theta2:=total_theta2+sizesWJ4[j]*rep[j]*chi4_theta2[j];
+od;
+Print(total_plus/216,"   ", total_theta/216,"   ", total_theta2/216);
+Print("   ", CharTable(WJ4).irredinfo[k].charparam, "\n");
+od;
+

@@ -1,0 +1,186 @@
+
+\section{Explicit parahoric restriction of \texorpdfstring{$\pi(D_4(71),-)$}{PDFstring} wrt \texorpdfstring{$K_4$}{PDFstring}}
+
+For this explicit example, let $G=E_6(F)_{\scn}$ and $G^\vee=E_6(\CC)_{\ad}$ be the dual group. Fix a unipotent element $u\in G^\vee$ of type $D_4$. Under the natural map $\pi:G^\vee_{\scn}\rightarrow G^\vee$, the element $u$ has a unique \textit{unipotent} lift $\tilde{u}$, also of type $D_4$. With GAP, we see that $\Gamma_{\tilde{u}}$, the reductive part of $Z_{G^\vee_{\scn}}(\tilde{u})$, has type $A_2$. Since $Z(G^\vee_{\scn})\subseteq Z(\Gamma_{\tilde{u}})$, it follows that $\Gamma_{\tilde{u}}\cong\SL_3(\CC)$. The reductive part $\Gamma_u$ of $Z_{G^\vee}(u)$ is also of type $A_2$, and the since the kernel of the surjective map $\pi|_{\Gamma_{\tilde{u}}}:\Gamma_{\tilde{u}}\rightarrow\Gamma_u$ is $Z(\Gamma_{\tilde{u}})$, we have that $\Gamma_u\cong\PGL_3(\CC)$. In particular, 
+$$\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}=\{(s,w),(s,w^2)\}, \quad\text{where}\quad s=\begin{psmallmatrix}
+    1 & 0 & 0\\
+    0 & \theta_3 & 0\\
+    0 & 0 & \theta_3^2
+\end{psmallmatrix}\quad\text{and}\quad w=\begin{psmallmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+    1 & 0 & 0
+\end{psmallmatrix}$$
+The aim is therefore to compute the parahoric restrictions with respect to maximal parahoric subgroups of the virtual representations
+$$\Pi(u,s,w^i)=\sum_{\phi\in\widehat{A_{us}}}\phi(w)^i\pi(us,\phi),\ i=1,2.$$
+To calculate the parahoric restrictions of $\pi(us,\phi)$ first we want to understand the semisimple element $s$ inside $G^\vee$. It is an order $3$ element commuting with a unipotent element of type $D_4$. The Kac coordinates or $s$ are therefore either of 
+
+\begin{minipage}[t]{0.45\textwidth}
+    \begin{tikzpicture}[scale=1, baseline=-3pt, circ/.style={draw, circle, inner sep=2pt, minimum size=2.5mm}]
+        \node[circ, label=above:$1$] (1) at (0,0) {}; 
+        \node[circ, label=above:$0$] (2) at (1.5,0) {}; 
+        \node[circ, label=above:$0$] (3) at (3,0) {}; 
+        \node[circ, label=above:$0$] (4) at (4.5,0) {};
+        \node[circ, label=above:$1$] (5) at (6,0) {};
+        \node[circ, label=right:$0$] (6) at (3,-1.5) {}; 
+        \node[circ, label=right:$1$] (7) at (3,-3) {}; 
+        \draw (1)--(2) (2)--(3) (3)--(4) (4)--(5) (3)--(6) (6)--(7);
+    \end{tikzpicture}
+\end{minipage}
+\hfill % horizontal space between minipages
+\begin{minipage}[t]{0.45\textwidth}
+    \begin{tikzpicture}[scale=1, baseline=-3pt, circ/.style={draw, circle, inner sep=2pt, minimum size=2.5mm}]
+        \node[circ, label=above:$1$] (1) at (0,0) {}; 
+        \node[circ, label=above:$0$] (2) at (1.5,0) {}; 
+        \node[circ, label=above:$0$] (3) at (3,0) {}; 
+        \node[circ, label=above:$0$] (4) at (4.5,0) {};
+        \node[circ, label=above:$2$] (5) at (6,0) {};
+        \node[circ, label=right:$0$] (6) at (3,-1.5) {}; 
+        \node[circ, label=right:$0$] (7) at (3,-3) {}; 
+        \draw (1)--(2) (2)--(3) (3)--(4) (4)--(5) (3)--(6) (6)--(7);
+    \end{tikzpicture}
+\end{minipage}
+
+I believe there are a few different ways to show that $s$ is in fact the first one. The easiest one I can think of uses the fact that $Z_{\Gamma_u}(s)=T_u\sqcup T_uw\sqcup T_uw^2\cong T_u\rtimes C_3$, where $T_u$ is the two dimensional split torus of $\Gamma_u\cong\PGL_3(\CC)$. The component group of $Z_{G^\vee}(su)=Z_{Z_{G^\vee}(u)}(s)$ is isomorphic to the component group of $Z_{\Gamma_u}(s)$, isomorphic to $C_3$ by the above observation. If the Kac coordinates of $s$ were the latter option, then $Z_{G^\vee}(s)$ would be a connected reductive group of type $D_5$, and one can check with GAP that there is no unipotent element $v$ inside that group such that the component group of $Z_{G^\vee(s)}(u)$ is $C_3$. Letting $x=su\in G^\vee$, we then have $A_x=C_3$ so the corresponding $L$-packet has size $3$.
+
+Therefore, we know that the Kac coordinates of $s$ are the left ones, so $Z_{G^\vee}(s)=Z_{G^\vee}(s)^0\rtimes C_3$, where $M^\vee:=Z_{G^\vee}(s)^0$ is a connected reductive group of type $D_4$. In particular, the unipotent element $u$ is regular in $M^\vee$, commonly labelled by the partition $(71)$. Following Reeder's notation, we write $\pi(x,\phi)=\pi(D_4(71),\phi),\ \phi\in\{\mathbf{1},\theta,\theta^2\}$ for the three representations inside the $L$-packet.
+
+These three representations are all Iwahori-spherical, so to continue we use Reeder's reduction steps that show that for any $J\subsetneq S_{\aff}$ (set of simple affine roots of $G^\vee$) and irreducible character $\chi$ of $\overline{K}_J$ (the reductive quotient), we have that
+$$\langle\pi(us,\phi)^{U_J},\chi\rangle_{\overline{K}_J}=\langle\pi(us,\phi)^{\cI}_{q=1},\chi^{\cI}_{q=1}\rangle_{W_J}.$$
+Moreover, Lusztig showed that $\pi(us,\phi)^{\cI}_{q=1}\cong H(\mathcal{B}^x)^\phi\otimes\varepsilon$ as $W_{\aff}$-modules, where $\mathcal{B}^x$ is the partial flag variety of Borel subgroups of $G^\vee$ containing $x$. 
+
+At this point, we use Kato's work to understand the structure of $H(\mathcal{B}^x)$ as a $W_{\aff}\times A_x$-module. As a $W_{\aff}$-module, it is straightforward: 
+$$H(\mathcal{B}^x)\cong\Ind_{W_{M,\aff}}^{W_{\aff}}H(\mathcal{B}_s^u)\otimes s,$$
+where $W_{M,\aff}=W_M\ltimes\ZZ\Phi^\vee$, $\mathcal{B}_s^u$ is the partial flag variety of Borel subgroups of $M^\vee$ containing $u$ and $s$ is the character of $\ZZ\Phi^\vee$ given by $\alpha\mapsto\alpha(s), \alpha\in\Phi$. Since $u$ is regular in $M^\vee$, $H(\mathcal{B}^u_s)$ is the trivial $W_M$-representation. Thus,
+$$H(\mathcal{B}^x)\cong\Ind_{W_{M,\aff}}^{W_{\aff}}s.$$
+
+We now focus on the parahoric restriction of these representations with respect to the maximal parahoric subgroup $K_4$ of type $3A_2$ corresponding to $J_4=S_{\aff}\setminus\{\alpha_4\}$.
+
+Using GAP, we can compute this directly, either following Reeder's method or by computing the action explicitly with matrices. Either way, and noting that $H(\mathcal{B}^x)=H(\mathcal{B}^x)^{\mathbf{1}}+H(\mathcal{B}^x)^\theta+H(\mathcal{B}^x)^{\theta^2}$, we obtain the following, where, for example $[\varepsilon\varepsilon r]$ represents the three representations obtained by permuting the labels:
+
+\begin{table}[ht]
+    \centering
+    
+    \label{tab:worked_example_1}
+    \begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{|c|cccccccccc|}
+    \hline
+    $V$ & $[\varepsilon\varepsilon\varepsilon]$ & $[\varepsilon\varepsilon r]$ & $[\varepsilon\varepsilon 1]$ & $[\varepsilon r r]$ & $[\varepsilon r 1]$ & $[\varepsilon 1 1]$ & $[r r r]$ & $[r r 1]$ & $[r 1 1]$ & $[1 1 1]$ \\
+    
+    $\sum_{\phi\in\widehat{A_x}}\pi(x,\phi)^{\cI}_{q=1}$         & 9 & 10 & 2 & 10 & 4 & 1 & 6 & 0 & 0 & 0 \\ \hline
+
+    \end{tabular}
+    \end{adjustbox}
+    \caption{Parahoric restriction of Iwahori-spherical $E_6(F)$-representations with respect to $K_4$}
+\end{table}
+
+Since $\Pi(u,s,w)=\pi(x,\mathbf{1})+\theta\pi(x,\theta)+\theta^2\pi(x,\theta^2)$ and $\Pi(u,s,w^2)=\pi(x,\mathbf{1})+\theta^2\pi(x,\theta)+\theta\pi(x,\theta^2)$, we want to determine the parahoric restriction for each $\pi(x,\phi)$ individually. 
+
+We get a first hint by observing the following: while the affine Weyl group of $E_6(F)_{\ad}$ is the extended affine Weyl group and thus contains the fundamental alcove stabilizers, the affine Weyl group of $E_6(F)_{\scn}$ is the affine Weyl group, which acts simply transitively on the alcoves. In particular, the triality automorphism permuting the legs of the affine Dynkin diagram of $E_6$ is inner for $E_6(F)_{\ad}$ but outer for $E_6(F)_{\scn}$. This outer automorphism acts non-trivially on the unipotent representations of $G$, and this action is described by the work of Solleveld. In this particular case, if we pick an appropriate fundamental alcove stabilizer $\omega\in\Omega$, we get that 
+$$\pi(x,\mathbf{1})^\omega=\pi(x,\theta),\quad\pi(x,\theta)^\omega=\pi(x,\theta^2),\quad\pi(x,\theta^2)^\omega=\pi(x,\mathbf{1}).$$
+Since the twist by $\omega$ permutes the legs of the affine Dynkin diagram, we immediately get that the table looks roughly like
+
+\begin{table}[ht]
+    \centering
+    \label{tab:worked_example_2}
+    \begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{|c|cccccccccc|}
+    \hline
+    $V$ & $[\varepsilon\varepsilon\varepsilon]$ & $[\varepsilon\varepsilon r]$ & $[\varepsilon\varepsilon 1]$ & $[\varepsilon r r]$ & $[\varepsilon r 1]$ & $[\varepsilon 1 1]$ & $[r r r]$ & $[r r 1]$ & $[r 1 1]$ & $[1 1 1]$ \\
+    
+    $\pi(x,\mathbf{1})^{\cI}_{q=1}$         & 3 & a,b,c &  &  &  & 0,1,0 & 2 & 0 & 0 & 0 \\
+    $\pi(x,\mathbf{1})^{\cI}_{q=1}$         & 3 & b,c,a &  &  &  & 0,0,1 & 2 & 0 & 0 & 0 \\
+    $\pi(x,\mathbf{1})^{\cI}_{q=1}$         & 3 & c,a,b &  &  &  & 1,0,0 & 2 & 0 & 0 & 0 \\ \hline
+
+    \end{tabular}
+    \end{adjustbox}
+    \caption{Parahoric restriction of Iwahori-spherical $E_6(F)$-representations with respect to $K_4$}
+\end{table}
+where the three multiplicities correspond to the permutations of the labels, and the white columns look analogous. 
+
+Without further effort, this already highlights a problem since we obtain the multiplicities
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|ccc|}
+        \hline
+        $V$ & $[\varepsilon11]$ & $[1\varepsilon1]$ & $[11\varepsilon]$ \\\hline
+        $\pi(x,\mathbf{1})^{\cI}_{q=1}$ & 0 & 1 & 0  \\
+        $\pi(x,\theta)^{\cI}_{q=1}$ & 0 & 0 & 1  \\
+        $\pi(x,\theta^2)^{\cI}_{q=1}$ & 1 & 0 & 0\\\hline
+        $\Pi(u,s,w)$ & $\theta^2$ & 1 & $\theta$ \\
+        $\Pi(u,s,w^2)$ & $\theta$ & 1 & $\theta^2$ \\\hline
+    \end{tabular}
+\end{table}
+However, since the pair $(w,s)$ is $\Gamma_u$-conjugate to $(s,w^2)$ and Lusztig's nonabelian Fourier transform is trivial for the representations of finite groups of Lie type of type $A_n$, the conjecture predicts that $\Pi(u,s,w)$ and $\Pi(u,s,w^2)$ should have the same parahoric restrictions with respect to $K_4$. A similar problem arises with other columns.
+
+Using Kato's results, it is also possible to program this explicitly using GAP. Kato shows that, as $W_{\aff}\times A_x$-modules,
+$$H(\mathcal{B}^x)=\Ind_{W_{M,\aff}\rtimes A_x}^{W_{\aff}\times A_x}H(\mathcal{B}^u_s)\otimes s,$$
+where (in this case) $a\in A_x$ (nontrivial) acts on $W_{M,\aff}$ by conjugation over a $3$-cycle $j_0(a)\in N_W(W_M)$ under the canonical isomorphism $N_W(W_M)\cong W_M\rtimes S_3$ (here $S_3$ is the group of elements in $W$ mapping the set $\{s_2,s_3,s_4,s_5\}$ to itself). Moreover, $W_{M,\aff}\rtimes A_x$ embeds in $W_{\aff}\times A_x$ via the map $w\rtimes a\mapsto (wj_0(a),a)$. I am not quite sure how does $A_x\subset W_{M,\aff}\rtimes A_x$ act on the one-dimensional $H(\mathcal{B}^u_s)$, but it does not really matter since the distinct options just permute the results cyclically. So let's assume that $A_x$ acts trivially on $H(\mathcal{B}^u_s)$. In that case, using GAP to explicitly compute the induction, we get the complete table:
+
+\begin{table}[h]
+    \centering
+    \caption{Parahoric restriction of $\pi(x,\phi)$ with respect to $K_4$}
+    \label{tab:worked_example_3}
+    \begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{|c|cccccccccc|}
+    \hline
+    $V$ & $[\varepsilon\varepsilon\varepsilon]$ & $[\varepsilon\varepsilon r]$ & $[\varepsilon\varepsilon 1]$ & $[\varepsilon r r]$ & $[\varepsilon r 1]$ & $[\varepsilon 1 1]$ & $[r r r]$ & $[r r 1]$ & $[r 1 1]$ & $[1 1 1]$ \\ \hline
+
+    $\pi(x,\mathbf{1})^{\cI}_{q=1}$ & 3 & 3,4,3 & 1,0,1 & 3,4,3 & 1,0,1,0,1,1 & 0,1,0 & 2 & 0 & 0 & 0 \\ 
+    $\pi(x,\theta)^{\cI}_{q=1}$ & 3 & 4,3,3 & 0,1,1 & 3,3,4 & 0,1,0,1,1,1 & 0,0,1 & 2 & 0 & 0 & 0 \\
+    $\pi(x,\theta^2)^{\cI}_{q=1}$ & 3 & 3,3,4 & 1,1,0 & 4,3,3 & 1,1,1,1,0,0 & 1,0,0 & 2 & 0 & 0 & 0 \\ \hline
+    $\Pi(u,s,w)$      & 0 & $\theta,1,\theta^2$ & $-\theta,-1,-\theta^2$ & $\theta^2,1,\theta$ & $-\theta,-1,-\theta,-1,-\theta^2,-\theta^2$ & $\theta^2,1,\theta$ & 0 & 0 & 0 & 0 \\
+    $\Pi(u,s,w^2)$ & 0 & $\theta^2,1,\theta$ & $-\theta^2,-1,-\theta$ & $\theta,1,\theta^2$ & $-\theta^2,-1,-\theta^2,-1,-\theta,-\theta$ & $\theta,1,\theta^2$ & 0 & 0 & 0 & 0 \\ \hline
+
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+This is a general pattern that can be found for other sets of representations $\pi(us,\phi)$ when $Z_{G^\vee}(s)$ is not connected. Here is the relevant table:
+
+
+\begin{table}[ht]
+    \centering
+    \caption{Parahoric restriction of Iwahori-spherical $E_6(F)$-representations with respect to $K_4$}
+    \label{tab:e6_a2a2a2_restriction}
+    \begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{|c|cccccccccc|}
+    \hline
+    $V$ & $[\varepsilon\varepsilon\varepsilon]$ & $[\varepsilon\varepsilon r]$ & $[\varepsilon\varepsilon 1]$ & $[\varepsilon r r]$ & $[\varepsilon r 1]$ & $[\varepsilon 1 1]$ & $[r r r]$ & $[r r 1]$ & $[r 1 1]$ & $[1 1 1]$ \\ \hline
+    $[E_6, 1]$             & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+    $[E_6(a_1), 1]$        & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $[E_6(a_3), +]$        & 4 & 3 & 1 & 2 & 0 & 0 & 1 & 0 & 0 & 0\\ 
+    $[E_6(a_3), -]$        & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+    $[A_1A_5, +]$          & 4 & 2 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0\\ \hline
+
+    $[D_4(71), 1]$         & 3 & 3,4,3 & 1,0,1 & 3,4,3 & 1,0,1,0,1,1 & 0,1,0 & 2 & 0 & 0 & 0 \\ 
+    $[D_4(71), \theta]$    & 3 & 4,3,3 & 0,1,1 & 3,3,4 & 0,1,0,1,1,1 & 0,0,1 & 2 & 0 & 0 & 0 \\
+    $[D_4(71), \theta^2]$  & 3 & 3,3,4 & 1,1,0 & 4,3,3 & 1,1,1,1,0,0 & 1,0,0 & 2 & 0 & 0 & 0 \\ \hline
+
+    $[D_4(a_1), 1]$        & 15 & 15 & 3 & 17 & 4 & 1 & 19 & 4 & 1 & 0 \\ 
+    $[D_4(a_1), \epsilon]$  & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0\\ 
+    $[D_4(a_1), r]$        & 3 & 8 & 4 & 11 & 4 & 1 & 11 & 3 & 0 & 0\\\hline
+
+    $[D_4(53), 1]$         & 7 & 10,11,10 & 4 & 13,14,13 & 5,4,4,4,4,5 & 1 & 14 & 3,4,3 & 0,1,0 & 0 \\
+    $[D_4(53), \theta]$    & 7 & 10,10,11 & 4 & 14,13,13 & 4,4,5,5,4,4 & 1 & 14 & 3,3,4 & 1,0,0 & 0 \\ 
+    $[D_4(53), \theta^2]$  & 7 & 11,10,10 & 4 & 13,13,14 & 4,5,4,4,5,4 & 1 & 14 & 4,3,3 & 0,0,1 & 0 \\ \hline
+
+
+    $[3A_2, 1\boxtimes1]$            & 4 & 2,3,2 & 0 & 2,3,2 & 1,0,0,0,0,1 & 0 & 3 & 0,1,0 & 0,1,0 & 0 \\ 
+    $[3A_2, 1\boxtimes\theta]$       & 4 & 2,2,3 & 0 & 3,2,2 & 0,0,1,1,0,0 & 0 & 3 & 0,0,1 & 1,0,0 & 0 \\ 
+    $[3A_2, 1\boxtimes\theta^2]$     & 4 & 3,2,2 & 0 & 2,2,3 & 0,1,0,0,1,0 & 0 & 3 & 1,0,0 & 0,0,1 & 0 \\ \hline
+
+    $[D_4(3311), 1]$       & 9 & 29 & 21 & 80 & 53 & 33 & 216 & 140 & 89 & 57 \\
+    $[D_4(3311), \epsilon]$ & 3 & 13 & 11 & 40 & 29 & 19 & 96 & 60 & 33 & 15 \\ \hline
+
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+To be clear, this is the ONLY case where such a discrepancy with the conjecture arises. It seems to be a combination of the extra symmetry of the affine Dynkin diagram with the node $4$ deleted and the fact that $Z_{G^\vee}(s)$ is disconnected in this case, thus allowing $L$-packets to be larger than the adjoint case. 
+
+The obvious fix, maybe quite unnatural, is to define both Fourier transforms to be $\CC$-antilinear (or conjugate linear map) instead of $\CC$-linear. With that definition, this issue is completely resolved, and it does not seem to break any of the other exceptional groups. I will next try to check whether it breaks $\SL_n(F)$ or not. Would that make sense theoretically?
+
+
+

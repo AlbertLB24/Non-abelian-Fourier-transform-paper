@@ -1,0 +1,257 @@
+######## PARAHORIC RESTRICTIONS OF REPRESENTATIONS [,__D4(53)] #########
+
+W:=CoxeterGroup("E",6);;
+C:=ComplexReflectionGroup(3,1,1);;
+G:=DirectProduct(W,C);;
+s1:=Reflections(W)[1];;
+s2:=Reflections(W)[2];;
+s3:=Reflections(W)[3];;
+s4:=Reflections(W)[4];;
+s5:=Reflections(W)[5];;
+s6:=Reflections(W)[6];;
+s0:=Reflections(W)[36];;
+x:=(73,74,75);;
+
+d := 4;
+
+omega:=();;
+
+for w in Elements(W) do
+if 2^w=5 and 5^w=3 and 3^w=2 and 4^w=4 then
+omega:=w;
+fi;
+od;
+
+H:=Subgroup(G,[s2,s3,s4,s5,omega*x]);;
+W_M:=ReflectionSubgroup(W,[2,3,4,5]);;
+rcosets:=RightCosets(W,W_M);;
+z:=List(rcosets, c -> Elements(c)[1]);;
+
+s1_perm:=List([1..270], i -> First([1..270], j -> z[i]*s1 in H*z[j]));;
+s2_perm:=List([1..270], i -> First([1..270], j -> z[i]*s2 in H*z[j]));;
+s3_perm:=List([1..270], i -> First([1..270], j -> z[i]*s3 in H*z[j]));;
+s4_perm:=List([1..270], i -> First([1..270], j -> z[i]*s4 in H*z[j]));;
+s5_perm:=List([1..270], i -> First([1..270], j -> z[i]*s5 in H*z[j]));;
+s6_perm:=List([1..270], i -> First([1..270], j -> z[i]*s6 in H*z[j]));;
+s0_perm:=List([1..270], i -> First([1..270], j -> z[i]*s0 in H*z[j]));;
+
+x_perm:=List([1..270], i -> First([1..270], j -> z[i]*x in H*z[j]));;
+
+
+Rs2:=[[0,1,0,0],[1,0,0,0],[0,0,1,0],[0,0,0,1]];
+Rs3:=[[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]];
+Rs4:=[[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]];
+Rs5:=[[1,0,0,0],[0,1,0,0],[0,0,0,-1],[0,0,-1,0]];
+
+Rs:=[0,Rs2,Rs3,Rs4,Rs5,0];;
+
+Romega:=[[1/2,1/2,1/2,1/2],[1/2,1/2,-1/2,-1/2],[1/2,-1/2,1/2,-1/2],[-1/2,1/2,1/2,-1/2]];
+
+s1_reps:=List([1..270], i -> z[i]*s1*z[s1_perm[i]]^-1);;
+s2_reps:=List([1..270], i -> z[i]*s2*z[s2_perm[i]]^-1);;
+s3_reps:=List([1..270], i -> z[i]*s3*z[s3_perm[i]]^-1);;
+s4_reps:=List([1..270], i -> z[i]*s4*z[s4_perm[i]]^-1);;
+s5_reps:=List([1..270], i -> z[i]*s5*z[s5_perm[i]]^-1);;
+s6_reps:=List([1..270], i -> z[i]*s6*z[s6_perm[i]]^-1);;
+s0_reps:=List([1..270], i -> z[i]*s0*z[s0_perm[i]]^-1);;
+x_reps:=List([1..270], i -> z[i]*x*z[x_perm[i]]^-1);;
+
+
+s1_words:=List([1..270], i-> CoxeterWord(W_M,s1_reps[i]));;
+s2_words:=List([1..270], i-> CoxeterWord(W_M,s2_reps[i]));;
+s3_words:=List([1..270], i-> CoxeterWord(W_M,s3_reps[i]));;
+s4_words:=List([1..270], i-> CoxeterWord(W_M,s4_reps[i]));;
+s5_words:=List([1..270], i-> CoxeterWord(W_M,s5_reps[i]));;
+s6_words:=List([1..270], i-> CoxeterWord(W_M,s6_reps[i]));;
+s0_words:=List([1..270], i-> CoxeterWord(W_M,s0_reps[i]));;
+
+
+s1_matrices:=[];
+s2_matrices:=[];
+s3_matrices:=[];
+s4_matrices:=[];
+s5_matrices:=[];
+s6_matrices:=[];
+s0_matrices:=[];
+
+
+for i in [1..270] do
+matrix:=IdentityMat(d);
+for j in s1_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s1_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s2_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s2_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s3_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s3_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s4_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s4_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s5_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s5_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s6_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s6_matrices, matrix);
+matrix:=IdentityMat(d);
+for j in s0_words[i] do
+matrix:=matrix*Rs[j];
+od;
+Add(s0_matrices, matrix);
+od;
+
+
+s1_act:=NullMat(270*d);;
+s2_act:=NullMat(270*d);;
+s3_act:=NullMat(270*d);;
+s4_act:=NullMat(270*d);;
+s5_act:=NullMat(270*d);;
+s6_act:=NullMat(270*d);;
+s0_act:=NullMat(270*d);;
+x_act:=NullMat(270*d);;
+
+
+for i in [1..270] do
+s1_act{[d*i-(d-1)..d*i]}{[d*s1_perm[i]-(d-1)..d*s1_perm[i]]}:=s1_matrices[i];
+s2_act{[d*i-(d-1)..d*i]}{[d*s2_perm[i]-(d-1)..d*s2_perm[i]]}:=s2_matrices[i];
+s3_act{[d*i-(d-1)..d*i]}{[d*s3_perm[i]-(d-1)..d*s3_perm[i]]}:=s3_matrices[i];
+s4_act{[d*i-(d-1)..d*i]}{[d*s4_perm[i]-(d-1)..d*s4_perm[i]]}:=s4_matrices[i];
+s5_act{[d*i-(d-1)..d*i]}{[d*s5_perm[i]-(d-1)..d*s5_perm[i]]}:=s5_matrices[i];
+s6_act{[d*i-(d-1)..d*i]}{[d*s6_perm[i]-(d-1)..d*s6_perm[i]]}:=s6_matrices[i];
+s0_act{[d*i-(d-1)..d*i]}{[d*s0_perm[i]-(d-1)..d*s0_perm[i]]}:=s0_matrices[i];
+od;
+
+act:=[s1_act,s2_act,s3_act,s4_act,s5_act,s6_act,s0_act];;
+
+
+
+
+
+#_________________________________________________________________
+##### Next we compute the action of Ta0
+
+s:=[1,1,0,2,0,1];;
+
+eval:=[];
+
+for i in [1..270] do
+w:=z[i];
+walpha1:=W.roots[1^w];
+walpha2:=W.roots[2^w];
+walpha3:=W.roots[3^w];
+walpha4:=W.roots[4^w];
+walpha5:=W.roots[5^w];
+walpha6:=W.roots[6^w];
+ws:=List([1..6], i-> walpha1[i]+walpha2[i]+2*walpha4[i]+walpha6[i]);
+Add(eval,E(3)^ws[2]);
+od;
+
+Ta0:=NullMat(270*d);;
+for i in [1..270] do
+Ta0{[d*i-(d-1)..d*i]}{[d*i-(d-1)..d*i]}:=eval[i]*IdentityMat(4);
+od;
+
+act[7]:=s0_act*Ta0;;
+
+
+
+
+
+#_________________________________________________________________
+#_________________________________________________________________
+###### Determine the action of x, most challenging
+x_reps_in_WM:=List(x_reps, w -> w*omega^-1*x^-1);;
+x_words:=List(x_reps_in_WM, w -> CoxeterWord(W_M, w));;
+
+x_matrices:=[];
+for i in [1..270] do
+matrix:=IdentityMat(d);
+for j in x_words[i] do
+matrix:=matrix*Rs[j];
+od;
+matrix:=matrix*Romega; #The very mysterious line!! How did I come up with that?????
+Add(x_matrices, matrix);
+od;
+
+x_act:=NullMat(270*d);;
+for i in [1..270] do
+x_act{[d*i-(d-1)..d*i]}{[d*x_perm[i]-(d-1)..d*x_perm[i]]}:=x_matrices[i];
+od;
+
+E_plus := NullspaceMat(x_act - IdentityMat(270*d));;
+E_theta := NullspaceMat(x_act - E(3)*IdentityMat(270*d));;
+E_theta2 := NullspaceMat(x_act - E(3)^2*IdentityMat(270*d));;
+P:=Concatenation(E_plus, E_theta, E_theta2);;
+
+act_block:=List(act, A -> P*A*P^-1);;
+act_plus:=List(act_block, B -> B{[1..90*d]}{[1..90*d]});;
+act_theta:=List(act_block, B -> B{[90*d+1..180*d]}{[90*d+1..180*d]});;
+act_theta2:=List(act_block, B -> B{[180*d+1..270*d]}{[180*d+1..270*d]});;
+
+
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W=<1,2,3,4,5,6>
+
+classesW:=ConjugacyClasses(W);;
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));;
+
+matricesW_plus:=[];;
+matricesW_theta:=[];;
+matricesW_theta2:=[];;
+
+for k in [1..25] do
+matrix_plus:=IdentityMat(90*d);
+matrix_theta:=IdentityMat(90*d);
+matrix_theta2:=IdentityMat(90*d);
+for j in wordsW[k] do
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
+od;
+Add(matricesW_plus, matrix_plus);
+Add(matricesW_theta, matrix_theta);
+Add(matricesW_theta2, matrix_theta2);
+od;
+
+chiW_plus:=List([1..25], i -> Trace(matricesW_plus[i])*signW[i]);
+chiW_theta:=List([1..25], i -> Trace(matricesW_theta[i])*signW[i]);
+chiW_theta2:=List([1..25], i -> Trace(matricesW_theta2[i])*signW[i]);
+
+for k in [1..25] do
+rep:=Irr(CharTable(W))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..25] do
+total_plus:=total_plus+rep[j]*chiW_plus[j]*sizesW[j];
+total_theta:=total_theta+rep[j]*chiW_theta[j]*sizesW[j];
+total_theta2:=total_theta2+rep[j]*chiW_theta2[j]*sizesW[j];
+od;
+Print(total_plus/51840, "   ", total_theta/51840, "   ", total_theta2/51840);
+Print("   ", CharTable(W).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
