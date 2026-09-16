@@ -304,3 +304,71 @@ od;
 
 
 
+
+
+
+##### RESTRICTIONS TO K3 AND K5 ARE IDENTICAL
+
+
+
+
+
+
+
+#__________________________________________________________________
+#__________________________________________________________________
+######### Computation of parahoric restriction with K4 ########
+
+WJ4:=ReflectionSubgroup(W,[1,2,3,5,6,36]);;
+classesWJ4:=ConjugacyClasses(WJ4);;
+sizesWJ4:=List(classesWJ4, c-> Size(c));;
+wordsWJ4:=List(classesWJ4, c-> CoxeterWord(WJ4,Elements(c)[1]));;
+signWJ4:=List(wordsWJ4, s-> (-1)^Length(s));
+
+matrices4_plus:=[];;
+matrices4_theta:=[];;
+matrices4_theta2:=[];;
+
+for i in [1..27] do
+matrix_plus:=IdentityMat(540);
+matrix_theta:=IdentityMat(540);
+matrix_theta2:=IdentityMat(540);
+for j in wordsWJ4[i] do
+if j = 35 then
+matrix_plus:=matrix_plus*act_plus[2]*act_plus[7]*act_plus[2];
+matrix_theta:=matrix_theta*act_theta[2]*act_theta[7]*act_theta[2];
+matrix_theta2:=matrix_theta2*act_theta2[2]*act_theta2[7]*act_theta2[2];
+fi;
+if j <> 35 then
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
+fi;
+od;
+Add(matrices4_plus, matrix_plus);
+Add(matrices4_theta, matrix_theta);
+Add(matrices4_theta2, matrix_theta2);
+od;
+
+chi4_plus:=List([1..27], i -> Trace(matrices4_plus[i])*signWJ4[i]);
+chi4_theta:=List([1..27], i -> Trace(matrices4_theta[i])*signWJ4[i]);
+chi4_theta2:=List([1..27], i -> Trace(matrices4_theta2[i])*signWJ4[i]);
+
+for k in [1..27] do
+rep:=Irr(CharTable(WJ4))[k].values;
+total_plus:=0;
+total_theta:=0;
+total_theta2:=0;
+for j in [1..27] do
+total_plus:=total_plus+sizesWJ4[j]*rep[j]*chi4_plus[j];
+total_theta:=total_theta+sizesWJ4[j]*rep[j]*chi4_theta[j];
+total_theta2:=total_theta2+sizesWJ4[j]*rep[j]*chi4_theta2[j];
+od;
+Print(total_plus/216,"   ", total_theta/216,"   ", total_theta2/216);
+Print("   ", CharTable(WJ4).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
