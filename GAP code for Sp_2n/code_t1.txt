@@ -1,0 +1,286 @@
+W:=CoxeterGroup("B",3);
+C:=ComplexReflectionGroup(2,1,1);
+G:=DirectProduct(W,C);
+s1:=Reflections(W)[1];
+s2:=Reflections(W)[2];
+s3:=Reflections(W)[3];
+s0:=Reflections(W)[7];
+x:=(19,20);
+
+
+omega:=();
+
+for w in Elements(W) do
+if 2^w=2 and 1^w=1 and 3^w=18 and 18^w=3 then
+omega:=w;
+fi;
+od;
+
+H:=Subgroup(G,[s1,s2,omega*x]);
+W_M:=ReflectionSubgroup(W,[1,2]);
+rcosets:=RightCosets(W,W_M);
+z:=List(rcosets, c -> Elements(c)[1]);
+
+s1_perm:=List([1..6], i -> First([1..6], j -> z[i]*s1 in H*z[j]));
+s2_perm:=List([1..6], i -> First([1..6], j -> z[i]*s2 in H*z[j]));
+s3_perm:=List([1..6], i -> First([1..6], j -> z[i]*s3 in H*z[j]));
+s0_perm:=List([1..6], i -> First([1..6], j -> z[i]*s0 in H*z[j]));
+
+x_perm:=List([1..6], i -> First([1..6], j -> z[i]*x in H*z[j]));
+
+s1_act:=NullMat(6);;
+s2_act:=NullMat(6);;
+s3_act:=NullMat(6);;
+s0_act:=NullMat(6);;
+x_act:=NullMat(6);;
+
+
+for i in [1..6] do
+s1_act[i][s1_perm[i]]:=1;
+s2_act[i][s2_perm[i]]:=1;
+s3_act[i][s3_perm[i]]:=1;
+s0_act[i][s0_perm[i]]:=1;
+od;
+
+act:=[s1_act,s2_act,s3_act,s0_act];;
+
+
+
+
+#_________________________________________________________________
+##### Next we compute the action of Ta0
+
+s:=[1,2,2];;
+
+eval:=[];
+
+for i in [1..6] do
+w:=z[i];
+walpha1:=W.roots[1^w];
+walpha2:=W.roots[2^w];
+walpha3:=W.roots[3^w];
+ws:=List([1..3], i-> walpha1[i]+2*walpha2[i]+2*walpha3[i]);
+Add(eval,E(4)^ws[2]);
+od;
+
+Ta0:=NullMat(6);;
+Ta0[1][1]:=-1;
+Ta0[2][2]:=-1;
+Ta0[3][3]:=1;
+Ta0[4][4]:=1;
+Ta0[5][5]:=1;
+Ta0[6][6]:=1;
+
+act[4]:=s0_act*Ta0;
+
+
+
+
+
+#_________________________________________________________________
+###### Determine the action of x, most challenging
+x_reps_in_WM:=List(x_reps, w -> w*omega^-1*x^-1);;
+x_words:=List(x_reps_in_WM, w -> CoxeterWord(W_M, w));;
+
+x_act:=NullMat(6);;
+for i in [1..6] do
+x_act[i][x_perm[i]]:=1;
+od;
+
+E_plus := NullspaceMat(x_act - IdentityMat(6));
+E_minus := NullspaceMat(x_act + IdentityMat(6));
+P:=Concatenation(E_plus, E_minus);
+
+act_block:=List(act, A -> P*A*P^-1);
+act_plus:=List(act_block, B -> B{[1..3]}{[1..3]});
+act_minus:=List(act_block, B -> B{[4..6]}{[4..6]});
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the restriction to K_0 = <1,2,3>
+
+classesW:=ConjugacyClasses(W);;
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+
+matricesW_plus:=[];;
+matricesW_minus:=[];;
+
+
+for k in [1..10] do
+matrix_plus:=IdentityMat(3);
+matrix_minus:=IdentityMat(3);
+for j in wordsW[k] do
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_minus:=matrix_minus*act_minus[j];
+od;
+Add(matricesW_plus, matrix_plus);
+Add(matricesW_minus, matrix_minus);
+od;
+
+chiW_plus:=List([1..10], i -> Trace(matricesW_plus[i])*signW[i]);
+chiW_minus:=List([1..10], i -> Trace(matricesW_minus[i])*signW[i]);
+
+for k in [1..10] do
+rep:=Irr(CharTable(W))[k].values;
+total_plus:=0;
+total_minus:=0;
+for j in [1..10] do
+total_plus:=total_plus+rep[j]*chiW_plus[j]*sizesW[j];
+total_minus:=total_minus+rep[j]*chiW_minus[j]*sizesW[j];
+od;
+Print(total_plus/48, "   ", total_minus/48);
+Print("   ", CharTable(W).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the restriction to K_1 = <0,2,3>
+
+W1:=ReflectionSubgroup(W,[1,2,7]);
+
+classesW1:=ConjugacyClasses(W1);;
+sizesW1:=List(classesW1, c-> Size(c));
+wordsW1:=List(classesW1, c-> CoxeterWord(W1,Elements(c)[1]));
+signW1:=List(wordsW1, s -> (-1)^Length(s));
+
+
+act1_plus:=[act_plus[1],act_plus[2],0,0,0,0,act_plus[4]];
+act1_minus:=[act_minus[1],act_minus[2],0,0,0,0,act_minus[4]];
+
+
+matricesW1_plus:=[];;
+matricesW1_minus:=[];;
+
+
+for k in [1..10] do
+matrix_plus:=IdentityMat(3);
+matrix_minus:=IdentityMat(3);
+for j in wordsW1[k] do
+matrix_plus:=matrix_plus*act1_plus[j];
+matrix_minus:=matrix_minus*act1_minus[j];
+od;
+Add(matricesW1_plus, matrix_plus);
+Add(matricesW1_minus, matrix_minus);
+od;
+
+chiW1_plus:=List([1..10], i -> Trace(matricesW1_plus[i])*signW1[i]);
+chiW1_minus:=List([1..10], i -> Trace(matricesW1_minus[i])*signW1[i]);
+
+for k in [1..10] do
+rep:=Irr(CharTable(W1))[k].values;
+total_plus:=0;
+total_minus:=0;
+for j in [1..10] do
+total_plus:=total_plus+rep[j]*chiW1_plus[j]*sizesW1[j];
+total_minus:=total_minus+rep[j]*chiW1_minus[j]*sizesW1[j];
+od;
+Print(total_plus/16, "   ", total_minus/16);
+Print("   ", CharTable(W1).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the restriction to K_2 = <0,1,3>
+
+W2:=ReflectionSubgroup(W,[1,3,7]);
+
+classesW2:=ConjugacyClasses(W2);;
+sizesW2:=List(classesW2, c-> Size(c));
+wordsW2:=List(classesW2, c-> CoxeterWord(W2,Elements(c)[1]));
+signW2:=List(wordsW2, s -> (-1)^Length(s));
+
+
+act2_plus:=[act_plus[1],0,act_plus[3],act_plus[3]*act_plus[4]*act_plus[3]];
+act2_minus:=[act_minus[1],0,act_minus[3],act_minus[3]*act_minus[4]*act_minus[3]];
+
+
+matricesW2_plus:=[];;
+matricesW2_minus:=[];;
+
+
+for k in [1..10] do
+matrix_plus:=IdentityMat(3);
+matrix_minus:=IdentityMat(3);
+for j in wordsW2[k] do
+matrix_plus:=matrix_plus*act2_plus[j];
+matrix_minus:=matrix_minus*act2_minus[j];
+od;
+Add(matricesW2_plus, matrix_plus);
+Add(matricesW2_minus, matrix_minus);
+od;
+
+chiW2_plus:=List([1..10], i -> Trace(matricesW2_plus[i])*signW2[i]);
+chiW2_minus:=List([1..10], i -> Trace(matricesW2_minus[i])*signW2[i]);
+
+for k in [1..10] do
+rep:=Irr(CharTable(W2))[k].values;
+total_plus:=0;
+total_minus:=0;
+for j in [1..10] do
+total_plus:=total_plus+rep[j]*chiW2_plus[j]*sizesW2[j];
+total_minus:=total_minus+rep[j]*chiW2_minus[j]*sizesW2[j];
+od;
+Print(total_plus/16, "   ", total_minus/16);
+Print("   ", CharTable(W2).irredinfo[k].charparam, "\n");
+od;
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the restriction to K_3 = <0,1,2>
+
+classesW:=ConjugacyClasses(W);;
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+act3_plus:=[act_plus[2]*act_plus[3]*act_plus[4]*act_plus[3]*act_plus[2], act_plus[2], act_plus[3]];
+act3_minus:=[act_minus[2]*act_minus[3]*act_minus[4]*act_minus[3]*act_minus[2], act_minus[2], act_minus[3]];
+
+matricesW_plus:=[];;
+matricesW_minus:=[];;
+
+
+for k in [1..10] do
+matrix_plus:=IdentityMat(3);
+matrix_minus:=IdentityMat(3);
+for j in wordsW[k] do
+matrix_plus:=matrix_plus*act3_plus[j];
+matrix_minus:=matrix_minus*act3_minus[j];
+od;
+Add(matricesW_plus, matrix_plus);
+Add(matricesW_minus, matrix_minus);
+od;
+
+chiW_plus:=List([1..10], i -> Trace(matricesW_plus[i])*signW[i]);
+chiW_minus:=List([1..10], i -> Trace(matricesW_minus[i])*signW[i]);
+
+for k in [1..10] do
+rep:=Irr(CharTable(W))[k].values;
+total_plus:=0;
+total_minus:=0;
+for j in [1..10] do
+total_plus:=total_plus+rep[j]*chiW_plus[j]*sizesW[j];
+total_minus:=total_minus+rep[j]*chiW_minus[j]*sizesW[j];
+od;
+Print(total_plus/48, "   ", total_minus/48);
+Print("   ", CharTable(W).irredinfo[k].charparam, "\n");
+od;
+
+

@@ -1,4 +1,4 @@
-######## ISOTROPY OF INDUCTION OF [1,3]-REP #########
+######## ISOTROPY OF INDUCTION OF [-,4]-REP #########
 
 W:=CoxeterGroup("E",6);;
 C:=ComplexReflectionGroup(3,1,1);;
@@ -36,101 +36,24 @@ s0_perm:=List([1..270], i -> First([1..270], j -> z[i]*s0 in H*z[j]));;
 
 x_perm:=List([1..270], i -> First([1..270], j -> z[i]*x in H*z[j]));;
 
-
-Rs2:=[[0,1,0,0],[1,0,0,0],[0,0,1,0],[0,0,0,1]];
-Rs3:=[[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]];
-Rs4:=[[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]];
-Rs5:=[[1,0,0,0],[0,1,0,0],[0,0,0,-1],[0,0,-1,0]];
-
-Rs:=[0,Rs2,Rs3,Rs4,Rs5,0];;
-
-Romega:=1/2*[[1,1,1,1],[1,1,-1,-1],[1,-1,1,-1],[-1,1,1,-1]];
-
-s1_reps:=List([1..270], i -> z[i]*s1*z[s1_perm[i]]^-1);;
-s2_reps:=List([1..270], i -> z[i]*s2*z[s2_perm[i]]^-1);;
-s3_reps:=List([1..270], i -> z[i]*s3*z[s3_perm[i]]^-1);;
-s4_reps:=List([1..270], i -> z[i]*s4*z[s4_perm[i]]^-1);;
-s5_reps:=List([1..270], i -> z[i]*s5*z[s5_perm[i]]^-1);;
-s6_reps:=List([1..270], i -> z[i]*s6*z[s6_perm[i]]^-1);;
-s0_reps:=List([1..270], i -> z[i]*s0*z[s0_perm[i]]^-1);;
-x_reps:=List([1..270], i -> z[i]*x*z[x_perm[i]]^-1);;
-
-
-s1_words:=List([1..270], i-> CoxeterWord(W_M,s1_reps[i]));;
-s2_words:=List([1..270], i-> CoxeterWord(W_M,s2_reps[i]));;
-s3_words:=List([1..270], i-> CoxeterWord(W_M,s3_reps[i]));;
-s4_words:=List([1..270], i-> CoxeterWord(W_M,s4_reps[i]));;
-s5_words:=List([1..270], i-> CoxeterWord(W_M,s5_reps[i]));;
-s6_words:=List([1..270], i-> CoxeterWord(W_M,s6_reps[i]));;
-s0_words:=List([1..270], i-> CoxeterWord(W_M,s0_reps[i]));;
-
-
-s1_matrices:=[];
-s2_matrices:=[];
-s3_matrices:=[];
-s4_matrices:=[];
-s5_matrices:=[];
-s6_matrices:=[];
-s0_matrices:=[];
+s1_act:=NullMat(270);;
+s2_act:=NullMat(270);;
+s3_act:=NullMat(270);;
+s4_act:=NullMat(270);;
+s5_act:=NullMat(270);;
+s6_act:=NullMat(270);;
+s0_act:=NullMat(270);;
+x_act:=NullMat(270);;
 
 
 for i in [1..270] do
-matrix:=IdentityMat(4);
-for j in s1_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s1_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s2_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s2_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s3_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s3_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s4_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s4_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s5_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s5_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s6_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s6_matrices, matrix);
-matrix:=IdentityMat(4);
-for j in s0_words[i] do
-matrix:=matrix*Rs[j];
-od;
-Add(s0_matrices, matrix);
-od;
-
-
-s1_act:=NullMat(1080);;
-s2_act:=NullMat(1080);;
-s3_act:=NullMat(1080);;
-s4_act:=NullMat(1080);;
-s5_act:=NullMat(1080);;
-s6_act:=NullMat(1080);;
-s0_act:=NullMat(1080);;
-x_act:=NullMat(1080);;
-
-
-for i in [1..270] do
-s1_act{[4*i-3..4*i]}{[4*s1_perm[i]-3..4*s1_perm[i]]}:=s1_matrices[i];
-s2_act{[4*i-3..4*i]}{[4*s2_perm[i]-3..4*s2_perm[i]]}:=s2_matrices[i];
-s3_act{[4*i-3..4*i]}{[4*s3_perm[i]-3..4*s3_perm[i]]}:=s3_matrices[i];
-s4_act{[4*i-3..4*i]}{[4*s4_perm[i]-3..4*s4_perm[i]]}:=s4_matrices[i];
-s5_act{[4*i-3..4*i]}{[4*s5_perm[i]-3..4*s5_perm[i]]}:=s5_matrices[i];
-s6_act{[4*i-3..4*i]}{[4*s6_perm[i]-3..4*s6_perm[i]]}:=s6_matrices[i];
-s0_act{[4*i-3..4*i]}{[4*s0_perm[i]-3..4*s0_perm[i]]}:=s0_matrices[i];
+s1_act[i][s1_perm[i]]:=1;
+s2_act[i][s2_perm[i]]:=1;
+s3_act[i][s3_perm[i]]:=1;
+s4_act[i][s4_perm[i]]:=1;
+s5_act[i][s5_perm[i]]:=1;
+s6_act[i][s6_perm[i]]:=1;
+s0_act[i][s0_perm[i]]:=1;
 od;
 
 act:=[s1_act,s2_act,s3_act,s4_act,s5_act,s6_act,s0_act];;
@@ -156,9 +79,9 @@ ws:=List([1..6], i-> walpha1[i]+walpha2[i]+2*walpha4[i]+walpha6[i]);
 Add(eval,E(3)^ws[2]);
 od;
 
-Ta0:=NullMat(1080);;
+Ta0:=NullMat(270);;
 for i in [1..270] do
-Ta0{[4*i-3..4*i]}{[4*i-3..4*i]}:=eval[i]*IdentityMat(4);
+Ta0[i][i]:=eval[i];
 od;
 
 act[7]:=s0_act*Ta0;;
@@ -170,31 +93,20 @@ act[7]:=s0_act*Ta0;;
 x_reps_in_WM:=List(x_reps, w -> w*omega^-1*x^-1);;
 x_words:=List(x_reps_in_WM, w -> CoxeterWord(W_M, w));;
 
-x_matrices:=[];
+x_act:=NullMat(270);;
 for i in [1..270] do
-matrix:=IdentityMat(4);
-for j in x_words[i] do
-matrix:=matrix*Rs[j];
-od;
-matrix:=matrix*Romega; #The very mysterious line!! How did I come up with that?????
-Add(x_matrices, matrix);
+x_act[i][x_perm[i]]:=1;
 od;
 
-x_act:=NullMat(1080);;
-for i in [1..270] do
-x_act{[4*i-3..4*i]}{[4*x_perm[i]-3..4*x_perm[i]]}:=x_matrices[i];
-od;
-
-E_plus := NullspaceMat(x_act - IdentityMat(1080));;
-E_theta := NullspaceMat(x_act - E(3)*IdentityMat(1080));;
-E_theta2 := NullspaceMat(x_act - E(3)^2*IdentityMat(1080));;
+E_plus := NullspaceMat(x_act - IdentityMat(270));;
+E_theta := NullspaceMat(x_act - E(3)*IdentityMat(270));;
+E_theta2 := NullspaceMat(x_act - E(3)^2*IdentityMat(270));;
 P:=Concatenation(E_plus, E_theta, E_theta2);;
 
 act_block:=List(act, A -> P*A*P^-1);;
-act_plus:=List(act_block, B -> B{[1..360]}{[1..360]});;
-act_theta:=List(act_block, B -> B{[361..720]}{[361..720]});;
-act_theta2:=List(act_block, B -> B{[721..1080]}{[721..1080]});;
-
+act_plus:=List(act_block, B -> B{[1..90]}{[1..90]});;
+act_theta:=List(act_block, B -> B{[91..180]}{[91..180]});;
+act_theta2:=List(act_block, B -> B{[181..270]}{[181..270]});;
 
 
 
@@ -208,14 +120,15 @@ sizesW:=List(classesW, c-> Size(c));
 wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
 signW:=List(wordsW, s -> (-1)^Length(s));;
 
+
 matricesW_plus:=[];;
 matricesW_theta:=[];;
 matricesW_theta2:=[];;
 
 for k in [1..25] do
-matrix_plus:=IdentityMat(360);
-matrix_theta:=IdentityMat(360);
-matrix_theta2:=IdentityMat(360);
+matrix_plus:=IdentityMat(90);
+matrix_theta:=IdentityMat(90);
+matrix_theta2:=IdentityMat(90);
 for j in wordsW[k] do
 matrix_plus:=matrix_plus*act_plus[j];
 matrix_theta:=matrix_theta*act_theta[j];
@@ -241,9 +154,8 @@ total_theta:=total_theta+rep[j]*chiW_theta[j]*sizesW[j];
 total_theta2:=total_theta2+rep[j]*chiW_theta2[j]*sizesW[j];
 od;
 Print(total_plus/51840, "   ", total_theta/51840, "   ", total_theta2/51840);
-Print("   ", CharTable(W).irredinfo[k].charparam, "\n");
+Print("   ", CharTable(W).irredinfo[k].charname, "\n");
 od;
-
 
 
 
@@ -263,9 +175,9 @@ matrices2_theta:=[];;
 matrices2_theta2:=[];;
 
 for i in [1..22] do
-matrix_plus:=IdentityMat(360);
-matrix_theta:=IdentityMat(360);
-matrix_theta2:=IdentityMat(360);
+matrix_plus:=IdentityMat(90);
+matrix_theta:=IdentityMat(90);
+matrix_theta2:=IdentityMat(90);
 for j in wordsWJ2[i] do
 if j = 36 then
 matrix_plus:=matrix_plus*act_plus[7];
@@ -298,8 +210,9 @@ total_theta:=total_theta+sizesWJ2[j]*rep[j]*chi2_theta[j];
 total_theta2:=total_theta2+sizesWJ2[j]*rep[j]*chi2_theta2[j];
 od;
 Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
-Print("   ", CharTable(WJ2).irredinfo[k].charparam, "\n");
+Print("   ", CharTable(WJ2).irredinfo[k].charname, "\n");
 od;
+
 
 
 
@@ -321,9 +234,9 @@ matrices3_theta:=[];;
 matrices3_theta2:=[];;
 
 for i in [1..22] do
-matrix_plus:=IdentityMat(360);
-matrix_theta:=IdentityMat(360);
-matrix_theta2:=IdentityMat(360);
+matrix_plus:=IdentityMat(90);
+matrix_theta:=IdentityMat(90);
+matrix_theta2:=IdentityMat(90);
 for j in wordsWJ3[i] do
 if j = 29 then
 matrix_plus:=matrix_plus*act_plus[6]*act_plus[5]*act_plus[4]*act_plus[2]*act_plus[7]*act_plus[2]*act_plus[4]*act_plus[5]*act_plus[6];
@@ -356,10 +269,8 @@ total_theta:=total_theta+sizesWJ3[j]*rep[j]*chi3_theta[j];
 total_theta2:=total_theta2+sizesWJ3[j]*rep[j]*chi3_theta2[j];
 od;
 Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
-Print("   ", CharTable(WJ3).irredinfo[k].charparam, "\n");
+Print("   ", CharTable(WJ3).irredinfo[k].charname, "\n");
 od;
-
-
 
 
 
@@ -379,9 +290,9 @@ matrices5_theta:=[];;
 matrices5_theta2:=[];;
 
 for i in [1..22] do
-matrix_plus:=IdentityMat(360);
-matrix_theta:=IdentityMat(360);
-matrix_theta2:=IdentityMat(360);
+matrix_plus:=IdentityMat(90);
+matrix_theta:=IdentityMat(90);
+matrix_theta2:=IdentityMat(90);
 for j in wordsWJ5[i] do
 if j = 31 then
 matrix_plus:=matrix_plus*act_plus[1]*act_plus[3]*act_plus[4]*act_plus[2]*act_plus[7]*act_plus[2]*act_plus[4]*act_plus[3]*act_plus[1];
@@ -414,9 +325,8 @@ total_theta:=total_theta+sizesWJ5[j]*rep[j]*chi5_theta[j];
 total_theta2:=total_theta2+sizesWJ5[j]*rep[j]*chi5_theta2[j];
 od;
 Print(total_plus/1440,"   ", total_theta/1440,"   ", total_theta2/1440);
-Print("   ", CharTable(WJ5).irredinfo[k].charparam, "\n");
+Print("   ", CharTable(WJ5).irredinfo[k].charname, "\n");
 od;
-
 
 
 
@@ -438,9 +348,9 @@ matrices4_theta:=[];;
 matrices4_theta2:=[];;
 
 for i in [1..27] do
-matrix_plus:=IdentityMat(360);
-matrix_theta:=IdentityMat(360);
-matrix_theta2:=IdentityMat(360);
+matrix_plus:=IdentityMat(90);
+matrix_theta:=IdentityMat(90);
+matrix_theta2:=IdentityMat(90);
 for j in wordsWJ4[i] do
 if j = 35 then
 matrix_plus:=matrix_plus*act_plus[2]*act_plus[7]*act_plus[2];
@@ -473,8 +383,11 @@ total_theta:=total_theta+sizesWJ4[j]*rep[j]*chi4_theta[j];
 total_theta2:=total_theta2+sizesWJ4[j]*rep[j]*chi4_theta2[j];
 od;
 Print(total_plus/216,"   ", total_theta/216,"   ", total_theta2/216);
-Print("   ", CharTable(WJ4).irredinfo[k].charparam, "\n");
+Print("   ", CharTable(WJ4).irredinfo[k].charname, "\n");
 od;
+
+
+
 
 
 

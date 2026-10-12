@@ -1,0 +1,200 @@
+
+n:=6;
+fac:=Factorial(n);;
+fac1:=Factorial(n-1);
+W:=CoxeterGroup("A",n-1);;
+C:=ComplexReflectionGroup(n,1,1);;
+G:=DirectProduct(W,C);;
+s:=List([1..n-1], i-> Reflections(W)[i]);;
+Add(s, Reflections(W)[n*(n-1)/2]);;
+x:=Elements(G)[2];
+
+omega:=();;
+
+for w in Elements(W) do
+if List([1..n-2], i -> i^w ) = List([2..n-1], i -> i) and (n-1)^w = n*(n-1) and (n*(n-1))^w = 1 then
+omega:=w;
+fi;
+od;
+
+omega;
+
+
+H:=Subgroup(G,[omega*x]);;
+W_M:=ReflectionSubgroup(W,[]);;
+rcosets:=RightCosets(W,W_M);;
+z:=Elements(W);;
+
+perm:=List([1..n], k-> List([1..fac], i -> First([1..fac], j -> z[i]*s[k] in H*z[j])));;
+x_perm:=List([1..fac], i -> First([1..fac], j -> z[i]*x in H*z[j]));;
+
+act:=List([1..n], k -> NullMat(fac));;
+x_act:=NullMat(fac);;
+
+
+for i in [1..fac] do
+for k in [1..n] do
+act[k][i][perm[k][i]]:=1;
+od;
+od;
+
+
+
+
+
+
+#_________________________________________________________________
+##### Next we compute the action of Ta0
+
+eval:=[];
+
+for i in [1..fac] do
+w:=z[i];
+walpha0:=W.roots[(n*(n-1))^(w^-1)];
+Add(eval,E(n)^Sum(walpha0));
+od;
+
+
+Ta0:=NullMat(fac);;
+for i in [1..fac] do
+Ta0[i][i]:=eval[i];
+od;
+
+act[n]:=act[n]*Ta0;;
+
+
+
+
+
+
+#_________________________________________________________________
+###### Determine the action of x, most challenging
+x_reps_in_WM:=List(x_reps, w -> w*omega^-1*x^-1);;
+x_words:=List(x_reps_in_WM, w -> CoxeterWord(W_M, w));;
+
+x_act:=NullMat(fac);;
+for i in [1..fac] do
+x_act[i][x_perm[i]]:=1;
+od;
+
+
+Evec:=List([1..n], i -> NullspaceMat(x_act - E(n)^i*IdentityMat(fac)));;
+
+P:=Concatenation(Evec);;
+
+act_block:=List(act, A -> P*A*P^-1);;
+
+act_parts:=List([1..n], i-> List(act_block, B -> B{[(i-1)*fac1+1..i*fac1]}{[(i-1)*fac1+1..i*fac1]}));;
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W=<1,2,3>
+
+classesW:=ConjugacyClasses(W);;
+numW:=Length(classesW);
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+
+matricesW:=List([1..n], i -> []);;
+
+for k in [1..numW] do
+matrix:=List([1..n], i -> IdentityMat(fac1));
+for j in wordsW[k] do
+for i in [1..n] do
+matrix[i]:=matrix[i]*act_parts[i][j];
+od;
+od;
+for i in [1..n] do
+Add(matricesW[i], matrix[i]);
+od;
+od;
+
+chiW:=List([1..n], i -> List([1..numW], j -> Trace(matricesW[i][j])*signW[j]));
+
+for k in [1..numW] do
+rep:=Irr(CharTable(W))[k].values;
+total:=List([1..n], i -> 0);
+for j in [1..numW] do
+for i in [1..n] do
+total[i]:=total[i]+rep[j]*chiW[i][j]*sizesW[j];
+od;
+od;
+Print(List(total, t -> t/fac), "   ", CharTable(W).irredinfo[k].charname, "\n");
+od;
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W_i
+
+classesW:=ConjugacyClasses(W);;
+numW:=Length(classesW);
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+
+i:=3;
+pre_chain:=Concatenation(List([1..n-2], j -> ((j+i) mod n)),[(i-1) mod n],List([1..n-2], j -> ((i-1-j) mod n)));
+chain:=[];
+for j in pre_chain do
+if j=0 then
+Add(chain,n);
+else
+Add(chain,j);
+fi;
+od;
+
+
+act_i:=[];
+for j in [1..n] do
+matrix:=IdentityMat(fac1);
+for k in chain do
+matrix:=matrix*act_parts[j][k];
+od;
+Add(act_i, matrix);
+od;
+
+
+
+matricesW:=List([1..n], i -> []);;
+
+for k in [1..numW] do
+matrix:=List([1..n], i -> IdentityMat(fac1));
+for j in wordsW[k] do
+if j <> i then
+for k in [1..n] do
+matrix[k]:=matrix[k]*act_parts[k][j];
+od;
+fi;
+if j = i then
+for k in [1..n] do
+matrix[k]:=matrix[k]*act_i[k];
+od;
+fi;
+od;
+for k in [1..n] do
+Add(matricesW[k], matrix[k]);
+od;
+od;
+
+chiW:=List([1..n], i -> List([1..numW], j -> Trace(matricesW[i][j])*signW[j]));
+
+for r in [1..numW] do
+rep:=Irr(CharTable(W))[r].values;
+total:=List([1..n], i -> 0);
+for j in [1..numW] do
+for k in [1..n] do
+total[k]:=total[k]+rep[j]*chiW[k][j]*sizesW[j];
+od;
+od;
+Print(List(total, t -> t/fac), "   ", CharTable(W).irredinfo[r].charname, "\n");
+od;
+

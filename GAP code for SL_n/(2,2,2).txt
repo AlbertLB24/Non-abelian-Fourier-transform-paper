@@ -1,0 +1,271 @@
+W:=CoxeterGroup("A",5);;
+C:=ComplexReflectionGroup(3,1,1);;
+G:=DirectProduct(W,C);;
+s1:=Reflections(W)[1];;
+s2:=Reflections(W)[2];;
+s3:=Reflections(W)[3];;
+s4:=Reflections(W)[4];;
+s5:=Reflections(W)[5];;
+s0:=Reflections(W)[15];;
+x:=(31,32,33);;
+
+
+omega:=();;
+
+for w in Elements(W) do
+if 1^w=2 and 2^w=3 and 3^w=4 and 4^w=5 and 5^w=30 and 30^w=1 then
+omega:=w^2;
+fi;
+od;
+
+omega;
+
+H:=Subgroup(G,[s1,s3,s5,omega*x]);
+W_M:=ReflectionSubgroup(W,[1,3,5]);
+rcosets:=RightCosets(W,W_M);;
+z:=List(rcosets, c -> Elements(c)[1]);;
+
+s1_perm:=List([1..90], i -> First([1..90], j -> z[i]*s1 in H*z[j]));
+s2_perm:=List([1..90], i -> First([1..90], j -> z[i]*s2 in H*z[j]));
+s3_perm:=List([1..90], i -> First([1..90], j -> z[i]*s3 in H*z[j]));
+s4_perm:=List([1..90], i -> First([1..90], j -> z[i]*s4 in H*z[j]));
+s5_perm:=List([1..90], i -> First([1..90], j -> z[i]*s5 in H*z[j]));
+s0_perm:=List([1..90], i -> First([1..90], j -> z[i]*s0 in H*z[j]));
+
+x_perm:=List([1..90], i -> First([1..90], j -> z[i]*x in H*z[j]));
+
+s1_act:=NullMat(90);;
+s2_act:=NullMat(90);;
+s3_act:=NullMat(90);;
+s4_act:=NullMat(90);;
+s5_act:=NullMat(90);;
+s0_act:=NullMat(90);;
+x_act:=NullMat(90);;
+
+
+for i in [1..90] do
+s1_act[i][s1_perm[i]]:=1;
+s2_act[i][s2_perm[i]]:=1;
+s3_act[i][s3_perm[i]]:=1;
+s4_act[i][s4_perm[i]]:=1;
+s5_act[i][s5_perm[i]]:=1;
+s0_act[i][s0_perm[i]]:=1;
+od;
+
+act:=[s1_act,s2_act,s3_act,s4_act,s5_act,s0_act];;
+
+
+
+#_________________________________________________________________
+##### Next we compute the action of Ta0
+
+eval:=[];
+
+for i in [1..90] do
+w:=z[i];
+walpha0:=W.roots[30^(w^-1)];
+Add(eval,E(3)^(walpha0[2]+walpha0[4]));
+od;
+
+eval;
+
+Ta0:=NullMat(90);;
+for i in [1..90] do
+Ta0[i][i]:=eval[i];
+od;
+
+act[6]:=s0_act*Ta0;
+
+
+
+#_________________________________________________________________
+###### Determine the action of x, most challenging
+
+x_act:=NullMat(90);;
+for i in [1..90] do
+x_act[i][x_perm[i]]:=1;
+od;
+
+E_p := NullspaceMat(x_act - IdentityMat(90));
+E_t1 := NullspaceMat(x_act - E(3)*IdentityMat(90));
+E_t2 := NullspaceMat(x_act - E(3)^2*IdentityMat(90));
+P:=Concatenation(E_p, E_t1, E_t2);
+
+act_block:=List(act, A -> P*A*P^-1);
+act_p:=List(act_block, B -> B{[1..30]}{[1..30]});
+act_t1:=List(act_block, B -> B{[31..60]}{[31..60]});
+act_t2:=List(act_block, B -> B{[61..90]}{[61..90]});
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W=<1,2,3,4,5>
+
+classesW:=ConjugacyClasses(W);
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+
+matricesW_p:=[];;
+matricesW_t1:=[];;
+matricesW_t2:=[];;
+
+for k in [1..11] do
+matrix_p:=IdentityMat(30);
+matrix_t1:=IdentityMat(30);
+matrix_t2:=IdentityMat(30);
+for j in wordsW[k] do
+matrix_p:=matrix_p*act_p[j];
+matrix_t1:=matrix_t1*act_t1[j];
+matrix_t2:=matrix_t2*act_t2[j];
+od;
+Add(matricesW_p, matrix_p);
+Add(matricesW_t1, matrix_t1);
+Add(matricesW_t2, matrix_t2);
+od;
+
+chiW_p:=List([1..11], i -> Trace(matricesW_p[i])*signW[i]);
+chiW_t1:=List([1..11], i -> Trace(matricesW_t1[i])*signW[i]);
+chiW_t2:=List([1..11], i -> Trace(matricesW_t2[i])*signW[i]);
+
+for k in [1..11] do
+rep:=Irr(CharTable(W))[k].values;
+total_p:=0;
+total_t1:=0;
+total_t2:=0;
+for j in [1..11] do
+total_p:=total_p+rep[j]*chiW_p[j]*sizesW[j];
+total_t1:=total_t1+rep[j]*chiW_t1[j]*sizesW[j];
+total_t2:=total_t2+rep[j]*chiW_t2[j]*sizesW[j];
+od;
+Print(total_p/720, "   ", total_t1/720, "   ", total_t2/720);
+Print("   ", CharTable(W).irredinfo[k].charname, "\n");
+od;
+
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W1=<2,3,4,5,0>
+
+classesW:=ConjugacyClasses(W);
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+act1_p:=act_p[2]*act_p[3]*act_p[4]*act_p[5]*act_p[6]*act_p[5]*act_p[4]*act_p[3]*act_p[2];
+act1_t1:=act_t1[2]*act_t1[3]*act_t1[4]*act_t1[5]*act_t1[6]*act_t1[5]*act_t1[4]*act_t1[3]*act_t1[2];
+act1_t2:=act_t2[2]*act_t2[3]*act_t2[4]*act_t2[5]*act_t2[6]*act_t2[5]*act_t2[4]*act_t2[3]*act_t2[2];
+
+
+matricesW_p:=[];;
+matricesW_t1:=[];;
+matricesW_t2:=[];;
+
+for k in [1..11] do
+matrix_p:=IdentityMat(30);
+matrix_t1:=IdentityMat(30);
+matrix_t2:=IdentityMat(30);
+for j in wordsW[k] do
+if j <> 1 then
+matrix_p:=matrix_p*act_p[j];
+matrix_t1:=matrix_t1*act_t1[j];
+matrix_t2:=matrix_t2*act_t2[j];
+fi;
+if j = 1 then
+matrix_p:=matrix_p*act1_p;
+matrix_t1:=matrix_t1*act1_t1;
+matrix_t2:=matrix_t2*act1_t2;
+fi;
+od;
+Add(matricesW_p, matrix_p);
+Add(matricesW_t1, matrix_t1);
+Add(matricesW_t2, matrix_t2);
+od;
+
+chiW_p:=List([1..11], i -> Trace(matricesW_p[i])*signW[i]);
+chiW_t1:=List([1..11], i -> Trace(matricesW_t1[i])*signW[i]);
+chiW_t2:=List([1..11], i -> Trace(matricesW_t2[i])*signW[i]);
+
+for k in [1..11] do
+rep:=Irr(CharTable(W))[k].values;
+total_p:=0;
+total_t1:=0;
+total_t2:=0;
+for j in [1..11] do
+total_p:=total_p+rep[j]*chiW_p[j]*sizesW[j];
+total_t1:=total_t1+rep[j]*chiW_t1[j]*sizesW[j];
+total_t2:=total_t2+rep[j]*chiW_t2[j]*sizesW[j];
+od;
+Print(total_p/720, "   ", total_t1/720, "   ", total_t2/720);
+Print("   ", CharTable(W).irredinfo[k].charname, "\n");
+od;
+
+
+
+
+
+
+#______________________________________________________________________
+#______________________________________________________________________
+###### Determine the action of the full Weyl group W2=<1,3,4,5,0>
+
+classesW:=ConjugacyClasses(W);
+sizesW:=List(classesW, c-> Size(c));
+wordsW:=List(classesW, c-> CoxeterWord(W,Elements(c)[1]));
+signW:=List(wordsW, s -> (-1)^Length(s));
+
+act1_p:=act_p[3]*act_p[4]*act_p[5]*act_p[6]*act_p[1]*act_p[6]*act_p[5]*act_p[4]*act_p[3];
+act1_t1:=act_t1[3]*act_t1[4]*act_t1[5]*act_t1[6]*act_t1[1]*act_t1[6]*act_t1[5]*act_t1[4]*act_t1[3];
+act1_t2:=act_t2[3]*act_t2[4]*act_t2[5]*act_t2[6]*act_t2[1]*act_t2[6]*act_t2[5]*act_t2[4]*act_t2[3];
+
+matricesW_p:=[];;
+matricesW_t1:=[];;
+matricesW_t2:=[];;
+
+for k in [1..11] do
+matrix_p:=IdentityMat(30);
+matrix_t1:=IdentityMat(30);
+matrix_t2:=IdentityMat(30);
+for j in wordsW[k] do
+if j <> 2 then
+matrix_p:=matrix_p*act_p[j];
+matrix_t1:=matrix_t1*act_t1[j];
+matrix_t2:=matrix_t2*act_t2[j];
+fi;
+if j = 2 then
+matrix_p:=matrix_p*act1_p;
+matrix_t1:=matrix_t1*act1_t1;
+matrix_t2:=matrix_t2*act1_t2;
+fi;
+od;
+Add(matricesW_p, matrix_p);
+Add(matricesW_t1, matrix_t1);
+Add(matricesW_t2, matrix_t2);
+od;
+
+chiW_p:=List([1..11], i -> Trace(matricesW_p[i])*signW[i]);
+chiW_t1:=List([1..11], i -> Trace(matricesW_t1[i])*signW[i]);
+chiW_t2:=List([1..11], i -> Trace(matricesW_t2[i])*signW[i]);
+
+for k in [1..11] do
+rep:=Irr(CharTable(W))[k].values;
+total_p:=0;
+total_t1:=0;
+total_t2:=0;
+for j in [1..11] do
+total_p:=total_p+rep[j]*chiW_p[j]*sizesW[j];
+total_t1:=total_t1+rep[j]*chiW_t1[j]*sizesW[j];
+total_t2:=total_t2+rep[j]*chiW_t2[j]*sizesW[j];
+od;
+Print(total_p/720, "   ", total_t1/720, "   ", total_t2/720);
+Print("   ", CharTable(W).irredinfo[k].charname, "\n");
+od;
+
+
