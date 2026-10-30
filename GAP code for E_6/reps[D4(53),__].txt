@@ -567,14 +567,14 @@ matrix_theta:=IdentityMat(450);
 matrix_theta2:=IdentityMat(450);
 for j in wordsWJ4[i] do
 if j = 35 then
-matrix_plus:=matrix_plus*Ds_plus[2]*Ds_plus[7]*Ds_plus[2];
-matrix_theta:=matrix_theta*Ds_theta[2]*Ds_theta[7]*Ds_theta[2];
-matrix_theta2:=matrix_theta2*Ds_theta2[2]*Ds_theta2[7]*Ds_theta2[2];
+matrix_plus:=matrix_plus*act_plus[2]*act_plus[7]*act_plus[2];
+matrix_theta:=matrix_theta*act_theta[2]*act_theta[7]*act_theta[2];
+matrix_theta2:=matrix_theta2*act_theta2[2]*act_theta2[7]*act_theta2[2];
 fi;
 if j <> 35 then
-matrix_plus:=matrix_plus*Ds_plus[j];
-matrix_theta:=matrix_theta*Ds_theta[j];
-matrix_theta2:=matrix_theta2*Ds_theta2[j];
+matrix_plus:=matrix_plus*act_plus[j];
+matrix_theta:=matrix_theta*act_theta[j];
+matrix_theta2:=matrix_theta2*act_theta2[j];
 fi;
 od;
 Add(matrices4_plus, matrix_plus);

@@ -46,7 +46,9 @@ The group $G$ has five maximal open compact subgroups $\{K_0,K_4,K_3,K_2,K_1\}$ 
     commutes.
 \end{theorem}
 
-We remark that the above result was already proven by Ciubotaru, in an unpublished paper \cite{Ciubotaru2020} for the reduction to the hyperspecial parahoric subgroup $K_0$. We complete the proof for the remaining $4$ parahoric subgroups.
+Since a Chevalley involution $C:F_4(\CC)\to F_4(\CC)$ is an inner automorphism, 
+$$\FT^\vee_{\mathrm{ell}}(\Pi(u,s,h))=\Pi(C(u),C(h),C(s))=\Pi(u,h,s).$$
+The above result was already proven by Ciubotaru, in an unpublished paper \cite{Ciubotaru2020} for the reduction to the hyperspecial parahoric subgroup $K_0$. We complete the proof for the remaining $4$ parahoric subgroups.
 
 Firstly, we compute the basis $\{\Pi(u,s,h)\ |\ u\in G^\vee\text{ unipotent, } (s,h)\in\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}\}$ of the space $R_{\un,\text{ell}}(G)$ (see Section \ref{subsec:Fourier_transform} for the definitions). The classification of all elliptic pairs of $F_4(\CC)$ has been previously computed in the literature, and the list is given in Table \ref{tbl:F4_pairs}. For each unipotent $u\in F_4(\CC)$, we also give the unipotent $F_4(\FF_q)$-family $\mathcal{F}_u$ whose special element is the $W$-representation afforded by $\varepsilon\otimes H^{\mathrm{top}}(\mathcal{B}^u)^{\mathbf{1}}$ under the Springer correspondence. Then $\Gamma_{\mathcal{F}_u}$ is the finite group canonically associated to the family $\mathcal{F}_u$.
 
@@ -100,7 +102,7 @@ For example, when $u$ has type $F_4(a_3)$, $\Gamma_u\cong S_4$ and there are $21
 
 These virtual characters span a $21$-dimensional space inside the $31$-dimensional space $R_{\un,\text{ell}}(G)$. All remaining $10$ basis elements are easily computable. The proof of Theorem \ref{thm:F4} relies on an explicit computation of the restriction map 
 $$\res^{\mathrm{cpt}}_{\un}:R_{\un,\mathrm{ell}}(G)\longrightarrow\bigoplus_{i=0}^5 R_{\un}(\overline{K}_i).$$
-Most of this work was completed by Reeder in \cite{Reeder2000}. Nevertheless, his tables contain a few mistakes (systematically arising from the two representations $\pi(F_4(a_3),1,31)$ and $\pi(F_4(a_3),1,211)$) and do not include the representations whose unipotent label $u$ has type $B_3$ (for this is not a distinguished unipotent element of $F_4(\CC)$). We tabulate these results at the end of the section, fixing the mistakes and adding the new restrictions.
+Most of this work was completed by Reeder in \cite{Reeder2000}. Nevertheless, his tables contain a few mistakes (systematically arising from the two representations $[F_4(a_3),31]$ and $[F_4(a_3),211]$) and do not include the representations whose unipotent label $u$ has type $B_3$ (for this is not a distinguished unipotent element of $F_4(\CC)$). We tabulate these results at the end of the section, fixing the mistakes and adding the new restrictions.
 
 Let us briefly discuss how the parahoric restrictions are computed. The unipotent representations of $F_4(F)$ fall into $9$ unipotent blocks, together with their associated Hecke algebras. There are $7$ supercuspidal blocks, one for each cuspidal unipotent representation of $F_4(\FF_q)$. The corresponding Hecke algebras $\cH(F_4(F),F_4(\mathcal{O}_F),\sigma)$ are all isomorphic to $\CC$ so these blocks contain a unique unipotent representation. This information can be read from Lusztig's arithmetic-geometric correspondence tables in \cite{Lusztig1995}*{pg. 577}. The Langlands parameters of these representations are $$[F_4(a_3),1^4],\ [C_3(42),--],\ [B_4(531),\varepsilon],\ [2A_2,\theta],\ [2A_2,\theta^2],\ [A_1A_3,i]\text{ and }[A_1A_3,-i],$$
 where we are using Notation \ref{notation:Langlandsparam} for the Langlands parameters. The parahoric restrictions of these representations are straightforward to compute, for they are irreducible for the hyperspecial parahoric $K_0$ and vanish for the other ones.

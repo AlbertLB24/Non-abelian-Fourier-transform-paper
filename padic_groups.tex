@@ -1,6 +1,9 @@
 \section{Unipotent representations of p-adic groups} \label{sec:padic_groups}
 
-Throughout this section, let $G$ be a connected simple group defined over a finite extension $F$ with residue field $\FF_q$. We further assume that $G$ is split with split maximal torus $T$ and of simply connected type. In particular, $G$ is determined by the $p$-adic field $F$ and the type of the root system $\Phi$ of $G$. Let $\Irr(G)$ be the set of irreducible smooth representations of $G$ and $\Irr_{\un}(G)\subseteq\Irr(G)$ the subset of unipotent representations. Under the Local Langlands correspondence, there is a bijection
+Let $F$ be a finite extension of $\QQ_p$ with residue field $\FF_q$, and let $\mathcal{G}$ be a connected simple algebraic $F$-group split over $F$ and write $G=\mathcal{G}(F)$. Let $\mathcal{T}$ be a $F$-split maximal torus of $\mathcal{G}$ and let $T=\mathcal{T}(F)$ be a maximal torus of $G$. We assume throughout that $\mathcal{G}$ is in addition of simply-connected type. 
+%Let $G$ be a connected simple group defined over a finite extension $F$ of $\QQ_p$ with residue field $\FF_q$. We further assume that $G$ is split with split maximal torus $T$ and of simply connected type. 
+
+Let $\Irr(G)$ be the set of irreducible smooth representations of $G$ and $\Irr_{\un}(G)\subseteq\Irr(G)$ the subset of unipotent representations. Under the Local Langlands correspondence, there is a bijection
 \begin{align*}
     \mathrm{LLC}_{\un}:\left\{
     \begin{array}{c}
@@ -19,7 +22,7 @@ Throughout this section, let $G$ be a connected simple group defined over a fini
 
 By the work of Lusztig, unipotent representations of $G$ can also be characterized directly in terms of the topology of $G$ and the representation theory of finite groups of Lie type. For each facet $c$ in the Bruhat--Tits building $\mathcal{B}(G,F)$, consider the parahoric subgroup $K_c:=\Stab_G(c)$. Since, by assumption, $G$ is simply connected, $K_c$ is a connected open compact subgroup of $G$ fitting in a short exact sequence
 $$1\longrightarrow U_c\longrightarrow K_c\longrightarrow \overline{K}_c\longrightarrow 1,$$
-where $U_c$ is the pro-unipotent radical of $K_c$ and $\overline{K}_c$ is the group of $\FF_q$-rational points of a connected reductive group $\mathbf{\overline{K}_c}$. Since $K_{g\cdot c}=gK_cg^{-1}$ for all facets $c$ of $\mathcal{B}(G,F)$ and $g\in G$, conjugacy classes of parahoric subgroups are in bijection with $G$-orbits of facets in $\mathcal{B}(G)$. Furthermore, we recall that after fixing a set of simple affine roots $S_{\aff}$ of $G$ with corresponding fundamental alcove $\mathcal{C}_0$, there is a bijection
+where $U_c$ is the pro-unipotent radical of $K_c$ and $\overline{K}_c$ is the group of $\FF_q$-rational points of a connected reductive group $\mathbf{\overline{K}_c}$. Since $K_{g\cdot c}=gK_cg^{-1}$ for all facets $c$ of $\mathcal{B}(G,F)$ and $g\in G$, conjugacy classes of parahoric subgroups are in bijection with $G$-orbits of facets in $\mathcal{B}(G)$. Furthermore, after fixing a set of simple affine roots $S_{\aff}$ of $G$ with corresponding fundamental alcove $\mathcal{C}_0$, there is a bijection
 \begin{align*}
     \{\text{Subsets }J\subsetneq S_{\aff}\}&\longleftrightarrow\{G\text{-orbits of facets in }\mathcal{B}(G)\}\longleftrightarrow\{\text{Conj. classes of parahoric subgroups}\}\\
     J&\longmapsto c_J=\{x\in\overline{\mathcal{C}_0}\ |\ \langle\alpha,x\rangle\in\ZZ\iff\alpha\in J,\text{ for any }\alpha\in S_{\aff}\}\longmapsto K_{c_J}
@@ -38,12 +41,9 @@ $$\Irr(G,K,E)=\{(\pi,V)\in\Irr(G)\ |\ \text{ the }\overline{K}\text{-module $V^{
 \end{definition}
 Therefore, the set of unipotent representations, up to isomorphism, is
 $$\Irr_{\un}(G)=\bigcup_{\substack{J\subsetneq S_{\aff}\\ E \text{ cusp. unip. $\overline{K}_J$-rep}}}\Irr(G,K_J,E).$$
-Each set $\Irr(G,K,E)$ generates a distinct Bernstein \textit{block} of representations of $G$. If $\mathcal{I}$ is an Iwahori subgroup, $\mathcal{I}/U_\mathcal{I}\cong(\FF_q^\times)^r$ and the only unipotent is the trivial character. Thus, Iwahori-spherical representations are all unipotent. Moreover, unipotent representations behave well under the parahoric restriction functors $\res^K$. 
-\iffalse The following can be verified by a standard Harish--Chandra style argument. 
-\begin{proposition}\label{prop:unipotent_padic}
-    Let $(\pi,V)$ be an irreducible admissible representation of $G$. If there is some parahoric subgroup $(K,U_K,\overline{K})$ such that $V^{U_K}$ contains a (potentially non-cuspidal) unipotent representation of $\overline{K}$, then $(\pi,V)$ is a unipotent representation of $G$.
-\end{proposition}\fi
-The first important result is due to Moy and Prasad. A similar result holds for non-unipotent representations, but it is more complicated. 
+Each set $\Irr(G,K,E)$ generates a distinct \textit{Bernstein block} of representations of $G$. If $\mathcal{I}$ is an Iwahori subgroup, $\mathcal{I}/U_\mathcal{I}\cong(\FF_q^\times)^r$ and the only unipotent representation is the trivial character. Thus, Iwahori-spherical representations are all unipotent. 
+
+Moreover, unipotent representations behave well under the parahoric restriction functors $\res^K$. The first important result is due to Moy and Prasad. A similar result holds for non-unipotent representations, but it is more complicated. 
 \begin{proposition}\label{thm:unip_restriction}\cite{Reeder2000}*{Lemma 5.1}
     Assume $G$ is simply connected. Suppose $I\subsetneq S_{\aff}$ and that $V^{U_I}$ contains a cuspidal unipotent representation $\sigma$ of $\overline{K}_I$. If $J\subsetneq S_{\aff}$ with $V^{U_J}\neq 0$, and $J$ is minimal with respect to this property $I=J$.
 \end{proposition}
@@ -63,13 +63,13 @@ Consequently, for any parahoric subgroup $K$, the parahoric restriction functor 
 where $R_{\un}(G)$ and $R_{\un}(\overline{K})$ are the complexification of the Grothendieck groups spanned by $\Irr_{\un}(G)$ and $\Irr_{\un}(\overline{K})$, respectively. Finally, we let
 $$\res^{\cpt}_{\un}:=\bigoplus_{K\in\max(G)}\res^K_{\un}:R_{\un}(G)\longrightarrow \bigoplus_{K\in\max(G)}R_{\un}(\overline{K}).$$
 
-\subsection{The Langlands classification and the dual nonabelian Fourier transform}\label{subsec:Fourier_transform}
+\subsection{The Unipotent Langlands classification}\label{subsec:ULLC}
 
 The Local Langlands provides a beautiful classification of the unipotent representations of $G$ in terms of the geometry of the dual group $G^\vee$ of $G$, of adjoint type. This result is widely known as Lusztig's arithmetic-geometric correspondence.
 \begin{theorem}[The arithmetic-geometric correspondence \cite{Lusztig1995}] There is a natural bijection
     \begin{align*}
         G^\vee\backslash\{(x,\phi)\ |\ x\in G^\vee,\phi\in\widehat{A_x}\}&\longleftrightarrow \Irr_{\un}(G)\\
-        (x,\phi)&\longmapsto (\pi_{(x,\phi)},V_{(x,\phi)}).
+        (x,\phi)&\longmapsto \pi(x,\phi).
     \end{align*}
     In particular, there is an isomorphism
     \begin{equation}\label{eqn:arithmetic-geometric}
@@ -78,28 +78,44 @@ The Local Langlands provides a beautiful classification of the unipotent represe
     where the sum on the left hand side is taken over conjugacy classes of $G^\vee$ and $R(A_x)$ is the space of virtual characters of $A_x$.
 \end{theorem}
 
+Given a Langlands parameter $(x,\phi)$, it is a natural question to ask inside which unipotent block does the representation $\pi(x,\phi)$ lies in. This can be answered using the generalized Springer correspondence, which we will not revise in detail here (see \cite{CiubotaruMasonBrownOkada2025}*{\S4.3}). We only state a fundamental result giving a geometric characterization for a representation $\pi(x,\phi)$ to be Iwahori-spherical, and thus lying in the principal block generated by $\Irr(G,\mathcal{I},\mathbf{1})$. Let $\mathcal{B}^x$ the partial flag variety containing all Borel subgroups of $G^\vee$ containing $x$. This variety carries a natural action of $A_x$ given by conjugation. In particular, the cohomology complex $H^*(\mathcal{B}^x)$ inherits an action of $A_x$ too.
+
+\begin{theorem}\cite{KazhdanLusztig1987}*{Theorem 7.12}
+    The representation $\pi(x,\phi)$ is Iwahori-spherical if and only if $H^*(\mathcal{B}^x)^\phi\neq 0$. In particular, for any $x\in G^\vee$, the representation $\pi(x,\mathbf{1})$ is Iwahori-spherical.
+\end{theorem}
+Consequently, unipotent representations can also be described as the smallest class of representations of $G$ containing Iwahori-spherical representations and closed under L-packets.
+
 In later sections, we display parahoric restriction tables for representations of $G$ parametrized by several elements $x\in G^\vee$. To do this, we use the following standard notation for the Langlands parameters as in \cite{Reeder2000}, which we now explain. 
 \begin{notation}\label{notation:Langlandsparam}
-    Given a representation $\pi(x,\phi)$, let $x=us$ be the Jordan decomposition. Then $u\in Z_{G^\vee}(s)^0$ is a unipotent element of the connected pseudo-Levi subgroup $Z_{G^\vee}(s)^0$, and $\phi$ is an irreducible representation of the component group $A_{su}$. The representation $\pi(x,\phi)$ will be labelled by the type of unipotent element $u$ is inside $Z_{G^\vee}(s)^0$, together with the representation $\phi$. For example, if $G^\vee=F_4(\CC)$ and $u\in G^\vee$ is a unipotent element of type $F_4(a_3)$, there is a semisimple element $s\in Z_{G^\vee}(u)$ of order $2$ such that $Z_{G^\vee}(s)$ is connected of type $C_3\times A_1$. The unipotent element $u$ is then subregular in the first component and regular in the second, labelled by $C_3(42)\times A_1$, and $\widehat{A_{su}}=C_2\times C_2$. Thus, the four representations of $F_4(F)$ in the $L$-packet parametrized by $x=su\in F_4(\CC)$ are then labelled $[C_3(42)A_1,\pm\pm]$. %Thus, each representation has a name of the form $[u\in Z_{G^\vee}(s)^0,\phi]$ where $\phi$ is an irreducible representation of $A_{su}$.
+    Given a representation $\pi(x,\phi)$, let $x=us$ be the Jordan decomposition. Then $u$ is a unipotent element of the connected pseudo-Levi subgroup $Z_{G^\vee}(s)^0$, and $\phi$ is an irreducible representation of the component group $A_{us}$. The representation $\pi(x,\phi)$ will be labelled by the type of unipotent element $u$ is inside $Z_{G^\vee}(s)^0$, together with the representation $\phi$. For example, if $G^\vee=F_4(\CC)$ and $u\in G^\vee$ is a unipotent element of type $F_4(a_3)$, there is a semisimple element $s\in Z_{G^\vee}(u)$ of order $2$ such that $Z_{G^\vee}(s)$ is connected of type $C_3\times A_1$. The unipotent element $u$ is then subregular in the first component and regular in the second, labelled by $C_3(42)\times A_1$, and $\widehat{A_{us}}=C_2\times C_2$. Thus, the four representations of $F_4(F)$ in the $L$-packet parametrized by $x=su\in F_4(\CC)$ are labelled $[C_3(42)A_1,\pm\pm]$. %Thus, each representation has a name of the form $[u\in Z_{G^\vee}(s)^0,\phi]$ where $\phi$ is an irreducible representation of $A_{us}$.
 \end{notation}
 
-Given a Langlands parameter $(x,\phi)$, it is a natural question to ask inside which unipotent block does the representation $(\pi_{(x,\phi)},V_{(x,\phi)})$ lies inside of. This is the content of the generalized Springer correspondence, which we will not revise in detail here (see \cite{CiubotaruMasonBrownOkada2025}*{\S4.3}). Instead, we will state a fundamental result giving a geometric characterization for Iwahori-spherical representations in terms of the data $(x,\phi)$. These representations lie in the \textit{principal block}, generated by $\Irr(G,\mathcal{I},\mathbf{1})$. For the other representations that are not Iwahori-spherical, we will use Reeder's computations in \cite{Reeder2000}*{\S 10,11}. To state this result, we note that given the data $(x,\phi)$, one can consider the partial flag variety $\mathcal{B}^x$ containing all Borel subgroups of $G^\vee$. This variety carries a natural action of $A_x$ given by conjugation. In particular, the cohomology complex $H^*(\mathcal{B}^x)$ inherits an action of $A_x$ too.
-\begin{theorem}\cite{KazhdanLusztig1987}*{Theorem 7.12}
-    The representation $(\pi_{(x,\phi)},V_{(x,\phi)})$ is Iwahori-spherical if and only if $H^*(\mathcal{B}^x)^\phi\neq 0$. In particular, for any $x\in G^\vee$, the representation $(\pi_{(x,\mathbf{1})},V_{(x,\mathbf{1})})$ is Iwahori-spherical.
-\end{theorem}
 
-In this section we also define the dual nonabelian Fourier transform for unipotent representations of $p$-adic groups. Conjecturally, we expect the existence of a map $\FT^\vee$, a dual nonabelian Fourier transform, on the unipotent representation space $R_{\un}(G)$ with analogous properties to Lusztig's nonabelian Fourier transforms $\FT^{\overline{K}}$ and compatible with the unipotent parahoric restriction maps $\res_{\un}^K$. However, such a map has not been constructed in the literature in general on the infinite dimensional space $R_{\un}(G)$. For some applications, it is enough to construct it on the elliptic unipotent representation space $R_{\un,\mathrm{ell}}(G)$, a finite dimensional subspace of $R_{\un}(G)$ which we now describe. 
+\subsection{Chevalley involutions and the dual nonabelian Fourier transform}\label{subsec:Fourier_transform}
 
-Classically, the elliptic unipotent representation space $\overline{R}_{\un}(G)$ is defined as the quotient of $R_{\un}(G)$ by the subspace spanned by all properly parabolically induced representations. Equivalently, $\overline{R}_{\un}(G)$ is obtained by computing the quotient of $R_{\un}(G)$ by the radical of the Euler--Poincare pairing
+In this section we define a modified version of the \textit{dual elliptic nonabelian Fourier transform}, constructed in \cite{AubertCiubotaruRomano2024}*{\S9} \textcolor{red}{Add citations}. The missing ingredient to the conjecture is the role played by a Chevalley involution on the Langlands parameters, which we now describe. As usual, we let $G^\vee$ be the complex dual group of $G$.
+
+\begin{definition}[\textcolor{red}{cite this better}]
+    An automorphism $C:G^\vee\to G^\vee$ is called a \textit{Chevalley involution} if there is some maximal torus $T^\vee$ of $G^\vee$ such that $C(t)=t^{-1}$ for all $t\in T^\vee$.
+\end{definition}
+Let $\Aut(G^\vee)$ be the set of automorphisms of $G^\vee$, $\Int(G^\vee)$ the subset of inner automorphisms and $\mathrm{Out}(G^\vee)=\Aut(G^\vee)/\Int(G^\vee)$. We denote inner automorphisms by $\inn(x):g\mapsto xgx^{-1}$. Using based root data and pinnings, one can show that any Chevalley involution $C:G^\vee\to G^\vee$ exists, satisfies $C^2=1$ and for every semisimple element $g\in G$, $C(g)$ is conjugate to $g$. In addition, if $C_1$ and $C_2$ are Chevalley involutions with respect to $T_1^\vee$ and $T_2^\vee$, then they are conjugate by an inner automorphism of of $G^\vee$ (\textcolor{red}{cite here!!}). Thus, Chevalley involutions all lie in a distinguished class of $\mathrm{Out}(G^\vee)$ of order dividing $2$. The following result characterizes the order of this class depending on the type of $G^\vee$. We insist that $G^\vee$ is assumed to be simple.
+
+\begin{lemma}
+    The Chevalley involutions $C:G^\vee\to G^\vee$ are inner if and only if $-1$ is in the Weyl group, in which case, $C=\inn(n_0)$, for some $n_0\in N_{G^\vee}(T^\vee)$ representing the longest element $w_0=-1$. In particular, Chevalley involutions are inner for types $A_1,B_n,C_n,D_{2k},E_7,E_8,F_4$ and $G_2$, and outer for the other types.
+\end{lemma}
+
+
+The \textit{dual nonabelian Fourier transform} is a conjectural involution $\FT^\vee:R_{\un}(G)\to R_{\un}(G)$ that lifts Lusztig's non-abelian Fourier transform and is compatible with the parahoric restriction maps $\res^K_{\un}$. While such a map has not been constructed in the literature on the infinite dimensional space $R_{\un}(G)$, we consider the finite-dimensional quotient $\overline{R}_{\un}(G)$ of $R_{\un}(G)$ by the radical of the Euler--Poincare pairing
+
 \begin{equation*}
     EP_G(\ ,\ ):R_{\un}(G)\times R_{\un}(G)\longrightarrow\CC,\quad (V,V')\longmapsto\sum_{i\geq0}(-1)^i\Ext^i(V,V'),\text{ where }V,V'\in\Irr_{\un}(G),
 \end{equation*}
-and extended by linearity, and where $\Ext^i(V,V')$ are calculated in the category of smooth complex $G$-representations. Thus, the space $R_{\un}(G)$ carries a natural non-degenerate pairing $EP_G(\ ,\ )$. Similarly, for each $x\in G^\vee$ the space of virtual representations $R(A_x)$ carries a natural elliptic pairing $(\ ,\ )^{A_x}_{\mathrm{ell}}$ (see \cite{AubertCiubotaruRomano2024}*{\S8.1} for the definition), and $\overline{R}(A_x)$ is the quotient of $R(A_x)$ by the radical of the elliptic pairing. The arithmetic-geometric \eqref{eqn:arithmetic-geometric} induces an isometric isomorphism on the elliptic representation spaces
+and extended by linearity, and where $\Ext^i(V,V')$ are calculated in the category of smooth complex $G$-representations. Thus, the space $\overline{R}_{\un}(G)$ carries a natural non-degenerate pairing $EP_G(\ ,\ )$. Similarly, for each $x\in G^\vee$ the space of virtual representations $R(A_x)$ carries a natural elliptic pairing $(\ ,\ )^{A_x}_{\mathrm{ell}}$ (see \cite{AubertCiubotaruRomano2024}*{\S8.1} for the definition), and we let $\overline{R}(A_x)$ be the quotient of $R(A_x)$ by the radical of the elliptic pairing. The arithmetic-geometric \eqref{eqn:arithmetic-geometric} induces an isometric isomorphism on the elliptic representation spaces
 \begin{equation}\label{eqn:LLC_unipotent_elliptic}
     \overline{\LLC}_{\un}:\bigoplus_{x\in G^\vee}\overline{R}(A_x)\longrightarrow\overline{R}_{\un}(G),
 \end{equation}
 where the sum on the left is again over conjugacy classes of elements in $G^\vee$. The left hand side of \eqref{eqn:LLC_unipotent_elliptic} can be further decomposed into
-$$\bigoplus_{x\in G^\vee}\overline{R}(A_x)=\bigoplus_{\substack{u\in G^\vee\\\mathrm{unipotent}}}\ \bigoplus_{\substack{s\in Z_{G^\vee}(u)\\\mathrm{semisimple}}}\overline{R}(A_{su}).$$
+$$\bigoplus_{x\in G^\vee}\overline{R}(A_x)=\bigoplus_{\substack{u\in G^\vee\\\mathrm{unipotent}}}\ \bigoplus_{\substack{s\in Z_{G^\vee}(u)\\\mathrm{semisimple}}}\overline{R}(A_{us}).$$
 Next, fix some unipotent element $u\in G^\vee$ and let $\Gamma_u$ be the reductive part of the centralizer $Z_{G^\vee}(u)$. We define the set of elliptic pairs associated to $u$ to be
 $$\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}=\{(s,h)\in\Gamma_u\times\Gamma_u\ |\ s,h\text{ semisimple, }sh=hs, Z_{\Gamma_u}(s,h)\text{ is finite}\}.$$
 It is not hard to show that this set is always finite (see \cite{AubertCiubotaruRomano2024}*{Lemma 8.1}). For every $(s,h)\in\mathcal{Y}(\Gamma_u)$, define 
@@ -108,40 +124,215 @@ It is not hard to show that this set is always finite (see \cite{AubertCiubotaru
 \end{equation}
 where $\overline{h}$ is the image of $h$ in $A_{\Gamma_u}(s)$. Moreover, let $\overline{\Pi}(s,h)$ denote the image in $\overline{R}(A_{\Gamma_u}(s))$ and let $\CC[\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}]^{\Gamma_u}\cong\CC[\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}]$ be the space of $\Gamma_u$-invariant functions $\mathcal{Y}(\Gamma_u)$. Let $\mathbf{1}_{[(s,h)]}$ be the indicator function of the $\Gamma_u$-orbit of $(s,h)$. 
 \begin{proposition}\label{prop:elliptic_pairs}\cite{AubertCiubotaruRomano2024}*{Proposition 8.3} Let $u\in G^\vee$ be unipotent. Then the correspondence $\mathbf{1}_{[(s,h)]}\mapsto\overline{\Pi}(s,h)$ induces an isomorphism
-    $$\CC[\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}]^{\Gamma_u}\longrightarrow\bigoplus_{\substack{s\in Z_{G^\vee}(u)\\\mathrm{semisimple}}}\overline{R}(A_{su})$$
+    $$\CC[\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}]^{\Gamma_u}\longrightarrow\bigoplus_{\substack{s\in Z_{G^\vee}(u)\\\mathrm{semisimple}}}\overline{R}(A_{us})$$
 \end{proposition}
 Finally, for each $[(s,h)]\in\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$, define the virtual combinations
 \begin{equation}
-    \Pi(u,s,h):=\sum_{\phi\in\widehat{A_{\Gamma_u}(s)}}\phi(h)\pi(su,\phi)\in R_{\un}(G),
+    \Pi(u,s,h):=\sum_{\phi\in\widehat{A_{us}}}\phi(h)\pi(us,\phi)\in R_{\un}(G),
 \end{equation}
 and let $\overline{\Pi}(u,s,h)$ be the corresponding images in $\overline{R}_{\un}(G)$.
 \begin{definition}
     The elliptic unipotent representation space $R_{\un,\mathrm{ell}}(G)$ is the finite-dimensional subspace of $R_{\un}(G)$ spanned by virtual characters 
-    $\{\Pi(u,s,h)\ |\ u\text{ unipotent, and }(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}\}.$
+    $\{\Pi(u,s,h)\ |\ u\text{ unipotent,  }(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}\}.$
 \end{definition}
 Thus, the isomorphism \eqref{eqn:LLC_unipotent_elliptic} together with Proposition \ref{prop:elliptic_pairs} yields an isometric isomorphism
 \begin{equation}
     R_{\un,\mathrm{ell}}(G)\longrightarrow\overline{R}_{\un}(G),\quad\Pi(u,s,h)\mapsto\overline{\Pi}(u,s,h)
 \end{equation}
-The set $\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$ admits an obvious involution given by $\mathrm{flip}:(s,h)\mapsto(h,s)$, which induces an involution on $R_{\un,\mathrm{ell}}(G)$.
+We now define the dual elliptic nonabelian Fourier transform on $R_{\un,\mathrm{ell}}(G)$. 
+
 \begin{definition}
     The \textit{dual elliptic nonabelian Fourier transform} is the involutive linear map $\FT^\vee_{\mathrm{ell}}:R_{\un,\mathrm{ell}}\rightarrow R_{\un,\mathrm{ell}}$ defined by
     \begin{equation*}
-        \FT^\vee_{\mathrm{ell}}(\Pi(u,s,h))=\Pi(u,h,s),\quad u\in G^\vee\text{ unipotent, }(s,h)\in\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}.
+        \FT^\vee_{\mathrm{ell}}(\Pi(u,s,h))=\Pi(C(u),C(h),C(s)),\quad u\in G^\vee\text{ unipotent, }(s,h)\in\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}},
     \end{equation*}
+    where $C:G^\vee\to G^\vee$ is a Chevalley involution of the complex dual group.
 \end{definition}
-
-We are now ready to state the main conjecture for elliptic unipotent representations.
-
-\begin{conjecture}\cite{AubertCiubotaruRomano2024}*{Conjecture 1.2}
+We note that $\FT^\vee_{\ell}$ is a well-defined involution. A Chevalley involution induced an isomorphism $C:\Gamma_u\to\Gamma_{C(u)}$ and therefore $(C(h),C(s))\in\Gamma_{C(u)}\backslash\mathcal{Y}(\Gamma_{C(u)})_{\mathrm{ell}}$. Moreover, any two Chevalley involutions differ by an inner automorphism, so $\FT^\vee_{\mathrm{ell}}$ is independent on the choice of Chevalley involution. Finally, 
+$$(\FT^\vee_{\mathrm{ell}})^2(\Pi(u,s,h))=\Pi(C^2(u),C^2(s),C^2(h))=\Pi(u,s,h).$$
+%We are now ready to state the main conjecture for elliptic unipotent representations.
+\begin{conjecture}\cite{AubertCiubotaruRomano2024}*{Conjecture 1.2}\label{conj:main2}
     Let $G$ be a split semisimple $p$-adic group of simply connected type. Then the following diagram commutes up to roots of unity,
-    \[
+    \begin{equation}\label{eqn:diagram}
         \begin{tikzcd}
         R_{\un,\text{ell}}(G) \arrow[r, "\FT^\vee_{\text{ell}}"] \arrow[d, "\res_{\un}^{\cpt}"] & R_{\un,\text{ell}}(G) \arrow[d, "\res_{\un}^{\cpt}"] \\
         \bigoplus_{K\in\max(G)}R_{\un}(\overline{K}) \arrow[r, "\FT^{\cpt}_{\un}"] & \bigoplus_{K\in\max(G)}R_{\un}(\overline{K}),
-        \end{tikzcd}
-    \]
+        \end{tikzcd}  
+    \end{equation}
     where $\FT^{\cpt}_{\un}:=\bigoplus_{K\in\max(G)}\FT^{\overline{K}}_{\un}$ on each coordinate.
 \end{conjecture}
 
-The horizontal maps in the above conjecture are easily computable. They are involutions on finite dimensional representation spaces with canonical basis, and computing the matrices is straightforward. The difficulty of the above conjecture relies on the computation of the unipotent parahoric restriction maps $\res^K_{\un}$. This is due to the fact that $R_{\un}(G)$ has a natural basis in terms of the geometry of the dual group $G^\vee$, while irreducible characters $R_{\un}(\overline{K})$ are parametrized by families and Lusztig's labels. The connection between these parametrizations is deep, and we devote the next section to discuss this in detail for Iwahori-spherical representations. At the end we also give a brief discussion on the computation of this map for non-Iwahori-spherical representations. We closely follow Reeder's discussion in \cite{Reeder2000}*{\S8,9}.
+\begin{remark}
+    Since Chevalley involutions are inner automorphisms for types $A_1,B_n,C_n,D_{2k},E_7$, $E_8,F_4$ and $G_2$, the above conjecture remains the same statement as in \cite{AubertCiubotaruRomano2024}*{Conjecture 9.7}. Thus, Conjecture \ref{conj:main2} holds for $G=\SO_{2n+1}$ by the work of Moeglin--Waldspurger \cite{MoglinWaldspurger2003}, for $G=G_2$ by the work of Ciubotaru--Opdam \cite{CiubotaruOpdam2010} and for $G=\Sp_4$ by the work of Aubert--Ciubotaru--Romano \cite{AubertCiubotaruRomano2024}. 
+\end{remark}
+
+In general, the main difficulty of the above conjecture relies on the computation of the unipotent parahoric restriction maps $\res^K_{\un}$. The space $R_{\un}(G)$ has a natural basis in terms of the geometry of the dual group $G^\vee$, while irreducible characters $R_{\un}(\overline{K})$ are parametrized by Lusztig's labels, often of combinatorial flavour. The connection between these parametrizations is deep, and we devote the next section to discuss this in detail for Iwahori-spherical representations. We also give a brief discussion on the computation of this map for non-Iwahori-spherical representations. We closely follow Reeder's discussion in \cite{Reeder2000}*{\S8,9}.
+
+\subsection{Action of the fundamental group}
+
+Let $\mathcal{G}_{\ad}$ be the adjoint group of the simple algebraic $F$-group $\mathcal{G}$ split over $F$ and let $G_{\ad}=\mathcal{G}_{ad}(F)$ be the adjoint group of $F$. The natural short exact sequence of algebraic groups 
+$$1\longrightarrow Z(\mathcal{G})\longrightarrow\mathcal{G}\xrightarrow{\ \eta\ }\mathcal{G}_{\ad}\longrightarrow1$$
+gives rise, via Galois cohomology, to an exact sequence
+$$1\longrightarrow Z(\mathcal{G})(F)\longrightarrow G \xrightarrow{\ \eta\ }G_\ad\xrightarrow{\ \delta\ }H^1(F,Z(\mathcal{G}))\longrightarrow H^1(F,\mathcal{G})=1,$$
+by the Kneser--Bruhat--Tits theorem. In particular, $\eta:G\to G_\ad$ is not surjective, and $G_\ad/G:=G_\ad/\eta(G)$ is isomorphic to the Galois cohomology group $H^1(F,Z(\mathcal{G}))$. Let $\mathcal{T}$ be an $F$-split maximal torus of $\mathcal{G}$ and let $\mathcal{T}_\ad:=\mathcal{T}/Z(\mathcal{G})$ be an $F$-split maximal torus of $\mathcal{G}_\ad$, with $T=\mathcal{T}(F)$ and $T_\ad=\mathcal{T}_\ad(F)$. It is known \cite{Springer1998}*{Lemma 16.3.6} that the group $T_\ad/T:=T_\ad/\eta(T)$ is naturally isomorphic to $G_\ad/G$, and this happens to be a very useful characterization.
+
+The standard adjoint action of $G_{\ad}$ on $G$ induces a natural action on $\Irr_{\un}(G)$ given by pullback 
+$$(\mathrm{Ad}(g)^*\pi)(h)=(\pi\circ\mathrm{Ad}(g))(h)=\pi(ghg^{-1})\text{ for }g\in G_{\ad}\text{ and } h\in G.$$ 
+For any $g\in\eta(G)$, $\mathrm{Ad}(g)$ is an inner automorphism, so the action above factors through $G_\ad/G$ but is generally non-trivial since $G_{\ad}/G$ acts on $G$ by outer automorphisms. In this subsection, we describe the effect of this action on the set of unipotent Langlands parameters of $G$ explicitly. We closely follow Solleveld's results in \cite{Solleveld2020}*{\S2.1} and use Kato's notation in \cite{Kato1983}.
+
+Let $x=su$ be the Jordan decomposition of $x\in G^\vee$ and let $M^\vee:=Z_{G^\vee}(s)^0$ be a connected complex reductive group. We then consider the finite component group
+$$R_s:=Z_{G^\vee}(s)/M^\vee=\pi_0(Z_{G^\vee}(s)).$$
+Using Galois cohomology, Solleveld constructs a group homomorphism
+$$\tau_{s}:G_\ad/G\longrightarrow\Hom(R_s,\CC^\times).$$
+Next, we note that $Z_{G^\vee}(x)=Z_{Z_{G^\vee}(s)}(u)$ and therefore $A_x=\pi_0(Z_{Z_{G^\vee}(s)}(u))$. There is a natural map 
+$$Z_{G^\vee}(x)\hookrightarrow Z_{G^\vee}(s) \twoheadrightarrow R_s,\quad\text{descending to the map}\quad A_x\xrightarrow{\ \lambda_x\ } R_s,$$
+whose kernel is $A^s_u:=\pi_0(Z_{M^\vee}(u))$ and whose image is the subgroup
+$$R_s(u)=\left\{r\in R_s\ |\ r\cdot\mathcal{O}_u^{M^\vee}=\mathcal{O}_u^{M^\vee}\right\}.$$
+We therefore obtain a (split) short exact sequence
+$$1\longrightarrow A_u^s\longrightarrow A_x \xrightarrow{\ \lambda_x\ } R_s(u)\longrightarrow 1,$$
+and by composing with $\lambda_x$ we obtain a map
+\begin{align}
+    \tau_x:G_\ad/G&\longrightarrow \Hom(A_x,\CC^\times),\\
+    g &\longmapsto \tau_s(g)\circ\lambda_x.\notag 
+\end{align}
+We note that, by construction, $\tau_x(g)|_{A^s_u}=1$ for all $g\in G_\ad/G$. By \cite{Solleveld2020}*{Theorem 2.10}, the action of $G_\ad/G$ on the Langlands parameters is given by
+$$\mathrm{Ad}(g)^*\pi(x,\phi)=\pi(x,\phi\otimes\tau_x(g)^{-1}).$$
+Next, we study in more detail the structure of the group $G_\ad/G$. By the discussion above, it is naturally isomorphic to $T_\ad/T$. Let $\nu_F:F^\times\to\ZZ$ be the normalizer valuation on $F$, and consider the canonical homomorphism
+\begin{align*}
+    \nu_{T_\ad}:T_\ad&\longrightarrow \Hom(X^*(T_\ad),\ZZ)=X_*(T_\ad)=P^\vee,\\
+    t&\longmapsto (\chi\longmapsto\nu_F(\chi(t))),
+\end{align*}
+where $P^\vee$ is the coweight lattice. The fundamental group of $G_\ad$ is defined as $\Omega:=P^\vee/Q^\vee$, where $Q^\vee=X_*(T)$ is the coroot lattice, and the map $\nu_{T_\ad}$ naturally induces the Kottowitz homomorphism
+$$\kappa_T:T_\ad/T \xtwoheadrightarrow{} \Omega$$
+fitting in the (split) short exact sequence 
+$$1\longrightarrow T_\ad(\mathcal{O}_F)/\eta(T(\mathcal{O}_F))\longrightarrow T_\ad/T\xrightarrow{\ \kappa_T\ }\Omega\longrightarrow 1.$$
+The splitting on this short exact sequence is not canonical; it depends on a choice of uniformizer. Moreover, the action of any $t\in T_\ad(\mathcal{O}_F)$ on the Langlands parameters is trivial by \cite{Solleveld2020}*{Lemma 7.5}, and therefore the map $\tau_x$ factors through the Kottowitz homomorphism $\kappa:G_\ad/G\twoheadrightarrow\Omega$, finally giving a map
+$$\overline{\tau}_x:\Omega\longrightarrow\Hom(A_x,\CC^\times)$$
+such that $\mathrm{Ad}(\omega)^*\pi(x,\phi)=\pi(x,\phi\otimes\overline{\tau}_x(\omega)^{-1})$ for all $\omega\in\Omega$. 
+
+\begin{lemma}\label{lem:action_on_Pi}
+    Let $u\in G^\vee$ unipotent and let $(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$ be an elliptic pair. For every $\omega\in\Omega$, 
+    $$\mathrm{Ad}(\omega)^*\Pi(u,s,h)=\overline{\tau}_{us}(\omega)(h)\Pi(u,s,h).$$
+\end{lemma}
+\begin{proof}
+    This follows by direct computation; indeed
+    \begin{align*}
+        \mathrm{Ad}(\omega)^*\Pi(u,s,h)&=\sum_{\phi\in\widehat{A_{us}}}\phi(h)\mathrm{Ad}(w)^*\pi(us,\phi)=\\
+        &=\sum_{\phi\in\widehat{A_{us}}}\phi(h)\pi(us,\phi\otimes\overline{\tau}_{us}(\omega)^{-1})=\\
+        &=\sum_{\psi\in\widehat{A_{us}}}(\psi\otimes\overline{\tau}_{us}(\omega))(h)\pi(us,\psi)=\overline{\tau}_{us}(\omega)(h)\Pi(u,s,h).
+    \end{align*} 
+\end{proof}
+
+In \cite{Solleveld2020}*{\S2.1}, Solleveld gives a general construction for the homomorphism $\overline{\tau}_x$ for each $x\in G^\vee$. In this setting of unramified Langlands parameters, we can give an explicit formulas that are very useful. Firstly, let $\eta^\vee:G^\vee_{\scn}\to G^\vee$ be the universal covering map of $G^\vee$. Fix some $u\in G^\vee$ unipotent and $(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$. While $u$ has a unique unipotent lift $\tilde{u}\in G^\vee_{\scn}$, the semisimple elements $s$ and $h$ do not. Nevertheless, for any lifts $\tilde{s},\tilde{h}\in G^\vee_{\scn}$, the value of
+$$c_s(h):=[\tilde{s},\tilde{h}]=\tilde{s}\tilde{h}\tilde{s}^{-1}\tilde{h}^{-1}\in Z(G^\vee_{\scn})$$
+is independent of the choice of lifts. Finally, there is a natural identification
+$$\Omega\longleftrightarrow X^*(Z(G^\vee_{\scn}))=\Hom(Z(G^\vee_{\scn}),\CC^\times),$$
+so each $\omega\in\Omega$ induces a character $\chi_\omega:Z(G^\vee_{\scn})\to\CC^\times$. Then, Solleveld constructs
+\begin{equation}
+    \overline{\tau}_{us}(\omega)(h)=\chi_\omega(c_s(h)).
+\end{equation}
+With this expression, we can prove an important identity.
+\begin{proposition}\label{prop:identity_tau}
+    Fix a unipotent element $u\in G^\vee$ and let $(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$ be an elliptic pair. If $C:G^\vee\to G^\vee$ is a Chevalley involution, then for all $\omega\in\Omega$, the identity
+    \begin{equation}
+        \overline{\tau}_{us}(\omega)(h)=\overline{\tau}_{C(uh)}(\omega)(C(s))
+    \end{equation}
+    holds.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+
+Furthermore, the fundamental group $\Omega$ can be naturally embedded inside the automorphism group of the extended Dynkin diagram of $G$. By composing with inner automorphisms if necessary, we may assume that $\mathrm{Ad}(\omega)$ acts on $G$ by permuting simple root spaces according to the automorphism of the Dynkin diagram it is associated with. In particular, if $J\subsetneq S_{\aff}$ and $\omega\in\Omega$, the map $\mathrm{Ad}(\omega)^*$ induces an isomorphism $\overline{K}_J\xrightarrow{\sim} \overline{K}_{\omega(J)}$ and 
+\begin{equation}\label{eqn:Omega_action}
+    \res_{\un}^{K_J}\mathrm{Ad}(\omega)^*\Pi(u,s,h)\cong\res_{\un}^{K_{\omega(J)}}\Pi(u,s,h).
+\end{equation}
+\begin{proposition}\label{prop:omega_action}
+    Let $G$ be a simple, split $p$-adic group of simply connected type. Suppose that the diagram \eqref{eqn:diagram} commutes for the parahoric subgroup $K_J$ where $J\subsetneq S_\aff$. Then, for any $\omega\in\Omega$, the diagram also commutes for the parahoric $K_{\omega(J)}$.
+\end{proposition}
+\begin{proof}
+    Again, this follows directly from Lemma \ref{lem:action_on_Pi}, Proposition \ref{prop:identity_tau} and \eqref{eqn:Omega_action} since
+    \begin{align*}
+        \res^{K_{\omega(J)}}_{\un}\circ\FT^\vee_{\mathrm{ell}}\Pi(u,s,h)&=\res^{K_{\omega(J)}}_{\un}\Pi(C(u),C(h),C(s))=\\
+        &=\res^{K_J}_{\un}\mathrm{Ad}(\omega)^*\Pi(C(u),C(h),C(s))=\\
+        &=\overline{\tau}_{C(uh)}(\omega)(C(s))\ \res^{K_J}_{\un}\circ\FT^\vee_{\mathrm{ell}}\Pi(u,s,h)=\\
+        &=\overline{\tau}_{us}(\omega)(h)\ \FT^{K_J}_{\un}\circ\res^{K_J}_{\un}\Pi(u,s,h)=\\
+        &=\FT^{K_J}_{\un}\circ\res^{K_J}_{\un}\mathrm{Ad}(\omega)^*\Pi(u,s,h)=\FT^{K_{\omega(J)}}_{\un}\circ\res^{K_{\omega(J)}}_{\un}\Pi(u,s,h).
+    \end{align*}
+\end{proof}
+\iffalse
+\begin{remark}\label{rem:condition}
+    We note that condition \eqref{eqn:condition} holds when $s=1$ (or $h=1$ by symmetry). Indeed, $C(1)=1$ so $\overline{\tau}_{C(uh)}(\omega)(1)=1$. On the other hand, when $s=1$, $R_s$ is trivial so $A_x=A_u^s$ and therefore $\overline{\tau}_u(\omega)$ are all trivial characters. 
+\end{remark}
+\fi
+
+\newpage
+
+\iffalse
+Let us discuss the image of $\overline{\tau}_x$ in greater detail. Consider the dual map $\eta^\vee:G^\vee_{\scn}\rightarrow G^\vee$ and let $\tilde{u}$ be the unique unipotent lift of $u$ in the simply connected cover $G_{\scn}^\vee$ of $G^\vee$ and fix any lift $\tilde{s}$ of $s$ in $G_{\scn}^\vee$. Then $\tilde{x}=\tilde{s}\tilde{u}$ is a lift of $x$ in $G_{\scn}^\vee$. Since $\tilde{u}$ is the unique unipotent lift of $u$, the canonical map $Z_{G_{\scn}^\vee}(\tilde{u})\rightarrow Z_{G^\vee}(u)$ is surjective. While the map $Z_{G_{\scn}^\vee}(\tilde{s})\rightarrow M^\vee:=Z_{G^\vee}(s)^0$ is well-defined and surjective, the group $Z_{G^\vee}(s)$ may be disconnected, with component group isomorphic to $R$. Consider now the composition
+$$Z_{G_{\scn}^\vee}(\tilde{x})=Z_{Z_{G_{\scn}^\vee}(\tilde{s})}(\tilde{u})\twoheadrightarrow Z_{M^\vee}(u)\hookrightarrow Z_{Z_{G^\vee}(s)}(u)=Z_{G^\vee}(x).$$
+The first map is surjective (follows from the above observation) while the second map is clearly injective.
+Since $Z_{G^\vee}(s)/M^\vee\cong R_s$, we have that $Z_{G^\vee}(x)/Z_{M^\vee}(u)\cong R_s(u)$ by definition. Recall that $A_{\tilde{x}}$ and $A_x$ are the component groups of $Z_{G_{\scn}^\vee}(\tilde{x})$ and $Z_{G^\vee}(x)$, respectively, and let $A_x^0$ be the component group of $Z_{M^\vee}(u)$. It then follows that $A_x\cong A_x^0\rtimes R(u)$, and we have the short exact sequence 
+\begin{equation}\label{eqn:SES_comp}
+    1\rightarrow Z/(Z\cap Z_{G_{\scn}^\vee}(\tilde{x})^0)\rightarrow A_{\tilde{x}}\rightarrow A_x^0\rightarrow 1,
+\end{equation}
+which implies that there is a bijection $\phi\leftrightarrow\tilde{\phi}$ between irreducible representations of $A_x^0$ and irreducible representations of $A_{\tilde{x}}$ trivial on the centre $Z$. Since all $\tau_x(g)$ are trivial on $Z_{G^\vee}(s)^0$, it follows that all $\overline{\tau}_x(g)$ are trivial on $A_x^0$ and therefore they all arise as inflations of characters of $R(u)$. In other words, the homomorphism $\overline{\tau}_x(g)$ factors through  
+$$\overline{\tau}_x(g):G_{\ad}/G\longrightarrow\Hom(R(u),\CC^\times)\xrightarrow{\mathrm{inf}}\Hom(A_x,\CC^\times).$$
+The following result fully determines the image of $\overline{\tau}_x(g)$.
+\begin{lemma}
+    The map $\overline{\tau}_x:G_{\ad}/G\rightarrow\Hom(R(u),\CC^\times)$ is surjective. 
+\end{lemma}
+\begin{proof}
+    Given the Langlands parameter $(x,\phi)$ of $G$, we let $\tilde{x}\in G^\vee_{\scn}$ be as above and $\tilde{\phi}$ be the character of $A_{\tilde{x}}$ trivial on $Z(G^\vee_{\scn})$ obtained by restricting $\phi$ to $A_x^0$ and the pulling back to $A_{\tilde{x}}$ via \eqref{eqn:SES_comp}. Then $(\tilde{x},\tilde{\phi})$ is naturally a Langlands parameter for $G_{\ad}$. By \cite{Solleveld2020}*{Lemma 7.3}, the pullback 
+    $$\eta^*\pi(\tilde{x},\tilde{\phi})=\bigoplus_{\chi\in\widehat{A_x}}\Hom_{A_{\tilde{x}}}(\tilde{\phi},\tilde{\chi})\otimes\pi(x,\chi)=\bigoplus_{\rho\in\widehat{R(u)}}\pi(x,\phi\otimes\rho).$$
+    By standard Clifford theory, we know that $G_{\ad}$ must act transitively on the irreducible components of the right hand side, thus completing the proof.
+\end{proof}
+
+\newpage
+\fi
+
+\subsection{The \texorpdfstring{$\SL_n(F)$}{PDFstring} case} \label{subsec:SLn}
+
+In this section we prove that Conjecture \ref{conj:main2} holds for $G=\SL_n(F)$. Since the dual group is $G^\vee=\PGL_n(\CC)$, via Jordan's normal form each unipotent conjugacy class corresponds to a partition of $n$ $\lambda= (\underbrace{1,\ldots,1}_{r_1}, \underbrace{2,\ldots,2}_{r_2}, \ldots, \underbrace{\ell,\ldots,\ell}_{r_\ell}),$ with $r_1+2r_2+\cdots+\ell r_\ell=n$. Given $u\in\PGL_n(\CC)$ unipotent with corresponding partition $\lambda_u$ of $n$, the reductive part $\Gamma_u$ of the centralizer of $u$ in $G^\vee$ contains elliptic pairs if and only if $\lambda_u$ is rectangular; that is, if $\lambda_u=(\underbrace{m,\ldots,m}_{d})$ for some $n=md$ (see \cite{AubertCiubotaruRomano2024}*{Proposition 13.2}). In that case 
+\[
+    \PGL_d(\CC)\cong\Gamma_u,\quad g\mapsto g\otimes I_m.
+\] 
+Let $W=S_d$ be the Weyl group of $\PGL_d(\CC)$ (type $A_{d-1}$) and let $\dot{w}_d$ be the permutation matrix corresponding to the $d$-cycle $w_d=(1,2,3,\ldots,d)\in S_d$. In addition, let $s_d=\mathrm{diag}(1,\zeta_d,\zeta_d^2,\ldots,\zeta_d^{d-1})\in\PGL_d(\CC)$ (note that $s_d$ is a  regular semisimple element). Then a standard group theory argument shows that 
+\[
+    \mathcal{Y}(\Gamma_u)_{\mathrm{ell}}=\bigsqcup_{k\in(\ZZ/d\ZZ)^\times} \Gamma_u\cdot(s_d,\dot{w}_d^k)
+\]
+and moreover the pairs $(\dot{w}_d^k,s_d)$ and $(s_d,\dot{w}_d^{-k})$ are $\Gamma_u$-conjugate. In particular, the number of orbits of elliptic pairs in $G^\vee=\PGL_n(\CC)$ is 
+\begin{equation*}
+    \sum_{u\text{ unipotent class}}|\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}|=\sum_{d\mid n}|(\ZZ/d\ZZ)^\times|=\sum_{d\mid n}\varphi(d)=n.
+\end{equation*}
+For a detailed proof of these facts, see \cite{AubertCiubotaruRomano2024}*{\S 13.1}. 
+
+For the remainder of the subsection, fix some $d\mid n$, let $m=n/d$ and let $u_{d\times m}\in\PGL_n(\CC)$ be the standard unipotent element with Jordan blocks $\lambda_u=(\underbrace{m,\ldots,m}_{d})$. Fix a primitive $d$-th root of unity $\zeta_d$ and let 
+$$s_{d\times m}=s_d\otimes I_m=\textrm{diag}(\underbrace{1,\ldots,1}_{m},\underbrace{\zeta_d,\ldots,\zeta_d}_{m},\ldots,\underbrace{\zeta_d^{d-1},\ldots,\zeta_d^{d-1}}_{m})\quad\text{and}\quad \dot{w}_{d\times m}=\dot{w}_d\otimes I_m.$$
+%We note that $s_{d\times m}$ and $\dot{w}_{d\times m}$ are the images $s_d$ and $\dot{w}_d$ under the isomorphism $\PGL_d(\CC)\cong\Gamma_u$, $M\mapsto M\otimes I_m$. 
+By the discussion above, $(s_{d\times m},\dot{w}_{d\times m}^k)$ is an elliptic pair for $k\in(\ZZ/d\ZZ)^\times$, so we consider the virtual representations 
+$$\Pi(u_{d\times m},s_{d\times m},\dot{w}^k_{d\times m})=\sum_{\ell\in\ZZ/d\ZZ}\zeta_d^{k\ell}\pi(x_{d\times m},\phi_\ell),$$
+where $x_{d\times m}=u_{d\times m}s_{d\times m}$ and $\phi_l(\dot{w}_{d\times m})=\zeta^\ell_d$. Note that we have used that $A_{x_{d\times m}}=\langle\dot{w}_{d\times m}\rangle\cong\ZZ/d\ZZ$.
+
+The standard Chevalley involution on $\PGL_n(\CC)$ is given by the inverse-transpose map $C(g)=(g^T)^{-1}$, and in particular $C(s_{d\times m})=s_{d\times m}^{-1}$ and $C(w_{d\times m})=w_{d\times m}$. Let $J_m$ be the standard $m$ by $m$ unipotent block in $PGL_m(\CC)$ and let $Y\in\PGL_m(\CC)$ be a matrix such that $Y(J_m^T)^{-1}Y^{-1}=J_m$. Then the matrix 
+\begin{equation*}
+    X=\begin{pmatrix}
+        Y & & & \\
+        & & & Y \\
+        & & \iddots & \\
+        & Y & & 
+    \end{pmatrix}\in\PGL_n(\CC)
+\end{equation*}
+satisfies that $XC(u_{d\times m})X^{-1}=u_{d\times m}$, $Xs_{d\times m}^{-1}X^{-1}=s_{d\times m}$ and $X\dot{w}_{d\times m}X^{-1}=\dot{w}_{d\times m}^{-1}$. Consequently,
+\begin{align}\label{eqn:FourierSLn}
+    \notag \FT^\vee_{\mathrm{ell}}(\Pi(u_{d\times m}, s_{d\times m},\dot{w}_{d\times m}^{k}))&=\Pi(C(u_{d\times m}), C(\dot{w}_{d\times m}^k), C(s_{d\times m}))\\
+    &=\Pi(u_{d\times m}, \dot{w}_{d\times m}^{-k},s_{d\times m})=\Pi(u_{d\times m}, s_{d\times m},\dot{w}_{d\times m}^{k}).
+\end{align}
+
+\begin{proposition}
+    Conjecture \ref{conj:main2} holds for $G=\SL_n(F)$, without the appearance of roots of unity.
+\end{proposition}
+\begin{proof}
+    According to \eqref{eqn:FourierSLn}, the dual nonabelian Fourier transform $\FT^\vee_{\mathrm{ell}}$ is the identity automorphism on $R_{\un,\mathrm{ell}}(G)$. On the other hand, for each $K\in\max(G)$, the reductive quotient $\overline{K}$ is isomorphic to $\SL_n(\FF_q)$, so $\FT^{\cpt}_{\un}$ is also the trivial automorphism on each $R_{\un}(\overline{K})$. The result follows.
+\end{proof}

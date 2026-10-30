@@ -1,0 +1,61 @@
+\section{The \texorpdfstring{$SL_n(F)$}{PDFstring} case}
+In this section, we use the theory developed so far to prove Conjecture \ref{conj:main} for $G=\SL_n(F)$. We largely adapt the results from \cite{AubertCiubotaruRomano2024}*{\S 13} to the conjecture variant and fix some mistakes.  
+
+Since the dual group is $G^\vee=\PGL_n(\CC)$, each unipotent conjugacy class corresponds to a partition of $\lambda= (\underbrace{1,\ldots,1}_{r_1}, \underbrace{2,\ldots,2}_{r_2}, \ldots, \underbrace{\ell,\ldots,\ell}_{r_\ell}),$ with $r_1+\cdots+r_l=n$ via Jordan's normal form. Given $u\in\PGL_n(\CC)$ unipotent with corresponding partition $\lambda_u$ of $n$, the reductive part $\Gamma_u$ of the centralizer of $u$ in $G^\vee$ contains elliptic pairs if and only if $\lambda_u$ is rectangular; that is, if $\lambda_u=(\underbrace{m,\ldots,m}_{d})$ for some $n=md$, in which case 
+\[
+    \Gamma_u\cong\PGL_d(\CC).
+\] 
+Let $W=S_d$ be the Weyl group of $\PGL_d(\CC)$ (type $A_{d-1}$) and let $\dot{w}_d$ be the permutation matrix corresponding to the $d$-cycle $(1,2,3,\ldots,d)\in S_d$. In addition, let $s_d=\mathrm{diag}(1,\zeta_d,\zeta_d^2,\ldots,\zeta_d^{d-1})\in\PGL_d(\CC)$ (note that $s_d$ is a  regular semisimple element). Then a standard group theory argument shows that 
+\[
+    \mathcal{Y}(\Gamma_u)_{\mathrm{ell}}=\bigsqcup_{k\in(\ZZ/d\ZZ)^\times} \Gamma\cdot(s_d,\dot{w}_d^k)
+\]
+and moreover the flip $(s,h)\rightarrow(h,s)$ induces the map on $\Gamma_u$-orbits in $\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$ given by $[(s_d,\dot{w}_d^k)]\rightarrow[(s_d,\dot{w}_d^{-k})]$. In particular, the number of orbits of elliptic pairs in $G^\vee=\PGL_n(\CC)$ is 
+\begin{equation*}
+    \sum_{u\text{ unipotent class}}|\Gamma_u\backslash\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}|=\sum_{d\mid n}|(\ZZ/d\ZZ)^\times|=\sum_{d\mid n}\phi(d)=n.
+\end{equation*}
+For a detailed proof of these facts, see \cite{AubertCiubotaruRomano2024}*{\S 13.1}.
+
+For the remainder of the subsection, fix some $d\mid n$, let $m=n/d$ and let $u_{d\times m}\in\PGL_n(\CC)$ be the standard unipotent element with Jordan blocks $\lambda_u=(\underbrace{m,\ldots,m}_{d})$. Fix a primitive $d$-th root of unity and let $$s_{d\times m}=s_d\otimes I_m=\textrm{diag}(\underbrace{1,\ldots,1}_{m},\underbrace{\zeta_d,\ldots,\zeta_d}_{m},\ldots,\underbrace{\zeta_d^{d-1},\ldots,\zeta_d^{d-1}}_{m})\quad\text{and}\quad \dot{w}_{d\times m}=\dot{w}_d\otimes I_m.$$
+By the discussion above, $(s_{d\times m},\dot{w}_{d\times m}^k)$ is an elliptic pair for $k\in(\ZZ/d\ZZ)^\times$, so we consider the virtual representations 
+$$\Pi(u_{d\times m},s_{d\times m},\dot{w}^k_{d\times m})=\sum_{\ell\in\ZZ/d\ZZ}\zeta_d^{k\ell}\pi(x_{d\times m},\phi_\ell),$$
+where $x_{d\times m}=u_{d\times m}s_{d\times m}$ and $\phi_l(\dot{w}_{d\times m})=\zeta^\ell_d$. Note that we have used that $A_{x_{d\times m}}=\langle\dot{w}_{d\times m}\rangle\cong\ZZ/d\ZZ$.
+
+Next, we compute the parahoric restrictions $\res_{K_i}\pi(x_{d\times m},\phi_\ell)$ for each $i=\{0,1,\ldots,n-1\}$ and $\ell\in\{0,1,\ldots,d-1\}$, where $K_i$ is the maximal parahoric subgroup corresponding to the maximal proper subset of simple affine roots $S_{\aff}\setminus\{\alpha_i\}$. Note that $Z_{G^\vee}(s_{d\times m})=\PGL_m(\CC)^d\rtimes\langle\dot{w}_{d\times m}\rangle$ and let $M:=Z_{G^\vee}(s_{d\times m})^0=\PGL_m(\CC)^d$. It then follows that $W_s=W_M\rtimes\langle w_{d\times m}\rangle\cong S_m^d\rtimes\langle w_{d\times m}\rangle$, where $w_{d\times m}$ is the image of $\dot{w}_{d\times m}$ under the map $N_{G^\vee}(T^\vee)\twoheadrightarrow W$. 
+
+Let $\alpha_j=e_j-e_{j+1}, j=1,2,\ldots, n-1$ be the standard simple roots of $\PGL_n(\CC)$ and identify $W\cong S_n$ by sending the simple reflection $s_j$ to the transposition $(j\ j+1)$ for $j=1,2,\ldots,n-1$. Under this isomorphism, 
+$$W_M\cong S_m^d=\prod_{k=0}^{d-1}\langle s_{km+1},s_{km+2},\ldots,s_{(k+1)m-1}\rangle\quad\text{and}\quad w_{d\times m}=(1,2,\ldots,n)^m$$
+According to subsection \ref{subsec:Iwahori_spherical}, it follows that 
+$$\pi(x_{d\times m},\phi_\ell)^I_{q=1}\cong\varepsilon\otimes H(\mathcal{B}^{x_{d\times m}})^{\phi_\ell}=\varepsilon\otimes\left(\Ind_{W_{M,\aff}\rtimes\ZZ/d\ZZ}^{W_{\aff}\times \ZZ/d\ZZ}H(\mathcal{B}_{s_{d\times m}}^{u_{d\times m}})\right)^{\phi_\ell}=\varepsilon\otimes\Ind_{W_{s,\aff}}^{W_\aff}(\mathbf{1}\otimes\phi_\ell\otimes s_{d\times m})$$
+as $W_\aff$-modules, where $W_M\rtimes\ZZ/d\ZZ$ embeds in $W\times \ZZ/d\ZZ$ via the map $(w,j)\mapsto(w\cdot w_{d\times m}^j,j)$ and the last equality follows from a standard Mackey induction-restriction argument. Note that we have also used the fact that $u_{d\times m}$ is a regular unipotent element in $M$ and therefore $H(\mathcal{B}_{s_{d\times m}}^{u_{d\times m}})$ is the trivial $W_M$-representation.
+
+Let us fix now some maximal parahoric subgroup $K_i$ for $i\in\{0,1,\ldots,n-1\}$. According to Lemma \ref{lem:multiplicity} and Proposition \ref{prop:second_red}, the parahoric restriction $\res_{K_i}\pi(x_{d\times m},\phi_\ell)$ can understood by computing the restriction
+$$\pi(x_{d\times m},\phi_\ell)^I_{q=1}|_{W_i}\cong\varepsilon\otimes\Ind^{W_i}_{W_{s,\aff}\cap W_i}\mathbf{1}\otimes \phi_\ell\otimes s_{d\times m},$$
+where the isomorphism follows from the fact that $W_{\aff}=W_i\ltimes X$ so $W_{s,\aff}\backslash W_{\aff}/W_i=\{1\}$. 
+
+At this stage, we note that $W_i\cong S_n$ by sending $s_j$ to $(j\ j+1)$ for $j\in\{1,2,\ldots,n-1\}\setminus\{i\}$ and $s_0$ to $(1\ n)$. If we let $\omega_i$ be the fundamental weight corresponding to the simple root $\alpha_i$, then $W_i$ is the stabilizer of $\omega_i$ in $W$. In particular, we have that
+\begin{equation}\label{eqn:Ws_isom}
+    W_{s,\aff}\cap W_i\cong W_s\cong S_m^d\rtimes\langle (1,2,\ldots,n)^m\rangle
+\end{equation}
+since, for each $w\in W_s$, there is one unique $\mu\in X$ such that $wt_\mu(\omega_i)=\omega_i$. Under the isomorphism \eqref{eqn:Ws_isom}, the $S_m^d$ part is generated by reflections $s_j$ such that $\alpha_j(s_{d\times m})=1$, i.e. $m\nmid j$. If $j\neq i$, then $s_j\in W_{s,\aff}\cap W_i$ and $s_{d\times m}(s_j)=1$. On the other hand, if $s_i\in W_s$, then $s_it_{-\alpha_i}\in W_{s,\aff}\cap W_i$ and $s_{d\times m}(s_it_{-\alpha_i})=\alpha_i(s_{d\times m})^{-1}=1$. Thus, the character $\phi_\ell\otimes s_{d\times m}$ is trivial on the $S_m^d$ part.
+
+So let us focus on the cyclic subgroup $\langle w_{d\times m}\rangle$, where $w_{d\times m}=(1,2,\ldots, n)^m$. In standard coordinates, the fundamental weight
+$$\omega_i=e_1+\cdots+e_i-\frac{i}{n}\sum_{k=1}^ne_k,$$
+and therefore the unique $\mu\in X$ such that $w_{d\times m}t_\mu(\omega_i)=\omega_i$ is 
+$$\mu=w_{d\times m}^{-1}\cdot\omega_i-\omega_i=\sum_{k=1}^i(e_{k-m}-e_k),$$
+and therefore $$s_{d\times m}(w_{d\times m}t_\mu)=\mu(s_{d\times m})=\prod_{k=1}^i e_{k-m}(s_{d\times m})e_k(s_{d\times m})^{-1}=\prod_{k=1}^i\zeta_d^{-1}=\zeta_d^{-i}.$$
+This implies that 
+$$\varepsilon\otimes\Ind^{W_i}_{W_{s,\aff}\cap W_i}\mathbf{1}\otimes \phi_\ell\otimes s_{d\times m}\cong\varepsilon\otimes\Ind^{S_n}_{S_m^d\rtimes\langle w_{d\times m}\rangle}\phi_{\ell-i}.$$
+We are now ready to prove the main result of this section.
+
+\begin{theorem}
+    Let $G=\SL_n(F)$ and let $K_i, i\in\{0,1,\ldots,n-1\}$ be a maximal parahoric subgroup of $G$ as above. Then for every rectangular unipotent element $u_{d\times m}$ with $n=md$ and $s_{d\times m}$, $w_{d\times m}$ as above,
+    \begin{equation}\label{eqn:conjugate}
+        \res_{K_i}\Pi(u_{d\times m}, s_{d\times m},w_{d\times m}^{-k})=\overline{\res_{K_i}\Pi(u_{d\times m}, s_{d\times m},w_{d\times m})}.
+    \end{equation}
+    In particular, Conjecture \ref{conj:main} holds for $G=\SL_n(F)$.
+\end{theorem}
+
+\begin{proof}
+    We first note that \eqref{eqn:conjugate} implies Conjecture \ref{conj:main} since $\FT^{\bar{K}_i}$ is trivial and $$\FT^\ell(\Pi(u_{d\times m}, s_{d\times m},w_{d\times m}^{k}))=\Pi(u_{d\times m}, s_{d\times m},w_{d\times m}^{-k}).$$
+
+\end{proof}

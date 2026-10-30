@@ -25,7 +25,7 @@ and its fundamental group is $\Omega\cong\ZZ/3\ZZ$. The group $G$ has $7$ conjug
 \end{theorem}
 
 
-The classes parametrized by $J_0,J_1,J_6$ and $J_2,J_3,J_5$ are conjugate under the action of $\Omega$, respectively, and in particular they have the same reductive type. By Proposition \ref{prop_also_twist}, it is therefore enough to verify the conjecture for the conjugacy classes of maximal open compact subgroups corresponding to $J_0$, $J_2$ and $J_4$. 
+The classes parametrized by $J_0,J_1,J_6$ and $J_2,J_3,J_5$ are conjugate under the action of $\Omega$, respectively, and in particular they have the same reductive type. By Proposition \ref{prop:omega_action}, conditional to the verification of condition \eqref{eqn:condition}, it is enough to prove the conjecture for the conjugacy classes of maximal open compact subgroups corresponding to $J_0$, $J_2$ and $J_4$. 
 
 Next, we classify the elliptic pairs in $G^\vee=E_6(\CC)_{\ad}$. This classification is well known in the literature for $E_6(\CC)_{\scn}$, but for $E_6(\CC)_{\ad}$ is slightly more involved. For most unipotent elements $u\in G^\vee$, the reductive part $\Gamma_u$ of its centralizer is connected. When this is the case, there exists a precise description of the elliptic pairs in $\Gamma_u$.
 
@@ -66,18 +66,38 @@ $$s_3=\begin{pmatrix}
 
 We also let $s_{3,3}=(s_3,s_3)$ and $w_{3,3}=(w_3,w_3)$ be matrices in $\SL_3\times\SL_3$. We abuse notation and denote their images in central quotients with the same symbols as necessary.
 
-When $u$ has type $D_4$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_3,w_3),(s_3,w_3^2)\}$ and $A_{us_3}=R(u)\cong C_3$, while if $u$ has type $A_2$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_{3,3},w_{3,3}),(s_{3,3},w_{3,3}^2)\}$ and $A_{us_3}=R(u)\cong C_3$ as well. The remaining case when $u$ has type $D_4(a_1)$ is the most interesting. Then $\Gamma_u=(\CC^\times)^2\rtimes S_3$, where the $3$-cycle $(123)$ in $S_3$ acts by $(a,b)\mapsto(b,\frac{1}{ab})$ and the $2$-cycle $(12)$ acts by $(a,b)\mapsto(\frac{1}{b},\frac{1}{a})$. A lengthy computation then shows that $\Gamma_u$ has $12$ elliptic pairs up to conjugacy. To describe them, let 
+When $u$ has type $D_4$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_3,w_3),(s_3,w_3^{-1})\}$ and $A_{us_3}=R(u)\cong C_3$, while if $u$ has type $A_2$, then $\Gamma_u\backslash\mathcal{Y}\mathcal(\Gamma_u)_{\text{ell}}=\{(s_{3,3},w_{3,3}),(s_{3,3},w_{3,3}^{-1})\}$ and $A_{us_{3,3}}=A_{us_{3,3}}^0\times R(u)\cong C_2\times C_3$. The remaining case when $u$ has type $D_4(a_1)$ is the most interesting. Then $\Gamma_u=(\CC^\times)^2\rtimes S_3$, where the $3$-cycle $(123)$ in $S_3$ acts by $(a,b)\mapsto(b,\frac{1}{ab})$ and the $2$-cycle $(12)$ acts by $(a,b)\mapsto(\frac{1}{b},\frac{1}{a})$. A lengthy computation then shows that $\Gamma_u$ has $12$ elliptic pairs up to conjugacy. To describe them, let 
 $$1=((1,1),e),\ z=((\zeta_3,\zeta_3),e),\ g_3=((1,1),(123))\in\Gamma_u.$$
 Then the $12$ elliptic pairs up to conjugacy are
-$\{(z^k,g_3),(g_3,z^k),(g_3,z^kg_3),(g_3,z^kg_3^{-1})\ |\ k=0,1,2\}.$
-The flip $(s,h)\mapsto(h,s)$ in the space of elliptic pairs preserves the pairs $(g_3,g_3^{\pm1})$, while it flips $(z^k,g_3)\leftrightarrow(g_3,z^k)$ and $(g_3,zg_3^{\pm1})\leftrightarrow(g_3,z^2g_3^{\pm1})$. For future computations, we also note that $(z^2,g_3)\sim(z,g_3^{-1})$ and that 
+$\{(z^k,g_3),(g_3,z^k),(g_3,z^kg_3),(g_3,z^kg_3^{-1})\ |\ k=0,1,2\},$
+where
 $$A_u=A_u^0=S_3,\quad A_{uz}=R(u)=\langle g_3\rangle\cong C_3\quad\text{and}\quad A_{ug_3}=A_{ug_3}^0\times R(u)=\langle g_3\rangle\times\langle z\rangle\cong C_3\times C_3$$
 Thus, $R_{\un,\text{ell}}(G)$ is a $22$-dimensional vector space, and the proof of 
-\ref{thm:E6sc} relies again on an explicit computation of the parahoric restriction maps
-$$\res_{\un}^{K_i}:R_{\un,\text{ell}}\longrightarrow R_{\un}(\overline{K}_i),\ \text{ for } i=0,2,4.$$
+\ref{thm:E6sc} relies again on an explicit computation of $\FT^\vee_{\mathrm{ell}}$ and the parahoric restriction maps
+$$\res_{\un}^{K_i}:R_{\un,\text{ell}}(G)\longrightarrow R_{\un}(\overline{K}_i),\ \text{ for } i=0,2,4.$$
+Next, we discuss the action of $\FT^\vee_{\mathrm{ell}}$ on the basis elements $\Pi(u,s,h)$. To this aim, let $C:G^\vee\to G^\vee$ be a Chevalley involution and let $T^\vee\subset G^\vee$ a maximal torus such that $C(t)=t^{-1}$ for all $t\in T^\vee$. When $u$ has type $E_6$, $E_6(a_1)$ and $E_6(a_3)$, all automorphisms of $\Gamma_u$ are inner, and therefore 
+$$\FT^\vee_{\mathrm{ell}}(\Pi(u,s,h))=\Pi(u,h,s).$$ 
+When $u$ has type $D_4$ or $D_4(a_1)$, we fix $L^\vee\subset G^\vee$ to be a standard Levi subgroup of type $D_4$ containing $T^\vee$. Since maximal tori in $\Gamma_u$ have rank two, the centre $Z(L^\vee)$ is a maximal torus of $\Gamma_u$ contained in $T^\vee$. In addition, the Chevalley involution acts by $C(\mathcal{X}_\alpha)=\mathcal{X}_{-\alpha}$ on root spaces, so it preserves $L^\vee$. Inside $L^\vee$, the element $u$ is either regular or subregular, so there exists some $l\in L^\vee$ such that $lC(u)l^{-1}=u$. Therefore, the map $\inn(l)\circ C:\Gamma_u\to\Gamma_u$ is a Chevalley involution since $\inn(l)(C(t))=t^{-1}$ for all $t\in Z(L^\vee)\subset T^\vee$. When $u$ has type $A_2$, an analogous argument shows that there is some $l$ in a standard Levi $L^\vee$ of type $A_2$ containing $T^\vee$ such that $\inn(l)\circ C$ is a Chevalley involution of $\Gamma_u$. In section \ref{subsec:SLn}, we showed that 
+\begin{align*}
+    \FT^\vee_{\mathrm{ell}}:\ &\Pi(D_4,s_3,w_3^{\pm1})\longmapsto\Pi(D_4,s_3,w_3^{\pm1}),\\
+    & \Pi(A_2,s_{3,3},w_{3,3}^{\pm1})\longmapsto\Pi(A_2,s_{3,3},w_{3,3}^{\pm1}).
+\end{align*}
+Finally, when $u$ has type $D_4(a_1)$, $\Gamma_u=(\CC^\times)^2\rtimes S_3$ and the automorphism $C_u(((a,b),\tau))=((\frac{1}{a},\frac{1}{b}),\tau)$ is a Chevalley involution. Thus, we have that $\FT^\vee_{\mathrm{ell}}$ swaps the basis vectors
+\begin{align*}
+    \Pi(u,1,g_3)\longleftrightarrow\Pi(u,g_3,1),\quad \Pi(u,z,g_3)&\longleftrightarrow\Pi(u,g_3,z^2),\quad\Pi(u,z^2,g_3)\longleftrightarrow\Pi(u,g_3,z),\\
+    \Pi(u,g_3,z^kg_3^{\pm1})&\longleftrightarrow\Pi(u,g_3,z^kg_3^{\pm1}),\quad k=0,1,2.
+    %\Pi(u,g_3,g_3^{\pm1})\longleftrightarrow\Pi(u,g_3,g_3^{\pm1}),\quad \Pi(u,g_3,zg_3^{\pm1})\longleftrightarrow\Pi(u,g_3,zg_3^{\pm1}),\quad\Pi(u,g_3,z^2g_3^{\pm1})\longleftrightarrow\Pi(u,g_3,z^2g_3^{\pm1}).
+\end{align*}
+\begin{lemma}
+    Condition \eqref{eqn:condition} holds for all $\omega\in\Omega$, $u\in G^\vee$ unipotent and $(s,h)\in\mathcal{Y}(\Gamma_u)_{\mathrm{ell}}$. In particular, if Diagram \eqref{eqn:diagram} commutes for parahoric subgroups $K_0,K_2$ and $K_4$, then Theorem \ref{thm:E6sc} holds.
+\end{lemma}
+\begin{proof}
+    If the ordered triple $(C(u),C(h),C(s))$ is conjugate to the ordered triple $(u,s,h)$, then condition \eqref{eqn:condition} holds trivially. On the other hand, by Remark \ref{rem:condition}, condition \eqref{eqn:condition} holds when either $s=1$ or $h=1$. By the classification of elliptic pairs above, it only remains to prove condition \eqref{eqn:condition} when $u$ has type $D_4(a_1)$ and $(s,h)\in\{(z,g_3),(z^2,g_3)\}$. \textcolor{red}{One can directly prove that, up to a choice of primitive third root of unity, $$\overline{\tau}_{uz}(\omega)(g_3)=\theta,\quad\text{and}\quad\overline{\tau}_{ug_3}(\omega)(z)=\theta^2,$$ from which the Lemma easily follows.}
+\end{proof}
+
 Finally, let us describe the unipotent blocks and the Langlands parameters for $G$. There are $8$ unipotent blocks, $6$ of which are supercuspidal, one for each pair $(K_0,\sigma)$, where $K_0\cong E_6(\mathcal{O}_F)$ is a hyperspecial parahoric subgroup (there are three conjugacy classes in $G$) and $\sigma\in\{E_6[\theta],E_6[\theta^2]\}$ is a cuspidal unipotent representation of $E_6(\FF_q)$. The Hecke algebras $\cH(E_6(F),K_0,\sigma)\cong\CC$ so the block contains a unique Langlands parameter, which can be read from Lusztig's arithmetic-geometric tables (when $G$ is adjoint), combined with Solleveld's results (\cite{Solleveld2020}*{Lemma 7.3}).
 
-Again, the principal block contains all representations $\pi(us,\phi)$ such that $H(\mathcal{B}^u_s)^\phi\neq 0$ and the corresponding Hecke algebra $\cH(E_6(F),\mathcal{I},\mathbf{1})$ is the affine Hecke algebra of type $E_6$ of equal parameters. The parahoric restrictions are computed using the methods described in Section \ref{sec:parahoric_restriction}.
+The principal block contains all representations $\pi(us,\phi)$ such that $H(\mathcal{B}^u_s)^\phi\neq 0$ and the corresponding Hecke algebra $\cH(E_6(F),\mathcal{I},\mathbf{1})$ is the affine Hecke algebra of type $E_6$ of equal parameters. The parahoric restrictions are computed using the methods described in Section \ref{sec:parahoric_restriction}.
 
 Finally, there is one intermediate Hecke algebra $\cH(E_6(F),D_4(\mathcal{O}_F),\sigma)$, where $\sigma$ is the unique cuspidal unipotent representation of $D_4(\FF_q)$. The only Langlands parameter we encounter corresponding to this Hecke algebra is $[A_1A_5,-]$, where $u$ has type $E_6(a_3)$, $s$ is the unique non-trivial semisimple element commuting with $u$ (of order $2$), and $\phi$ is non-trivial.
 
@@ -95,8 +115,9 @@ We conclude this section with an explicit expression of the virtual characters $
     \Pi(D_4(a_1),1,g_3)&=[D_4(a_1),1]+[D_4(a_1),\varepsilon]-[D_4(a_1),r];\\
     \Pi(D_4(a_1),z,g_3)&=[D_4(53),\mathbf{1}]+\theta[D_4(53),\theta]+\theta^2[D_4(53),\theta^2];\\
     \Pi(D_4(a_1),z^2,g_3)&=\Pi(D_4(a_1),z,g_3^{-1})=[D_4(53),\mathbf{1}]+\theta^2[D_4(53),\theta]+\theta[D_4(53),\theta^2];\\
-    \Pi(D_4(a_1),g_3,z^kg_3^l)&=\sum_{1\leq i,j\leq 3}\theta^{il+jk}[3A_2,\theta^i\boxtimes\theta^j];\\
-    \Pi(A_2,s_{3,3},w_{3,3})&=\Pi(A_2,s_{3,3},w_{3,3}^2)=[D_4(3311),\mathbf{1}]+[D_4(3311),\epsilon];\\
+    \Pi(D_4(a_1),g_3,z^kg_3^l)&=\sum_{0\leq i,j\leq 2}\theta^{il+jk}[3A_2,\theta^i\boxtimes\theta^j],\ k=0,1,2,\ l\in\{\pm1\};\\
+    \Pi(A_2,s_{3,3},w_{3,3})&=\sum_{0\leq i\leq 2} \theta^i([D_4(3311),\mathbf{1}\boxtimes\theta^i]+[D_4(3311),\epsilon\boxtimes\theta^i]);\\
+    \Pi(A_2,s_{3,3},w_{3,3}^{-1})&=\sum_{0\leq i\leq 2} \theta^i([D_4(3311),\mathbf{1}\boxtimes\theta^i]+[D_4(3311),\epsilon\boxtimes\theta^i]).\\
 \end{align*}
 
     %[3A_2,\mathbf{1}\boxtimes\mathbf{1}]+\theta^l[3A_2,\theta\boxtimes\mathbf{1}]+\theta^{2l}[3A_2,\theta^2\boxtimes\mathbf{1}]+[3A_2,\mathbf{1}\boxtimes\theta]+[3A_2,\theta\boxtimes\theta]+\\
